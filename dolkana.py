@@ -78,14 +78,78 @@ STAGE2_BAN_COOLDOWN    = 20.0  # extra wait after IP-ban / block error
 TMDB_ID_RE = re.compile(r"^\d+$")
 
 # ═══════════════════════════════════════════════════════════════
-# GITHUB SYNC CONSTANTS
+# GITHUB SYNC & SPLIT CONSTANTS
 # ═══════════════════════════════════════════════════════════════
 
-GITHUB_FILE_SIZE_LIMIT  = 20 * 1024 * 1024   # 20 MB per summary file
+MAX_OUTPUT_FILE_SIZE    = 30 * 1024 * 1024   # 30 MB maximum per output file
+GITHUB_FILE_SIZE_LIMIT  = MAX_OUTPUT_FILE_SIZE
 GITHUB_BASE_FILENAME    = "movie_streaming_data"
 ERROR_LOG_GH_FILENAME   = "errorsfaced.txt"
-ERROR_LOG_GH_SIZE_LIMIT = 5 * 1024 * 1024    # 5 MB — trim oldest entries past this
+ERROR_LOG_GH_SIZE_LIMIT = MAX_OUTPUT_FILE_SIZE
 GITHUB_API_ROOT         = "https://api.github.com"
+
+
+def _split_part_path(base_path: Path, part_num: int) -> Path:
+    """Return base.ext for part 1, or base-2.ext, base-3.ext, etc."""
+    if part_num == 1:
+        return base_path
+    stem = base_path.stem
+    suffix = base_path.suffix
+    return base_path.parent / f"{stem}-{part_num}{suffix}"
+
+
+def _write_split_text_lines(base_path: Path, lines: list[str], max_bytes: int = MAX_OUTPUT_FILE_SIZE) -> list[Path]:
+    """Write lines split across base.txt, base-2.txt, base-3.txt ... when size exceeds max_bytes."""
+    written_paths: list[Path] = []
+    if not lines:
+        base_path.write_text("", encoding="utf-8")
+        return [base_path]
+
+    part_num = 1
+    current_lines: list[str] = []
+    current_bytes = 0
+
+    for line in lines:
+        line_bytes = len((line + "\n").encode("utf-8"))
+        if current_lines and current_bytes + line_bytes > max_bytes:
+            p = _split_part_path(base_path, part_num)
+            p.write_text("\n".join(current_lines) + "\n", encoding="utf-8")
+            written_paths.append(p)
+            part_num += 1
+            current_lines = []
+            current_bytes = 0
+
+        current_lines.append(line)
+        current_bytes += line_bytes
+
+    if current_lines or not written_paths:
+        p = _split_part_path(base_path, part_num)
+        p.write_text("\n".join(current_lines) + ("\n" if current_lines else ""), encoding="utf-8")
+        written_paths.append(p)
+
+    return written_paths
+
+
+def _append_split_text(base_path: Path, content: str, max_bytes: int = MAX_OUTPUT_FILE_SIZE) -> Path:
+    """Find the latest part file of base_path and append if under max_bytes, else create next part."""
+    part = 1
+    target_path = base_path
+    content_bytes = len(content.encode("utf-8"))
+    while True:
+        p = _split_part_path(base_path, part)
+        if not p.exists():
+            target_path = p
+            break
+        if p.stat().st_size + content_bytes <= max_bytes:
+            target_path = p
+            break
+        part += 1
+        target_path = p
+
+    with open(target_path, "a", encoding="utf-8") as f:
+        f.write(content)
+    return target_path
+
 
 # ═══════════════════════════════════════════════════════════════
 # CONSOLE HELPERS
@@ -136,14 +200,13 @@ def _format_error_log_block() -> str:
 
 
 def write_error_log(path: Path) -> None:
-    """Append this run's collected entries to the local errorsfaced.txt."""
+    """Append this run's collected entries to the local errorsfaced.txt (auto-splitting if > 30MB)."""
     block = _format_error_log_block()
     if not block:
         return
     try:
-        with open(path, "a", encoding="utf-8") as f:
-            f.write(block)
-        log_ok(f"Error/warning log appended → {path}  ({len(_ERROR_LOG_ENTRIES)} entries)")
+        target = _append_split_text(path, block, max_bytes=MAX_OUTPUT_FILE_SIZE)
+        log_ok(f"Error/warning log appended → {target}  ({len(_ERROR_LOG_ENTRIES)} entries)")
     except Exception as exc:
         print(_c(f"[ERR]   Could not write error log to {path}: {exc}", _RED))
 
@@ -413,22 +476,14 @@ def stage1_fetch_api_keys(
     log_info(f"Errors     : {len(errors)}")
 
     if api_list_found_file:
-        found_content = (
-            "\n".join(found_lines) + "\n"
-            if found_lines
-            else ""
-        )
-        api_list_found_file.write_text(found_content, encoding="utf-8")
-        log_ok(f"Written found summaries ({len(found_lines)}) → {api_list_found_file}")
+        written = _write_split_text_lines(api_list_found_file, found_lines, max_bytes=MAX_OUTPUT_FILE_SIZE)
+        for w in written:
+            log_ok(f"Written found summaries ({len(found_lines)}) → {w}")
 
     if api_list_not_found_file:
-        not_found_content = (
-            "\n".join(not_found_embed_urls) + "\n"
-            if not_found_embed_urls
-            else ""
-        )
-        api_list_not_found_file.write_text(not_found_content, encoding="utf-8")
-        log_ok(f"Written not-found embed URLs ({len(not_found_embed_urls)}) → {api_list_not_found_file}")
+        written = _write_split_text_lines(api_list_not_found_file, not_found_embed_urls, max_bytes=MAX_OUTPUT_FILE_SIZE)
+        for w in written:
+            log_ok(f"Written not-found embed URLs ({len(not_found_embed_urls)}) → {w}")
 
     if errors:
         log_warn("Failed embed URLs (stage 1):")
@@ -710,28 +765,35 @@ async def _process_batch_fs(
 
 def _load_known_media_urls(json_path: Path) -> set[str]:
     """
-    Load all url-N values from the local movie_streaming_data.json.
+    Load all host-N / url-N values from local movie_streaming_data*.json.
     Returns a set of media URLs that are already recorded, so Stage 2
     can suppress errors for API keys whose media is already known.
     """
     known: set[str] = set()
-    if not json_path.exists():
-        return known
-    try:
-        records = json.loads(json_path.read_text(encoding="utf-8"))
-        if not isinstance(records, list):
-            return known
-        for rec in records:
-            if not isinstance(rec, dict):
-                continue
-            n = 1
-            while f"url-{n}" in rec:
-                url = rec[f"url-{n}"]
-                if isinstance(url, str) and url.startswith("http"):
-                    known.add(url)
-                n += 1
-    except Exception as exc:
-        log_warn(f"Could not load known media URLs from {json_path}: {exc}")
+    part = 1
+    while True:
+        p = _split_part_path(json_path, part)
+        if not p.exists():
+            break
+        try:
+            records = json.loads(p.read_text(encoding="utf-8"))
+            if isinstance(records, list):
+                for rec in records:
+                    if not isinstance(rec, dict):
+                        continue
+                    n = 1
+                    while True:
+                        h = rec.get(f"host-{n}")
+                        u = rec.get(f"url-{n}")
+                        if not h and not u:
+                            break
+                        for val in (h, u):
+                            if isinstance(val, str) and val.startswith("http"):
+                                known.add(val)
+                        n += 1
+        except Exception as exc:
+            log_warn(f"Could not load known media URLs from {p}: {exc}")
+        part += 1
     return known
 
 
@@ -771,20 +833,36 @@ async def stage2_extract_stream_urls(
     if _known_media_urls:
         # Build tmdb_id → set[media_url] from the JSON
         tmdb_to_known: dict[str, set[str]] = {}
-        try:
-            records = json.loads(json_out_path.read_text(encoding="utf-8"))
-            for rec in (records if isinstance(records, list) else []):
-                tid = str(rec.get("tmdb_id", ""))
-                if not tid:
-                    continue
-                n = 1
-                while f"url-{n}" in rec:
-                    url = rec[f"url-{n}"]
-                    if isinstance(url, str) and url.startswith("http"):
-                        tmdb_to_known.setdefault(tid, set()).add(url)
-                    n += 1
-        except Exception:
-            pass
+        part = 1
+        while True:
+            p = _split_part_path(json_out_path, part)
+            if not p.exists():
+                break
+            try:
+                records = json.loads(p.read_text(encoding="utf-8"))
+                for rec in (records if isinstance(records, list) else []):
+                    if not isinstance(rec, dict):
+                        continue
+                    tid = ""
+                    if "tmdb/imdb" in rec:
+                        tid = str(rec["tmdb/imdb"]).split("/")[0].strip()
+                    elif "tmdb_id" in rec:
+                        tid = str(rec["tmdb_id"]).strip()
+                    if not tid:
+                        continue
+                    n = 1
+                    while True:
+                        h = rec.get(f"host-{n}")
+                        u = rec.get(f"url-{n}")
+                        if not h and not u:
+                            break
+                        for val in (h, u):
+                            if isinstance(val, str) and val.startswith("http"):
+                                tmdb_to_known.setdefault(tid, set()).add(val)
+                        n += 1
+            except Exception:
+                pass
+            part += 1
         # Map each api_url to the known media URLs for its tmdb_id
         for opt in stage1_options:
             tid = _extract_tmdb_id(opt.main_url)
@@ -920,14 +998,16 @@ async def stage2_extract_stream_urls(
             if _tid and _tid not in tmdb_to_embed_url:
                 tmdb_to_embed_url[_tid] = _opt.main_url
 
-        with open(processed_urls_file, "a", encoding="utf-8") as _pf:
-            for tmdb_id in sorted(new_tmdb_ids, key=int):
-                embed_url = tmdb_to_embed_url.get(
-                    tmdb_id,
-                    f"https://primesrc.me/embed/movie?tmdb={tmdb_id}",
-                )
-                _pf.write(embed_url + "\n")
-        log_ok(f"Saved {len(new_tmdb_ids)} fully-resolved tmdb_id(s) → {processed_urls_file}: {sorted(new_tmdb_ids)}")
+        lines_to_append = ""
+        for tmdb_id in sorted(new_tmdb_ids, key=int):
+            embed_url = tmdb_to_embed_url.get(
+                tmdb_id,
+                f"https://primesrc.me/embed/movie?tmdb={tmdb_id}",
+            )
+            lines_to_append += embed_url + "\n"
+
+        target_pf = _append_split_text(processed_urls_file, lines_to_append, max_bytes=MAX_OUTPUT_FILE_SIZE)
+        log_ok(f"Saved {len(new_tmdb_ids)} fully-resolved tmdb_id(s) → {target_pf}: {sorted(new_tmdb_ids)}")
 
     # ── Clean errorsfaced.txt: remove lines for any succeeded API URL ─
     if succeeded_api_urls:
@@ -997,6 +1077,41 @@ def _fetch_tmdb_info(tmdb_id: str) -> tuple[str, str]:
 # SUMMARY WRITER
 # ═══════════════════════════════════════════════════════════════
 
+def _parse_entry_from_record(e: dict[str, Any]) -> tuple[int, str, str, str, list[dict[str, str]]]:
+    """Parse tmdb_int, imdb_id, title, extracted_at, sources from either old or new JSON format."""
+    tmdb_int = 0
+    imdb_id = ""
+    if "tmdb/imdb" in e:
+        val = str(e["tmdb/imdb"])
+        parts = val.split("/", 1)
+        try:
+            tmdb_int = int(parts[0].strip())
+        except ValueError:
+            tmdb_int = 0
+        if len(parts) > 1 and parts[1].strip():
+            imdb_id = parts[1].strip()
+    else:
+        tmdb_int = int(e.get("tmdb_id", 0) or 0)
+        imdb_id = str(e.get("imdb_id") or "")
+
+    title = e.get("title", "")
+    extracted_at = e.get("extracted_at", "")
+
+    sources: list[dict[str, str]] = []
+    n = 1
+    while True:
+        h = e.get(f"host-{n}")
+        u = e.get(f"url-{n}")
+        if not h and not u:
+            break
+        url = u if (isinstance(u, str) and u.startswith("http")) else (h if (isinstance(h, str) and h.startswith("http")) else "")
+        if url:
+            sources.append({"url": url, "key": e.get(f"key-{n}", url)})
+        n += 1
+
+    return tmdb_int, imdb_id, title, extracted_at, sources
+
+
 def _format_summary_json(records: list[dict[str, Any]]) -> str:
     import re as _re
 
@@ -1006,8 +1121,8 @@ def _format_summary_json(records: list[dict[str, Any]]) -> str:
     lines: list[str] = ["["]
     for rec_idx, rec in enumerate(records):
         lines.append("  {")
-        header_keys = ["serial", "title", "tmdb_id", "imdb_id", "extracted_at"]
-        n_sources = sum(1 for k in rec if _re.fullmatch(r"host-\d+", k))
+        header_keys = ["serial", "title", "tmdb/imdb", "extracted_at"]
+        n_hosts = sum(1 for k in rec if _re.fullmatch(r"host-\d+", k))
 
         all_field_lines: list[str] = []
 
@@ -1015,12 +1130,10 @@ def _format_summary_json(records: list[dict[str, Any]]) -> str:
             if hk in rec:
                 all_field_lines.append(f'    {_jv(hk)}: {_jv(rec[hk])}')
 
-        for n in range(1, n_sources + 1):
+        for n in range(1, n_hosts + 1):
             hkey = f"host-{n}"
-            ukey = f"url-{n}"
-            host_part = f'{_jv(hkey)}: {_jv(rec.get(hkey, ""))}'
-            url_part  = f'{_jv(ukey)}: {_jv(rec.get(ukey, ""))}'
-            all_field_lines.append(f"    {host_part}, {url_part}")
+            if hkey in rec:
+                all_field_lines.append(f'    {_jv(hkey)}: {_jv(rec[hkey])}')
 
         is_last_rec = rec_idx == len(records) - 1
         for fi, fl in enumerate(all_field_lines):
@@ -1061,29 +1174,30 @@ def _write_summary(
     }
 
     existing: list[dict[str, Any]] = []
-    if json_path.exists():
+    part = 1
+    while True:
+        p = _split_part_path(json_path, part)
+        if not p.exists():
+            break
         try:
-            existing = json.loads(json_path.read_text(encoding="utf-8"))
-            if not isinstance(existing, list):
-                existing = []
-            log_info(f"Loaded {len(existing)} existing entries from {json_path}")
+            part_records = json.loads(p.read_text(encoding="utf-8"))
+            if isinstance(part_records, list):
+                existing.extend(part_records)
+                log_info(f"Loaded {len(part_records)} existing entries from {p}")
         except Exception as exc:
-            log_warn(f"Could not load existing JSON ({exc}) — starting fresh")
-            existing = []
+            log_warn(f"Could not load existing JSON from {p} ({exc})")
+        part += 1
 
     index: dict[int, dict[str, Any]] = {}
     for e in existing:
-        tmdb_int = e["tmdb_id"]
-        sources: list[dict[str, str]] = []
-        n = 1
-        while f"host-{n}" in e:
-            sources.append({"host": e[f"host-{n}"], "url": e[f"url-{n}"], "key": e.get(f"key-{n}", e[f"url-{n}"])})
-            n += 1
+        tmdb_int, imdb_id, title, extracted_at, sources = _parse_entry_from_record(e)
+        if not tmdb_int:
+            continue
         index[tmdb_int] = {
             "tmdb_id":      tmdb_int,
-            "imdb_id":      e.get("imdb_id"),
-            "title":        e.get("title", ""),
-            "extracted_at": e["extracted_at"],
+            "imdb_id":      imdb_id,
+            "title":        title,
+            "extracted_at": extracted_at,
             "_sources":     sources,
         }
 
@@ -1122,23 +1236,28 @@ def _write_summary(
 
     output: list[dict[str, Any]] = []
     for e in sorted_entries:
+        tmdb_val = str(e["tmdb_id"])
+        imdb_val = str(e.get("imdb_id") or "")
+        tmdb_imdb_val = f"{tmdb_val}/{imdb_val}" if imdb_val else f"{tmdb_val}/"
+
         row: dict[str, Any] = {
             "serial":       e["serial"],
             "title":        e.get("title", ""),
-            "tmdb_id":      e["tmdb_id"],
-            "imdb_id":      e.get("imdb_id"),
+            "tmdb/imdb":    tmdb_imdb_val,
             "extracted_at": e["extracted_at"],
         }
         for n, src in enumerate(e["_sources"], 1):
-            row[f"host-{n}"] = src["host"]
-            row[f"url-{n}"]  = src["url"]
-            row[f"key-{n}"]  = src.get("key", src["url"])
+            row[f"host-{n}"] = src["url"]
         output.append(row)
 
-    json_path.write_text(_format_summary_json(output), encoding="utf-8")
-    log_ok(f"Pretty JSON → {json_path}")
-    total_sources = sum(sum(1 for k in row if k.startswith("url-")) for row in output)
-    log_info(f"Movies : {len(output)}   Sources : {total_sources}")
+    chunks = _gh_split_records(output)
+    for i, chunk_bytes in enumerate(chunks, 1):
+        target_json = _split_part_path(json_path, i)
+        target_json.write_bytes(chunk_bytes)
+        log_ok(f"Pretty JSON ({len(chunk_bytes):,} B) → {target_json}")
+
+    total_sources = sum(sum(1 for k in row if k.startswith("host-")) for row in output)
+    log_info(f"Movies : {len(output)}   Sources : {total_sources}   Split into {len(chunks)} file(s)")
 
 
 # ═══════════════════════════════════════════════════════════════
@@ -1369,19 +1488,14 @@ def github_sync_summary(
 
     index: dict[int, dict[str, Any]] = {}
     for e in remote_records:
-        tmdb_int = int(e.get("tmdb_id", 0))
+        tmdb_int, imdb_id, title, extracted_at, sources = _parse_entry_from_record(e)
         if not tmdb_int:
             continue
-        sources: list[dict[str, str]] = []
-        n = 1
-        while f"host-{n}" in e:
-            sources.append({"host": e[f"host-{n}"], "url": e[f"url-{n}"], "key": e.get(f"key-{n}", e[f"url-{n}"])})
-            n += 1
         index[tmdb_int] = {
             "tmdb_id":      tmdb_int,
-            "imdb_id":      e.get("imdb_id"),
-            "title":        e.get("title", ""),
-            "extracted_at": e.get("extracted_at", ""),
+            "imdb_id":      imdb_id,
+            "title":        title,
+            "extracted_at": extracted_at,
             "_sources":     sources,
         }
 
@@ -1420,27 +1534,30 @@ def github_sync_summary(
 
     output: list[dict[str, Any]] = []
     for e in sorted_entries:
+        tmdb_val = str(e["tmdb_id"])
+        imdb_val = str(e.get("imdb_id") or "")
+        tmdb_imdb_val = f"{tmdb_val}/{imdb_val}" if imdb_val else f"{tmdb_val}/"
+
         row: dict[str, Any] = {
             "serial":       e["serial"],
             "title":        e.get("title", ""),
-            "tmdb_id":      e["tmdb_id"],
-            "imdb_id":      e.get("imdb_id"),
+            "tmdb/imdb":    tmdb_imdb_val,
             "extracted_at": e["extracted_at"],
         }
         for n, src in enumerate(e["_sources"], 1):
-            row[f"host-{n}"] = src["host"]
-            row[f"url-{n}"]  = src["url"]
-            row[f"key-{n}"]  = src.get("key", src["url"])
+            row[f"host-{n}"] = src["url"]
         output.append(row)
 
-    total_sources = sum(sum(1 for k in r if k.startswith("url-")) for r in output)
+    total_sources = sum(sum(1 for k in r if k.startswith("host-")) for r in output)
     log_info(f"Merged total: {len(output)} movies, {total_sources} sources")
 
     chunks = _gh_split_records(output)
     log_info(f"Split into {len(chunks)} file(s) ({GITHUB_FILE_SIZE_LIMIT // 1024 // 1024} MB limit each)")
 
-    local_json_path.write_bytes(chunks[0])
-    log_ok(f"Local JSON → {local_json_path}  ({len(chunks[0]):,} B)")
+    for i, chunk_bytes in enumerate(chunks, 1):
+        target_local = _split_part_path(local_json_path, i)
+        target_local.write_bytes(chunk_bytes)
+        log_ok(f"Local JSON → {target_local}  ({len(chunk_bytes):,} B)")
 
     while len(file_meta) < len(chunks):
         n = len(file_meta) + 1
