@@ -123,6 +123,7 @@ jobs:
 
           # Stage all base and auto-split output files
           git add tmdb_movie_input_list*.txt 2>/dev/null || true
+          git add lastet_released_holly_bolly_movies_list*.txt 2>/dev/null || true
           git add output_stage1_api_urls_list_found*.txt 2>/dev/null || true
           git add output_stage1_api_urls_list_not_found*.txt 2>/dev/null || true
           git add final_stream_urls_stage2*.txt 2>/dev/null || true
