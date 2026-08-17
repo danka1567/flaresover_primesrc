@@ -1,0 +1,7 @@
+# already_processed_urls_list.txt
+# This file tracks Stage-2 API URLs that have already been successfully
+# resolved by FlareSolverr. Lines here are skipped on subsequent runs
+# to avoid redundant scraping.
+#
+# Format: one https://primesrc.me/api/v1/l?key=... URL per line
+# Auto-managed by dolkana.py — do not edit manually unless clearing entries.
