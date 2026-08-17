@@ -328,11 +328,21 @@ def stage1_fetch_api_keys(
     log_info(f"Input embed URLs : {len(raw_lines)}  ({input_file})")
 
     # ── Load already-processed tmdb_ids so whole movies are skipped ──
+    # Supports both bare tmdb IDs ("218") and full embed URLs
+    # ("https://primesrc.me/embed/movie?tmdb=218") in the same file.
     already_processed_tmdb: set[str] = set()
     if processed_urls_file.exists():
         for _line in processed_urls_file.read_text(encoding="utf-8").splitlines():
             _line = _line.strip()
-            if _line and not _line.startswith("#"):
+            if not _line or _line.startswith("#"):
+                continue
+            if _line.startswith("http"):
+                # Full embed URL — extract the tmdb= value
+                _tid = _extract_tmdb_id(_line)
+                if _tid:
+                    already_processed_tmdb.add(_tid)
+            elif TMDB_ID_RE.fullmatch(_line):
+                # Legacy bare tmdb ID
                 already_processed_tmdb.add(_line)
     if already_processed_tmdb:
         log_info(f"Already-processed tmdb_ids: {len(already_processed_tmdb)} — will skip in Stage 1")
@@ -544,10 +554,15 @@ async def _resolve_one_flaresolverr(
     sem: asyncio.Semaphore,
     index: int,
     total: int,
+    known_media: dict[str, set[str]] | None = None,
 ) -> dict[str, Any]:
     loop  = asyncio.get_running_loop()
     label = f"[{index:>3}/{total}]"
     key_session_id = f"{session_id}_{index}"
+
+    # If this api_url's tmdb_id already has media in movie_streaming_data.json,
+    # we treat any failure as a silent skip rather than an error.
+    _already_known_urls: set[str] = (known_media or {}).get(api_url, set())
 
     async with sem:
         await safe_print(f"{label} → {api_url}")
@@ -582,7 +597,9 @@ async def _resolve_one_flaresolverr(
                             + (f" (HTTP {fs_resp.get('_http_status')})" if "_http_status" in fs_resp else "")
                         )
                         await safe_print(f"{label} ✗ (FS) {last_error}")
-                        _record_log_entry("ERR", f"{label} {api_url} — {last_error}")
+                        # Only log to errorsfaced.txt if media isn't already known
+                        if not _already_known_urls:
+                            _record_log_entry("ERR", f"{label} {api_url} — {last_error}")
                         continue
 
                     data     = _parse_flaresolverr_response(fs_resp)
@@ -613,12 +630,16 @@ async def _resolve_one_flaresolverr(
 
                     last_error = f"no play URL in FS response: {str(data)[:120]}"
                     await safe_print(f"{label} ✗ (FS) {last_error}")
-                    _record_log_entry("ERR", f"{label} {api_url} — {last_error}")
+                    # Only log to errorsfaced.txt if media isn't already known
+                    if not _already_known_urls:
+                        _record_log_entry("ERR", f"{label} {api_url} — {last_error}")
 
                 except Exception as exc:
                     last_error = str(exc)
                     await safe_print(f"{label} ✗ (FS) {last_error}")
-                    _record_log_entry("ERR", f"{label} {api_url} — {last_error}")
+                    # Only log to errorsfaced.txt if media isn't already known
+                    if not _already_known_urls:
+                        _record_log_entry("ERR", f"{label} {api_url} — {last_error}")
 
             return {
                 "index":         index,
@@ -644,18 +665,47 @@ async def _process_batch_fs(
     reloads: int,
     batch_size: int,
     title: str,
+    known_media: dict[str, set[str]] | None = None,
 ) -> list[dict[str, Any]]:
     print(f"\n{title}: resolving {len(indexed_urls)} URL(s)")
     sem   = asyncio.Semaphore(batch_size)
     tasks = [
         asyncio.create_task(
             _resolve_one_flaresolverr(
-                base_url, session_id, url, timeout_ms, reloads, sem, index, total
+                base_url, session_id, url, timeout_ms, reloads, sem, index, total,
+                known_media=known_media,
             )
         )
         for index, url in indexed_urls
     ]
     return await asyncio.gather(*tasks)
+
+
+def _load_known_media_urls(json_path: Path) -> set[str]:
+    """
+    Load all url-N values from the local movie_streaming_data.json.
+    Returns a set of media URLs that are already recorded, so Stage 2
+    can suppress errors for API keys whose media is already known.
+    """
+    known: set[str] = set()
+    if not json_path.exists():
+        return known
+    try:
+        records = json.loads(json_path.read_text(encoding="utf-8"))
+        if not isinstance(records, list):
+            return known
+        for rec in records:
+            if not isinstance(rec, dict):
+                continue
+            n = 1
+            while f"url-{n}" in rec:
+                url = rec[f"url-{n}"]
+                if isinstance(url, str) and url.startswith("http"):
+                    known.add(url)
+                n += 1
+    except Exception as exc:
+        log_warn(f"Could not load known media URLs from {json_path}: {exc}")
+    return known
 
 
 async def stage2_extract_stream_urls(
@@ -676,6 +726,41 @@ async def stage2_extract_stream_urls(
     if not api_urls:
         log_warn("output_stage1_api_urls_list.txt is empty – nothing to resolve in Stage 2.")
         return []
+
+    # Load already-known media URLs so we can suppress errors for keys
+    # whose media is already captured in movie_streaming_data.json.
+    json_out_path: Path = getattr(args, "json_out", DEFAULT_JSON_SUMMARY)
+    _known_media_urls: set[str] = _load_known_media_urls(json_out_path)
+    if _known_media_urls:
+        log_info(f"Known media URLs loaded from JSON: {len(_known_media_urls)}")
+
+    # Build a map: api_url (key=…) → set of media URLs already in JSON for
+    # that same tmdb_id.  We use this in _resolve_one_flaresolverr to decide
+    # whether a failure should be silently skipped.
+    # api_url → set[media_url]
+    _api_url_to_known_media: dict[str, set[str]] = {}
+    if _known_media_urls:
+        # Build tmdb_id → set[media_url] from the JSON
+        tmdb_to_known: dict[str, set[str]] = {}
+        try:
+            records = json.loads(json_out_path.read_text(encoding="utf-8"))
+            for rec in (records if isinstance(records, list) else []):
+                tid = str(rec.get("tmdb_id", ""))
+                if not tid:
+                    continue
+                n = 1
+                while f"url-{n}" in rec:
+                    url = rec[f"url-{n}"]
+                    if isinstance(url, str) and url.startswith("http"):
+                        tmdb_to_known.setdefault(tid, set()).add(url)
+                    n += 1
+        except Exception:
+            pass
+        # Map each api_url to the known media URLs for its tmdb_id
+        for opt in stage1_options:
+            tid = _extract_tmdb_id(opt.main_url)
+            if tid and tid in tmdb_to_known:
+                _api_url_to_known_media[opt.api_url] = tmdb_to_known[tid]
 
     base_url   = _flaresolverr_url(args)
     timeout_ms = getattr(args, "fs_timeout_ms", FLARESOLVERR_MAX_TIMEOUT)
@@ -713,6 +798,7 @@ async def stage2_extract_stream_urls(
                 base_url, session_id, batch, len(api_urls),
                 timeout_ms, args.reloads, args.batch_size,
                 f"Batch {batch_num}/{batch_total}",
+                known_media=_api_url_to_known_media,
             )
             results.extend(batch_results)
 
@@ -741,6 +827,7 @@ async def stage2_extract_stream_urls(
                 base_url, session_id, failed, len(api_urls),
                 timeout_ms, 0, args.batch_size,
                 f"Final retry {attempt}/{args.final_retries}",
+                known_media=_api_url_to_known_media,
             )
             retry_by_index = {r["index"]: r for r in retry_results}
             results = [
@@ -796,9 +883,21 @@ async def stage2_extract_stream_urls(
 
     new_tmdb_ids = fully_resolved_tmdb - existing_processed
     if new_tmdb_ids:
+        # Build a tmdb_id → canonical embed URL map from stage1_options so we
+        # can write the full URL form instead of a bare ID.
+        tmdb_to_embed_url: dict[str, str] = {}
+        for _opt in stage1_options:
+            _tid = _extract_tmdb_id(_opt.main_url)
+            if _tid and _tid not in tmdb_to_embed_url:
+                tmdb_to_embed_url[_tid] = _opt.main_url
+
         with open(processed_urls_file, "a", encoding="utf-8") as _pf:
-            for tmdb_id in sorted(new_tmdb_ids):
-                _pf.write(tmdb_id + "\n")
+            for tmdb_id in sorted(new_tmdb_ids, key=int):
+                embed_url = tmdb_to_embed_url.get(
+                    tmdb_id,
+                    f"https://primesrc.me/embed/movie?tmdb={tmdb_id}",
+                )
+                _pf.write(embed_url + "\n")
         log_ok(f"Saved {len(new_tmdb_ids)} fully-resolved tmdb_id(s) → {processed_urls_file}: {sorted(new_tmdb_ids)}")
 
     # ── Clean errorsfaced.txt: remove lines for any succeeded API URL ─
