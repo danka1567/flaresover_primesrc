@@ -121,19 +121,14 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Stage every tracked input/output file (only if it exists)
-          for FILE in \
-            tmdb_movie_input_list.txt \
-            output_stage1_api_urls_list_found.txt \
-            output_stage1_api_urls_list_not_found.txt \
-            final_stream_urls_stage2.txt \
-            movie_streaming_data.json \
-            already_processed_urls_list.txt \
-            errorsfaced.txt; do
-            if [ -f "$FILE" ]; then
-              git add "$FILE"
-            fi
-          done
+          # Stage all base and auto-split output files
+          git add tmdb_movie_input_list*.txt 2>/dev/null || true
+          git add output_stage1_api_urls_list_found*.txt 2>/dev/null || true
+          git add output_stage1_api_urls_list_not_found*.txt 2>/dev/null || true
+          git add final_stream_urls_stage2*.txt 2>/dev/null || true
+          git add movie_streaming_data*.json 2>/dev/null || true
+          git add already_processed_urls_list*.txt 2>/dev/null || true
+          git add errorsfaced*.txt 2>/dev/null || true
 
           # Commit only if there is something new to commit
           if git diff --cached --quiet; then
