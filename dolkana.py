@@ -184,6 +184,17 @@ def log_err(msg: str)  -> None:
 def log_head(msg: str) -> None: print(_c(f"\n{'='*60}\n{msg}\n{'='*60}", _BOLD))
 
 
+def _ensure_file_exists(path: Path | None, default_content: str = "") -> Path | None:
+    """Ensure the file and its parent directories exist, creating if missing."""
+    if path is None:
+        return None
+    if not path.exists():
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(default_content, encoding="utf-8")
+        log_info(f"Auto-created file: {path}")
+    return path
+
+
 def _format_error_log_block() -> str:
     """Build this run's timestamped WARN/ERR block. Empty string if nothing to log."""
     if not _ERROR_LOG_ENTRIES:
@@ -382,6 +393,11 @@ def stage1_fetch_api_keys(
     api_list_not_found_file: Path | None = None,
 ) -> list[ServerOption]:
     log_head("STAGE 1  –  Fetch server keys from PrimeSrc /api/v1/s")
+
+    _ensure_file_exists(input_file, "")
+    _ensure_file_exists(processed_urls_file, "")
+    _ensure_file_exists(api_list_found_file, "")
+    _ensure_file_exists(api_list_not_found_file, "")
 
     raw_lines = [
         l.strip()
@@ -998,6 +1014,10 @@ async def stage2_extract_stream_urls(
         target_pf = _append_split_text(processed_urls_file, lines_to_append, max_bytes=MAX_OUTPUT_FILE_SIZE)
         log_ok(f"Saved {len(new_tmdb_ids)} fully-resolved tmdb_id(s) → {target_pf}: {sorted(new_tmdb_ids)}")
 
+    elapsed = time.monotonic() - t_start
+    ok      = [r for r in results if r.get("extracted_url")]
+    fails   = [r for r in results if not r.get("extracted_url")]
+
     # ── Clean errorsfaced.txt: remove lines for fully-resolved movies & succeeded URLs ─
     if fully_resolved_tmdb:
         clean_error_log_for_resolved_tmdb_ids(error_log_file, fully_resolved_tmdb)
@@ -1019,10 +1039,6 @@ async def stage2_extract_stream_urls(
         if tid and tid in fully_resolved_tmdb:
             continue
         _record_log_entry("ERR", f"{api_url} — {item.get('error', 'no URL')}")
-
-    elapsed = time.monotonic() - t_start
-    ok      = [r for r in results if r.get("extracted_url")]
-    fails   = [r for r in results if not r.get("extracted_url")]
 
     log_head(f"STAGE 2 RESULTS  ({elapsed:.1f}s total)")
     seen_log: set[str] = set()
@@ -1613,6 +1629,15 @@ def _parse_args(argv: list[str]) -> argparse.Namespace:
 
 async def _run(args: argparse.Namespace) -> int:
     log_head("PrimeSRC UNIFIED PIPELINE")
+
+    # Auto-create any missing input or output files
+    _ensure_file_exists(args.input, "")
+    _ensure_file_exists(args.api_list_found, "")
+    _ensure_file_exists(args.api_list_not_found, "")
+    _ensure_file_exists(args.processed_urls, "")
+    _ensure_file_exists(args.error_log, "")
+    _ensure_file_exists(args.json_out, "[]\n")
+
     log_info(f"Input   : {args.input}")
     log_info(f"API list found: {args.api_list_found}")
     log_info(f"API list not found: {args.api_list_not_found}")
@@ -1629,9 +1654,6 @@ async def _run(args: argparse.Namespace) -> int:
         if args.skip_stage1:
             log_info("Stage 1 skipped.")
         else:
-            if not args.input.exists():
-                log_err(f"Input file not found: {args.input}")
-                return 1
             stage1_options = stage1_fetch_api_keys(
                 args.input,
                 args.processed_urls,
