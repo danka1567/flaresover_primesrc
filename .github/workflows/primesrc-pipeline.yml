@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       skip_stage1:
-        description: 'Skip Stage 1 (use existing output_stage1_api_urls_list.txt)'
+        description: 'Skip Stage 1'
         required: false
         type: boolean
         default: false
@@ -124,7 +124,8 @@ jobs:
           # Stage every tracked input/output file (only if it exists)
           for FILE in \
             tmdb_movie_input_list.txt \
-            output_stage1_api_urls_list.txt \
+            output_stage1_api_urls_list_found.txt \
+            output_stage1_api_urls_list_not_found.txt \
             final_stream_urls_stage2.txt \
             movie_streaming_data.json \
             already_processed_urls_list.txt \
