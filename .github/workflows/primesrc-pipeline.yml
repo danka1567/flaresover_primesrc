@@ -2,7 +2,7 @@ name: PrimeSrc Pipeline
 
 on:
   schedule:
-    # Runs daily at 00:00 UTC automatically for latest Hollywood/Bollywood movies
+    # Runs daily at 00:00 UTC automatically for TMDB Now Playing & Top Rated movies
     - cron: '0 0 * * *'
   workflow_dispatch:
     inputs:
@@ -11,12 +11,12 @@ on:
         required: true
         type: choice
         options:
-          - 'both (process tmdb_movie_input_list.txt AND latest Hollywood/Bollywood)'
+          - 'both (process tmdb_movie_input_list.txt AND TMDB Now-Playing/Top-Rated)'
           - 'manual_only (tmdb_movie_input_list.txt ONLY)'
           - 'latest_only (lastet_released_holly_bolly_movies_list.txt ONLY)'
-        default: 'both (process tmdb_movie_input_list.txt AND latest Hollywood/Bollywood)'
+        default: 'both (process tmdb_movie_input_list.txt AND TMDB Now-Playing/Top-Rated)'
       latest_limit:
-        description: 'Number of latest movies to fetch from TMDB'
+        description: 'Number of movies to fetch from TMDB (Now Playing + Top Rated)'
         required: false
         type: number
         default: 50
