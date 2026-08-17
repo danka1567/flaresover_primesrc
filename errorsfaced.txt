@@ -5,10 +5,6 @@ Pipeline run finished: 2026-08-17T16:32:11.850281+00:00
 Total warnings/errors: 7
 ======================================================================
 [2026-08-17 16:29:37 UTC] [WARN] Could not load known media URLs from /home/runner/work/flaresover_primesrc/flaresover_primesrc/movie_streaming_data.json: Expecting value: line 2 column 1 (char 1)
-[2026-08-17 16:29:51 UTC] [ERR] [  1/19] https://primesrc.me/api/v1/l?key=QANww — No JSON object found in page
-[2026-08-17 16:30:08 UTC] [ERR] [  4/19] https://primesrc.me/api/v1/l?key=ysjUu — No JSON object found in page
-[2026-08-17 16:31:10 UTC] [ERR] [ 11/19] https://primesrc.me/api/v1/l?key=v8a6r — No JSON object found in page
-[2026-08-17 16:31:26 UTC] [ERR] [ 14/19] https://primesrc.me/api/v1/l?key=rJyrs — No JSON object found in page
 [2026-08-17 16:32:11 UTC] [WARN] GH_TOKEN not set — writing locally only
 [2026-08-17 16:32:11 UTC] [WARN] Could not load existing JSON (Expecting value: line 2 column 1 (char 1)) — starting fresh
 
@@ -17,3 +13,16 @@ Pipeline run finished: 2026-08-17T17:46:51.491060+00:00
 Total warnings/errors: 1
 ======================================================================
 [2026-08-17 17:46:51 UTC] [WARN] No keys from Stage 1 — skipping Stage 2.
+
+======================================================================
+Pipeline run finished: 2026-08-17T17:50:59.299077+00:00
+Total warnings/errors: 8
+======================================================================
+[2026-08-17 17:48:33 UTC] [WARN] Could not load known media URLs from /home/runner/work/flaresover_primesrc/flaresover_primesrc/movie_streaming_data.json: Expecting value: line 2 column 1 (char 1)
+[2026-08-17 17:48:45 UTC] [ERR] [  2/19] https://primesrc.me/api/v1/l?key=QANww — No JSON object found in page
+[2026-08-17 17:49:15 UTC] [ERR] [  6/19] https://primesrc.me/api/v1/l?key=YDV48 — No JSON object found in page
+[2026-08-17 17:49:30 UTC] [ERR] [  7/19] https://primesrc.me/api/v1/l?key=wgO1v — No JSON object found in page
+[2026-08-17 17:50:00 UTC] [ERR] [ 12/19] https://primesrc.me/api/v1/l?key=b2mJm — No JSON object found in page
+[2026-08-17 17:50:30 UTC] [ERR] [ 16/19] https://primesrc.me/api/v1/l?key=nwbmK — No JSON object found in page
+[2026-08-17 17:50:59 UTC] [WARN] GH_TOKEN not set — writing locally only
+[2026-08-17 17:50:59 UTC] [WARN] Could not load existing JSON (Expecting value: line 2 column 1 (char 1)) — starting fresh
