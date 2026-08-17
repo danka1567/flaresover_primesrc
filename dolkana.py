@@ -9,7 +9,7 @@ Stage 1  (primesrcembed.py logic)
 Stage 2  (extract_primesrc_urls.py logic)
     Read output_stage1_api_urls_list.txt  →  send every /api/v1/l?key=… to FlareSolverr
     →  extract stream URL from the JSON response
-    →  extract stream / embed link URL  →  write final_stream_urls.txt
+    →  extract stream / embed link URL  →  write final_stream_urls_stage2.txt
 
 Stage 3  –  GitHub sync
     Fetch movie_streaming_data.json (and movie_streaming_data-2.json, -3.json …)
@@ -62,7 +62,7 @@ warnings.filterwarnings("ignore", category=ResourceWarning)
 HERE                 = Path(__file__).parent
 DEFAULT_INPUT_FILE   = HERE / "tmdb_movie_input_list.txt" 
 DEFAULT_API_LIST     = HERE / "output_stage1_api_urls_list.txt"
-DEFAULT_STREAM_OUT   = HERE / "final_stream_urls.txt"
+DEFAULT_STREAM_OUT   = HERE / "final_stream_urls_stage2.txt"
 DEFAULT_JSON_SUMMARY = HERE / "movie_streaming_data.json"
 DEFAULT_HTML_OUT     = HERE / "pipeline_report.html"
 DEFAULT_ERROR_LOG      = HERE / "errorsfaced.txt"
@@ -956,9 +956,6 @@ def _write_summary(
     total_sources = sum(sum(1 for k in row if k.startswith("url-")) for row in output)
     log_info(f"Movies : {len(output)}   Sources : {total_sources}")
 
-    gz_path = json_path.with_suffix("").with_suffix(".gz.json")
-    _to_gz_b64_json(json_path, gz_path)
-
 
 # ═══════════════════════════════════════════════════════════════
 # STAGE 3  –  GITHUB SYNC
@@ -1269,8 +1266,6 @@ def github_sync_summary(
 
     local_json_path.write_bytes(chunks[0])
     log_ok(f"Local JSON → {local_json_path}  ({len(chunks[0]):,} B)")
-    gz_path = local_json_path.with_suffix("").with_suffix(".gz.json")
-    _to_gz_b64_json(local_json_path, gz_path)
 
     while len(file_meta) < len(chunks):
         n = len(file_meta) + 1
