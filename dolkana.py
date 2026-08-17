@@ -1708,36 +1708,40 @@ def github_sync_summary(
 
 def _parse_args(argv: list[str]) -> argparse.Namespace:
     p = argparse.ArgumentParser(description="PrimeSrc unified pipeline: embed URLs → API keys → stream URLs")
-    p.add_argument("--input",              type=Path, default=DEFAULT_INPUT_FILE)
-    p.add_argument("--latest-input",       type=Path, default=DEFAULT_HOLLY_BOLLY_INPUT,  dest="latest_input")
-    p.add_argument("--fetch-latest",       action="store_true", default=True,            dest="fetch_latest", help="Fetch latest Hollywood/Bollywood movies via TMDB (default: True)")
-    p.add_argument("--no-fetch-latest",    action="store_false", dest="fetch_latest",    help="Disable fetching latest movies via TMDB")
-    p.add_argument("--latest-limit",       type=int,  default=50,                        dest="latest_limit", help="Number of latest movies to fetch per run (default: 50)")
-    p.add_argument("--api-list-found",     type=Path, default=DEFAULT_API_LIST_FOUND,     dest="api_list_found")
-    p.add_argument("--api-list-not-found", type=Path, default=DEFAULT_API_LIST_NOT_FOUND, dest="api_list_not_found")
-    p.add_argument("--json-out",           type=Path, default=DEFAULT_JSON_SUMMARY)
-    p.add_argument("--skip-stage1",        action="store_true", help="Skip Stage 1")
-    p.add_argument("--skip-stage2",        action="store_true", help="Skip Stage 2; only collect keys, no FlareSolverr")
-    p.add_argument("--type",               choices=("movie", "tv"), default="movie")
-    p.add_argument("--flaresolverr-url",   default=None, dest="flaresolverr_url")
-    p.add_argument("--fs-timeout",         type=int,   default=FLARESOLVERR_MAX_TIMEOUT, dest="fs_timeout_ms")
-    p.add_argument("--batch-size",         type=int,   default=STAGE2_BATCH_SIZE,        dest="batch_size")
-    p.add_argument("--batch-delay",        type=float, default=STAGE2_BATCH_DELAY,       dest="batch_delay")
-    p.add_argument("--reloads",            type=int,   default=STAGE2_RELOADS)
-    p.add_argument("--final-retries",      type=int,   default=STAGE2_FINAL_RETRIES,     dest="final_retries")
-    p.add_argument("--error-log",          type=Path,  default=DEFAULT_ERROR_LOG,        dest="error_log")
-    p.add_argument("--processed-urls",     type=Path,  default=DEFAULT_PROCESSED_URLS,   dest="processed_urls")
-    p.add_argument("--no-github-sync",     action="store_true", default=False,           dest="no_github_sync")
-    p.add_argument("--gh-token",           default=None, dest="gh_token")
-    p.add_argument("--gh-repo",            default=None, dest="gh_repo")
-    p.add_argument("--gh-branch",          default=None, dest="gh_branch")
+    p.add_argument("--input",                 type=Path, default=DEFAULT_INPUT_FILE)
+    p.add_argument("--latest-input",          type=Path, default=DEFAULT_HOLLY_BOLLY_INPUT,  dest="latest_input")
+    p.add_argument("--include-manual-input",  action="store_true", default=True,             dest="include_manual_input", help="Process tmdb_movie_input_list.txt (default: True)")
+    p.add_argument("--no-manual-input",       action="store_false", dest="include_manual_input", help="Skip tmdb_movie_input_list.txt (used for automatic scheduled runs)")
+    p.add_argument("--include-latest-input",  action="store_true", default=True,             dest="include_latest_input", help="Process lastet_released_holly_bolly_movies_list.txt (default: True)")
+    p.add_argument("--no-latest-input",       action="store_false", dest="include_latest_input", help="Skip lastet_released_holly_bolly_movies_list.txt")
+    p.add_argument("--fetch-latest",          action="store_true", default=True,             dest="fetch_latest", help="Fetch latest Hollywood/Bollywood movies via TMDB (default: True)")
+    p.add_argument("--no-fetch-latest",       action="store_false", dest="fetch_latest",     help="Disable fetching latest movies via TMDB")
+    p.add_argument("--latest-limit",          type=int,  default=50,                         dest="latest_limit", help="Number of latest movies to fetch per run (default: 50)")
+    p.add_argument("--api-list-found",        type=Path, default=DEFAULT_API_LIST_FOUND,     dest="api_list_found")
+    p.add_argument("--api-list-not-found",    type=Path, default=DEFAULT_API_LIST_NOT_FOUND, dest="api_list_not_found")
+    p.add_argument("--json-out",              type=Path, default=DEFAULT_JSON_SUMMARY)
+    p.add_argument("--skip-stage1",           action="store_true", help="Skip Stage 1")
+    p.add_argument("--skip-stage2",           action="store_true", help="Skip Stage 2; only collect keys, no FlareSolverr")
+    p.add_argument("--type",                  choices=("movie", "tv"), default="movie")
+    p.add_argument("--flaresolverr-url",      default=None, dest="flaresolverr_url")
+    p.add_argument("--fs-timeout",            type=int,   default=FLARESOLVERR_MAX_TIMEOUT, dest="fs_timeout_ms")
+    p.add_argument("--batch-size",            type=int,   default=STAGE2_BATCH_SIZE,        dest="batch_size")
+    p.add_argument("--batch-delay",           type=float, default=STAGE2_BATCH_DELAY,       dest="batch_delay")
+    p.add_argument("--reloads",               type=int,   default=STAGE2_RELOADS)
+    p.add_argument("--final-retries",         type=int,   default=STAGE2_FINAL_RETRIES,     dest="final_retries")
+    p.add_argument("--error-log",             type=Path,  default=DEFAULT_ERROR_LOG,        dest="error_log")
+    p.add_argument("--processed-urls",        type=Path,  default=DEFAULT_PROCESSED_URLS,   dest="processed_urls")
+    p.add_argument("--no-github-sync",        action="store_true", default=False,           dest="no_github_sync")
+    p.add_argument("--gh-token",              default=None, dest="gh_token")
+    p.add_argument("--gh-repo",               default=None, dest="gh_repo")
+    p.add_argument("--gh-branch",             default=None, dest="gh_branch")
     return p.parse_args(argv)
 
 
 async def _run(args: argparse.Namespace) -> int:
     log_head("PrimeSRC UNIFIED PIPELINE")
 
-    # Auto-create any missing input or output files
+    # Auto-create all input and output files if missing
     _ensure_file_exists(args.input, "")
     _ensure_file_exists(args.latest_input, "")
     _ensure_file_exists(args.api_list_found, "")
@@ -1747,7 +1751,7 @@ async def _run(args: argparse.Namespace) -> int:
     _ensure_file_exists(args.json_out, "[]\n")
 
     # Fetch latest released Hollywood and Bollywood movies if enabled
-    if args.fetch_latest:
+    if args.fetch_latest and args.include_latest_input:
         log_head(f"FETCHING LATEST HOLLYWOOD & BOLLYWOOD MOVIES (Limit: {args.latest_limit})")
         fetch_latest_holly_bolly_movies(
             target_file=args.latest_input,
@@ -1756,10 +1760,15 @@ async def _run(args: argparse.Namespace) -> int:
             limit=args.latest_limit,
         )
 
-    log_info(f"Input file         : {args.input}")
-    log_info(f"Latest movies file : {args.latest_input}")
-    log_info(f"API list found     : {args.api_list_found}")
-    log_info(f"API list not found : {args.api_list_not_found}")
+    all_input_files: list[Path] = []
+    if args.include_manual_input:
+        all_input_files.append(args.input)
+    if args.include_latest_input:
+        all_input_files.append(args.latest_input)
+
+    log_info(f"Active input file(s) : {', '.join(p.name for p in all_input_files) if all_input_files else 'None'}")
+    log_info(f"API list found       : {args.api_list_found}")
+    log_info(f"API list not found   : {args.api_list_not_found}")
 
     stage1_options: list[ServerOption] = []
     stage2_results: list[dict[str, Any]] = []
@@ -1769,11 +1778,12 @@ async def _run(args: argparse.Namespace) -> int:
     gh_branch = args.gh_branch or os.environ.get("GH_BRANCH", "main")
     gh_available = not args.no_github_sync and bool(gh_token) and bool(gh_repo)
 
-    all_input_files = [args.input, args.latest_input]
-
     try:
-        if args.skip_stage1:
-            log_info("Stage 1 skipped.")
+        if args.skip_stage1 or not all_input_files:
+            if not all_input_files:
+                log_warn("No input files selected — skipping Stage 1.")
+            else:
+                log_info("Stage 1 skipped.")
         else:
             stage1_options = stage1_fetch_api_keys(
                 all_input_files,
