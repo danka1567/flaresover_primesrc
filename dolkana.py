@@ -62,6 +62,7 @@ warnings.filterwarnings("ignore", category=ResourceWarning)
 
 HERE                       = Path(__file__).parent
 DEFAULT_INPUT_FILE         = HERE / "tmdb_movie_input_list.txt"
+DEFAULT_HOLLY_BOLLY_INPUT  = HERE / "lastet_released_holly_bolly_movies_list.txt"
 DEFAULT_API_LIST_FOUND     = HERE / "output_stage1_api_urls_list_found.txt"
 DEFAULT_API_LIST_NOT_FOUND = HERE / "output_stage1_api_urls_list_not_found.txt"
 DEFAULT_JSON_SUMMARY       = HERE / "movie_streaming_data.json"
@@ -386,7 +387,7 @@ def _options_from_server_list(servers: list[dict], main_url: str) -> list[Server
 
 
 def stage1_fetch_api_keys(
-    input_file: Path,
+    input_files: list[Path] | Path,
     processed_urls_file: Path,
     media_type: str = "movie",
     api_list_found_file: Path | None = None,
@@ -394,17 +395,25 @@ def stage1_fetch_api_keys(
 ) -> list[ServerOption]:
     log_head("STAGE 1  –  Fetch server keys from PrimeSrc /api/v1/s")
 
-    _ensure_file_exists(input_file, "")
+    input_paths = [input_files] if isinstance(input_files, Path) else list(input_files)
+    for ip in input_paths:
+        _ensure_file_exists(ip, "")
     _ensure_file_exists(processed_urls_file, "")
     _ensure_file_exists(api_list_found_file, "")
     _ensure_file_exists(api_list_not_found_file, "")
 
-    raw_lines = [
-        l.strip()
-        for l in input_file.read_text(encoding="utf-8").splitlines()
-        if l.strip() and not l.startswith("#")
-    ]
-    log_info(f"Input embed URLs : {len(raw_lines)}  ({input_file})")
+    raw_lines: list[str] = []
+    seen_raw_lines: set[str] = set()
+    for ip in input_paths:
+        if ip.exists():
+            for l in ip.read_text(encoding="utf-8").splitlines():
+                l_str = l.strip()
+                if l_str and not l_str.startswith("#") and l_str not in seen_raw_lines:
+                    seen_raw_lines.add(l_str)
+                    raw_lines.append(l_str)
+
+    input_desc = ", ".join(p.name for p in input_paths)
+    log_info(f"Input embed URLs : {len(raw_lines)}  (from {input_desc})")
 
     # ── Load already-processed tmdb_ids so whole movies are skipped ──
     # Supports both bare tmdb IDs ("218") and full embed URLs
@@ -1096,6 +1105,100 @@ def _fetch_tmdb_info(tmdb_id: str) -> tuple[str, str]:
     return title, imdb_id
 
 
+def fetch_latest_holly_bolly_movies(
+    target_file: Path,
+    existing_input_files: list[Path] | Path | None = None,
+    processed_urls_file: Path | None = None,
+    limit: int = 50,
+) -> list[str]:
+    """
+    Fetch latest released Hollywood (en) and Bollywood (hi) movies using TMDB API (up to limit total, e.g. 50).
+    Excludes any movies already in target_file, existing_input_files, or processed_urls_file.
+    Appends newly discovered movie embed URLs (https://primesrc.me/embed/movie?tmdb=<id>) to target_file.
+    Returns the list of newly added embed URLs.
+    """
+    _ensure_file_exists(target_file, "")
+
+    known_tmdb_ids: set[str] = set()
+    files_to_check: list[Path] = []
+    if isinstance(existing_input_files, list):
+        files_to_check.extend(existing_input_files)
+    elif existing_input_files:
+        files_to_check.append(existing_input_files)
+    if processed_urls_file:
+        files_to_check.append(processed_urls_file)
+    if target_file:
+        files_to_check.append(target_file)
+
+    for f in files_to_check:
+        if f and f.exists():
+            for line in f.read_text(encoding="utf-8").splitlines():
+                line = line.strip()
+                if line and not line.startswith("#"):
+                    tid = _extract_tmdb_id(line)
+                    if not tid and TMDB_ID_RE.fullmatch(line):
+                        tid = line
+                    if tid:
+                        known_tmdb_ids.add(tid)
+
+    log_info(f"Existing known TMDB IDs to exclude: {len(known_tmdb_ids)}")
+
+    today_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    half_limit = max(1, limit // 2)
+
+    def _fetch_language_movies(lang_code: str, target_count: int) -> list[str]:
+        added: list[str] = []
+        page = 1
+        max_pages = 20
+        while len(added) < target_count and page <= max_pages:
+            path = (
+                f"/discover/movie?sort_by=primary_release_date.desc"
+                f"&with_original_language={lang_code}"
+                f"&primary_release_date.lte={today_str}"
+                f"&vote_count.gte=1"
+                f"&page={page}"
+            )
+            try:
+                data = _tmdb_request(path)
+                results = data.get("results", [])
+                if not results:
+                    break
+                for m in results:
+                    mid = str(m.get("id", ""))
+                    if not mid:
+                        continue
+                    if mid not in known_tmdb_ids:
+                        known_tmdb_ids.add(mid)
+                        embed_url = f"https://primesrc.me/embed/movie?tmdb={mid}"
+                        added.append(embed_url)
+                        if len(added) >= target_count:
+                            break
+                page += 1
+            except Exception as exc:
+                log_warn(f"Failed fetching TMDB discover for lang={lang_code} page={page}: {exc}")
+                break
+        return added
+
+    log_info(f"Fetching latest Hollywood (en) movies from TMDB (target: {half_limit})…")
+    hw_urls = _fetch_language_movies("en", half_limit)
+    log_ok(f"Found {len(hw_urls)} new Hollywood movie(s)")
+
+    remaining = limit - len(hw_urls)
+    log_info(f"Fetching latest Bollywood (hi) movies from TMDB (target: {remaining})…")
+    bw_urls = _fetch_language_movies("hi", remaining)
+    log_ok(f"Found {len(bw_urls)} new Bollywood movie(s)")
+
+    new_urls = hw_urls + bw_urls
+    if new_urls:
+        lines_to_append = "\n".join(new_urls) + "\n"
+        target_file_written = _append_split_text(target_file, lines_to_append, max_bytes=MAX_OUTPUT_FILE_SIZE)
+        log_ok(f"Stored {len(new_urls)} new latest released movie(s) → {target_file_written}")
+    else:
+        log_info("No new Hollywood/Bollywood movies found that aren't already recorded.")
+
+    return new_urls
+
+
 # ═══════════════════════════════════════════════════════════════
 # SUMMARY WRITER
 # ═══════════════════════════════════════════════════════════════
@@ -1606,6 +1709,10 @@ def github_sync_summary(
 def _parse_args(argv: list[str]) -> argparse.Namespace:
     p = argparse.ArgumentParser(description="PrimeSrc unified pipeline: embed URLs → API keys → stream URLs")
     p.add_argument("--input",              type=Path, default=DEFAULT_INPUT_FILE)
+    p.add_argument("--latest-input",       type=Path, default=DEFAULT_HOLLY_BOLLY_INPUT,  dest="latest_input")
+    p.add_argument("--fetch-latest",       action="store_true", default=True,            dest="fetch_latest", help="Fetch latest Hollywood/Bollywood movies via TMDB (default: True)")
+    p.add_argument("--no-fetch-latest",    action="store_false", dest="fetch_latest",    help="Disable fetching latest movies via TMDB")
+    p.add_argument("--latest-limit",       type=int,  default=50,                        dest="latest_limit", help="Number of latest movies to fetch per run (default: 50)")
     p.add_argument("--api-list-found",     type=Path, default=DEFAULT_API_LIST_FOUND,     dest="api_list_found")
     p.add_argument("--api-list-not-found", type=Path, default=DEFAULT_API_LIST_NOT_FOUND, dest="api_list_not_found")
     p.add_argument("--json-out",           type=Path, default=DEFAULT_JSON_SUMMARY)
@@ -1632,15 +1739,27 @@ async def _run(args: argparse.Namespace) -> int:
 
     # Auto-create any missing input or output files
     _ensure_file_exists(args.input, "")
+    _ensure_file_exists(args.latest_input, "")
     _ensure_file_exists(args.api_list_found, "")
     _ensure_file_exists(args.api_list_not_found, "")
     _ensure_file_exists(args.processed_urls, "")
     _ensure_file_exists(args.error_log, "")
     _ensure_file_exists(args.json_out, "[]\n")
 
-    log_info(f"Input   : {args.input}")
-    log_info(f"API list found: {args.api_list_found}")
-    log_info(f"API list not found: {args.api_list_not_found}")
+    # Fetch latest released Hollywood and Bollywood movies if enabled
+    if args.fetch_latest:
+        log_head(f"FETCHING LATEST HOLLYWOOD & BOLLYWOOD MOVIES (Limit: {args.latest_limit})")
+        fetch_latest_holly_bolly_movies(
+            target_file=args.latest_input,
+            existing_input_files=[args.input],
+            processed_urls_file=args.processed_urls,
+            limit=args.latest_limit,
+        )
+
+    log_info(f"Input file         : {args.input}")
+    log_info(f"Latest movies file : {args.latest_input}")
+    log_info(f"API list found     : {args.api_list_found}")
+    log_info(f"API list not found : {args.api_list_not_found}")
 
     stage1_options: list[ServerOption] = []
     stage2_results: list[dict[str, Any]] = []
@@ -1650,12 +1769,14 @@ async def _run(args: argparse.Namespace) -> int:
     gh_branch = args.gh_branch or os.environ.get("GH_BRANCH", "main")
     gh_available = not args.no_github_sync and bool(gh_token) and bool(gh_repo)
 
+    all_input_files = [args.input, args.latest_input]
+
     try:
         if args.skip_stage1:
             log_info("Stage 1 skipped.")
         else:
             stage1_options = stage1_fetch_api_keys(
-                args.input,
+                all_input_files,
                 args.processed_urls,
                 args.type,
                 args.api_list_found,
