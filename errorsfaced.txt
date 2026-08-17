@@ -11,3 +11,9 @@ Total warnings/errors: 7
 [2026-08-17 16:31:26 UTC] [ERR] [ 14/19] https://primesrc.me/api/v1/l?key=rJyrs — No JSON object found in page
 [2026-08-17 16:32:11 UTC] [WARN] GH_TOKEN not set — writing locally only
 [2026-08-17 16:32:11 UTC] [WARN] Could not load existing JSON (Expecting value: line 2 column 1 (char 1)) — starting fresh
+
+======================================================================
+Pipeline run finished: 2026-08-17T17:46:51.491060+00:00
+Total warnings/errors: 1
+======================================================================
+[2026-08-17 17:46:51 UTC] [WARN] No keys from Stage 1 — skipping Stage 2.
