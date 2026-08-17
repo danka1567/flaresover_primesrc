@@ -177,9 +177,7 @@ def _record_log_entry(level: str, msg: str) -> None:
 
 def log_info(msg: str) -> None: print(_c(f"[INFO]  {msg}", _CYAN))
 def log_ok(msg: str)   -> None: print(_c(f"[OK]    {msg}", _GREEN))
-def log_warn(msg: str) -> None:
-    print(_c(f"[WARN]  {msg}", _YELLOW))
-    _record_log_entry("WARN", msg)
+def log_warn(msg: str) -> None: print(_c(f"[WARN]  {msg}", _YELLOW))
 def log_err(msg: str)  -> None:
     print(_c(f"[ERR]   {msg}", _RED))
     _record_log_entry("ERR", msg)
@@ -679,9 +677,6 @@ async def _resolve_one_flaresolverr(
                             + (f" (HTTP {fs_resp.get('_http_status')})" if "_http_status" in fs_resp else "")
                         )
                         await safe_print(f"{label} ✗ (FS) {last_error}")
-                        # Only log to errorsfaced.txt if media isn't already known
-                        if not _already_known_urls:
-                            _record_log_entry("ERR", f"{label} {api_url} — {last_error}")
                         continue
 
                     data     = _parse_flaresolverr_response(fs_resp)
@@ -712,16 +707,10 @@ async def _resolve_one_flaresolverr(
 
                     last_error = f"no play URL in FS response: {str(data)[:120]}"
                     await safe_print(f"{label} ✗ (FS) {last_error}")
-                    # Only log to errorsfaced.txt if media isn't already known
-                    if not _already_known_urls:
-                        _record_log_entry("ERR", f"{label} {api_url} — {last_error}")
 
                 except Exception as exc:
                     last_error = str(exc)
                     await safe_print(f"{label} ✗ (FS) {last_error}")
-                    # Only log to errorsfaced.txt if media isn't already known
-                    if not _already_known_urls:
-                        _record_log_entry("ERR", f"{label} {api_url} — {last_error}")
 
             return {
                 "index":         index,
@@ -1009,9 +998,27 @@ async def stage2_extract_stream_urls(
         target_pf = _append_split_text(processed_urls_file, lines_to_append, max_bytes=MAX_OUTPUT_FILE_SIZE)
         log_ok(f"Saved {len(new_tmdb_ids)} fully-resolved tmdb_id(s) → {target_pf}: {sorted(new_tmdb_ids)}")
 
-    # ── Clean errorsfaced.txt: remove lines for any succeeded API URL ─
+    # ── Clean errorsfaced.txt: remove lines for fully-resolved movies & succeeded URLs ─
+    if fully_resolved_tmdb:
+        clean_error_log_for_resolved_tmdb_ids(error_log_file, fully_resolved_tmdb)
     if succeeded_api_urls:
         clean_error_log_for_resolved_api_urls(error_log_file, succeeded_api_urls)
+
+    # Filter in-memory error buffer: drop entries for resolved tmdb_ids or succeeded URLs
+    global _ERROR_LOG_ENTRIES
+    _ERROR_LOG_ENTRIES = [
+        e for e in _ERROR_LOG_ENTRIES
+        if not any(f"tmdb={tid}" in e for tid in fully_resolved_tmdb)
+        and not any(u in e for u in succeeded_api_urls)
+    ]
+
+    # Record errors ONLY for keys whose movie was not fully resolved
+    for item in fails:
+        api_url = item.get("api_url", "")
+        tid = api_url_to_tmdb.get(api_url, "")
+        if tid and tid in fully_resolved_tmdb:
+            continue
+        _record_log_entry("ERR", f"{api_url} — {item.get('error', 'no URL')}")
 
     elapsed = time.monotonic() - t_start
     ok      = [r for r in results if r.get("extracted_url")]
