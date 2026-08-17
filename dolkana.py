@@ -9,13 +9,14 @@ Stage 1  (primesrcembed.py logic)
 Stage 2  (extract_primesrc_urls.py logic)
     Read output_stage1_api_urls_list.txt  →  send every /api/v1/l?key=… to FlareSolverr
     →  extract stream URL from the JSON response
-    →  extract stream / embed link URL  →  write final_stream_urls_stage2.txt
+    →  on success: save tmdb_id to already_processed_urls_list.txt
+                   remove that tmdb_id's error entries from errorsfaced.txt
 
 Stage 3  –  GitHub sync
     Fetch movie_streaming_data.json (and movie_streaming_data-2.json, -3.json …)
     from the target GitHub repo via the Contents API.
     Merge new results in (upsert by tmdb_id, deduplicate sources).
-    Auto-split: when a file reaches ≥ GITHUB_FILE_SIZE_LIMIT bytes,
+    Auto-split: when a file reaches >= GITHUB_FILE_SIZE_LIMIT bytes,
     overflow entries are written to the next numbered file.
     Push every changed file back via a single authenticated PUT.
 
@@ -24,7 +25,8 @@ Extras
   - Stage 1 uses plain urllib (no browser overhead)
   - --skip-stage1 / --skip-stage2 for incremental runs
   - Deduplication of keys before Stage 2 runs
-  - JSON summary + dark HTML report written at the end
+  - already_processed_urls_list.txt tracks tmdb_ids (not raw API keys)
+  - errorsfaced.txt auto-cleaned: resolved tmdb entries are removed
   - Graceful Ctrl-C at any stage
 
 GitHub env vars required for Stage 3:
@@ -38,7 +40,6 @@ from __future__ import annotations
 import argparse
 import asyncio
 import base64
-import gzip
 import json
 import os
 import re
@@ -59,21 +60,19 @@ warnings.filterwarnings("ignore", category=ResourceWarning)
 # PATHS & TUNABLES
 # ═══════════════════════════════════════════════════════════════
 
-HERE                 = Path(__file__).parent
-DEFAULT_INPUT_FILE   = HERE / "tmdb_movie_input_list.txt" 
-DEFAULT_API_LIST     = HERE / "output_stage1_api_urls_list.txt"
-DEFAULT_STREAM_OUT   = HERE / "final_stream_urls_stage2.txt"
-DEFAULT_JSON_SUMMARY = HERE / "movie_streaming_data.json"
-DEFAULT_HTML_OUT     = HERE / "pipeline_report.html"
+HERE                   = Path(__file__).parent
+DEFAULT_INPUT_FILE     = HERE / "tmdb_movie_input_list.txt"
+DEFAULT_API_LIST       = HERE / "output_stage1_api_urls_list.txt"
+DEFAULT_JSON_SUMMARY   = HERE / "movie_streaming_data.json"
 DEFAULT_ERROR_LOG      = HERE / "errorsfaced.txt"
 DEFAULT_PROCESSED_URLS = HERE / "already_processed_urls_list.txt"
 
-STAGE1_REQUEST_TIMEOUT = 20   # urllib timeout per /api/v1/s call
-STAGE2_BATCH_SIZE      = 2    # concurrent requests — each key gets its own isolated FlareSolverr session
-STAGE2_RELOADS         = 3    # retry attempts per failed URL
-STAGE2_FINAL_RETRIES   = 2    # extra full retry passes for still-failed keys
-STAGE2_BATCH_DELAY     = 2.0  # seconds to wait between batches (cool-down for Cloudflare)
-STAGE2_BAN_COOLDOWN    = 20.0 # extra seconds to wait after a batch hits an IP-ban / block error
+STAGE1_REQUEST_TIMEOUT = 20    # urllib timeout per /api/v1/s call
+STAGE2_BATCH_SIZE      = 2     # concurrent requests per batch
+STAGE2_RELOADS         = 3     # retry attempts per failed URL
+STAGE2_FINAL_RETRIES   = 2     # extra full retry passes for still-failed keys
+STAGE2_BATCH_DELAY     = 2.0   # seconds between batches
+STAGE2_BAN_COOLDOWN    = 20.0  # extra wait after IP-ban / block error
 
 TMDB_ID_RE = re.compile(r"^\d+$")
 
@@ -81,19 +80,11 @@ TMDB_ID_RE = re.compile(r"^\d+$")
 # GITHUB SYNC CONSTANTS
 # ═══════════════════════════════════════════════════════════════
 
-# Maximum size (bytes) for a single movie_streaming_data*.json file before
-# overflow entries are written to the next numbered file (-2, -3, …).
-GITHUB_FILE_SIZE_LIMIT = 20 * 1024 * 1024   # 20 MB
-
-# Base filename (without extension) used for the summary files.
-GITHUB_BASE_FILENAME   = "movie_streaming_data"
-
-# Remote filename (and local cap) for the cumulative error/warning log.
-ERROR_LOG_GH_FILENAME  = "errorsfaced.txt"
-ERROR_LOG_GH_SIZE_LIMIT = 5 * 1024 * 1024   # 5 MB — trim oldest entries past this
-
-# GitHub API root
-GITHUB_API_ROOT        = "https://api.github.com"
+GITHUB_FILE_SIZE_LIMIT  = 20 * 1024 * 1024   # 20 MB per summary file
+GITHUB_BASE_FILENAME    = "movie_streaming_data"
+ERROR_LOG_GH_FILENAME   = "errorsfaced.txt"
+ERROR_LOG_GH_SIZE_LIMIT = 5 * 1024 * 1024    # 5 MB — trim oldest entries past this
+GITHUB_API_ROOT         = "https://api.github.com"
 
 # ═══════════════════════════════════════════════════════════════
 # CONSOLE HELPERS
@@ -112,10 +103,7 @@ def _c(text: str, colour: str) -> str:
     except Exception:
         return text
 
-# ── Error/warning log buffer ──────────────────────────────────────
-# Every WARN/ERR line (including the per-URL "✗ (FS) …" failures raised
-# during Stage 2) gets appended here, then flushed to errorsfaced.txt
-# at the end of the run so a permanent record stays in the local repo.
+# ── Error/warning log buffer ─────────────────────────────────────
 _ERROR_LOG_ENTRIES: list[str] = []
 
 def _record_log_entry(level: str, msg: str) -> None:
@@ -132,6 +120,7 @@ def log_err(msg: str)  -> None:
     _record_log_entry("ERR", msg)
 def log_head(msg: str) -> None: print(_c(f"\n{'='*60}\n{msg}\n{'='*60}", _BOLD))
 
+
 def _format_error_log_block() -> str:
     """Build this run's timestamped WARN/ERR block. Empty string if nothing to log."""
     if not _ERROR_LOG_ENTRIES:
@@ -144,8 +133,9 @@ def _format_error_log_block() -> str:
     )
     return header + "\n".join(_ERROR_LOG_ENTRIES) + "\n"
 
+
 def write_error_log(path: Path) -> None:
-    """Append this run's collected entries to a local file (survives only on the runner's disk)."""
+    """Append this run's collected entries to the local errorsfaced.txt."""
     block = _format_error_log_block()
     if not block:
         return
@@ -155,6 +145,72 @@ def write_error_log(path: Path) -> None:
         log_ok(f"Error/warning log appended → {path}  ({len(_ERROR_LOG_ENTRIES)} entries)")
     except Exception as exc:
         print(_c(f"[ERR]   Could not write error log to {path}: {exc}", _RED))
+
+
+def clean_error_log_for_resolved_tmdb_ids(path: Path, resolved_tmdb_ids: set[str]) -> None:
+    """
+    Remove from errorsfaced.txt any lines that reference a tmdb_id that was
+    successfully resolved this run. A line is considered resolved-related if it
+    contains 'tmdb=<id>' for one of the resolved IDs, or contains one of the
+    api/v1/l?key= URLs whose tmdb_id is now resolved.
+
+    We match on the tmdb_id patterns embedded in the log lines:
+      - key references like  [ 16/49] https://primesrc.me/api/v1/l?key=nwbmK
+        are matched by the api_url→tmdb mapping we pass in.
+    """
+    if not resolved_tmdb_ids or not path.exists():
+        return
+    try:
+        lines = path.read_text(encoding="utf-8").splitlines(keepends=True)
+        kept  = []
+        removed = 0
+        for line in lines:
+            # Keep separator/header lines always
+            if line.startswith("=") or line.startswith("\n") or "Pipeline run" in line or "Total warnings" in line:
+                kept.append(line)
+                continue
+            drop = False
+            for tmdb_id in resolved_tmdb_ids:
+                if f"tmdb={tmdb_id}" in line:
+                    drop = True
+                    break
+            if drop:
+                removed += 1
+            else:
+                kept.append(line)
+        if removed:
+            path.write_text("".join(kept), encoding="utf-8")
+            log_ok(f"Cleaned {removed} resolved error line(s) from {path}")
+    except Exception as exc:
+        log_warn(f"Could not clean error log: {exc}")
+
+
+def clean_error_log_for_resolved_api_urls(path: Path, resolved_api_urls: set[str]) -> None:
+    """
+    Remove lines from errorsfaced.txt that mention any of the successfully-
+    resolved API URLs (e.g. https://primesrc.me/api/v1/l?key=nwbmK).
+    """
+    if not resolved_api_urls or not path.exists():
+        return
+    try:
+        lines = path.read_text(encoding="utf-8").splitlines(keepends=True)
+        kept  = []
+        removed = 0
+        for line in lines:
+            if line.startswith("=") or line.startswith("\n") or "Pipeline run" in line or "Total warnings" in line:
+                kept.append(line)
+                continue
+            drop = any(api_url in line for api_url in resolved_api_urls)
+            if drop:
+                removed += 1
+            else:
+                kept.append(line)
+        if removed:
+            path.write_text("".join(kept), encoding="utf-8")
+            log_ok(f"Cleaned {removed} resolved API-URL error line(s) from {path}")
+    except Exception as exc:
+        log_warn(f"Could not clean error log for resolved API URLs: {exc}")
+
 
 # ═══════════════════════════════════════════════════════════════
 # STAGE 1  –  embed URLs → /api/v1/s → output_stage1_api_urls_list.txt
@@ -211,6 +267,12 @@ def _normalise_embed_url(raw: str, media_type: str = "movie") -> str:
     return raw
 
 
+def _extract_tmdb_id(url: str) -> str:
+    """Extract the tmdb=<id> value from an embed or API URL. Returns '' if not found."""
+    qs = dict(x.split("=", 1) for x in urlparse(url).query.split("&") if "=" in x)
+    return qs.get("tmdb", "")
+
+
 def _find_server_lists(obj: Any) -> list[dict[str, Any]]:
     lists: list[dict[str, Any]] = []
     if isinstance(obj, dict):
@@ -239,13 +301,13 @@ def _options_from_server_list(servers: list[dict], main_url: str) -> list[Server
         if not key:
             continue
         options.append(ServerOption(
-            server_name   = name,
-            key           = key,
-            api_url       = f"https://primesrc.me/api/v1/l?key={quote(key, safe='')}",
-            main_url      = main_url,
-            title         = str(item.get("file_name")       or "").strip(),
-            quality       = str(item.get("quality")         or "").strip(),
-            audio_language= str(item.get("audio_language")  or "").strip(),
+            server_name    = name,
+            key            = key,
+            api_url        = f"https://primesrc.me/api/v1/l?key={quote(key, safe='')}",
+            main_url       = main_url,
+            title          = str(item.get("file_name")      or "").strip(),
+            quality        = str(item.get("quality")        or "").strip(),
+            audio_language = str(item.get("audio_language") or "").strip(),
         ))
     return options
 
@@ -253,6 +315,7 @@ def _options_from_server_list(servers: list[dict], main_url: str) -> list[Server
 def stage1_fetch_api_keys(
     input_file: Path,
     api_list_file: Path,
+    processed_urls_file: Path,
     media_type: str = "movie",
 ) -> list[ServerOption]:
     log_head("STAGE 1  –  Fetch server keys from PrimeSrc /api/v1/s")
@@ -264,13 +327,31 @@ def stage1_fetch_api_keys(
     ]
     log_info(f"Input embed URLs : {len(raw_lines)}  ({input_file})")
 
+    # ── Load already-processed tmdb_ids so whole movies are skipped ──
+    already_processed_tmdb: set[str] = set()
+    if processed_urls_file.exists():
+        for _line in processed_urls_file.read_text(encoding="utf-8").splitlines():
+            _line = _line.strip()
+            if _line and not _line.startswith("#"):
+                already_processed_tmdb.add(_line)
+    if already_processed_tmdb:
+        log_info(f"Already-processed tmdb_ids: {len(already_processed_tmdb)} — will skip in Stage 1")
+
     seen_urls: set[str] = set()
     embed_urls: list[str] = []
+    skipped_stage1 = 0
     for raw in raw_lines:
         url = _normalise_embed_url(raw, media_type)
+        tmdb_id = _extract_tmdb_id(url)
+        if tmdb_id and tmdb_id in already_processed_tmdb:
+            skipped_stage1 += 1
+            continue
         if url not in seen_urls:
             seen_urls.add(url)
             embed_urls.append(url)
+
+    if skipped_stage1:
+        log_info(f"Skipped {skipped_stage1} already-processed tmdb_id(s) in Stage 1")
 
     all_options: list[ServerOption] = []
     errors: list[tuple[str, str]] = []
@@ -296,8 +377,7 @@ def stage1_fetch_api_keys(
             errors.append((embed_url, str(exc)))
             log_err(f"{label} {exc}  {embed_url}")
 
-    # Deduplicate by key value — same key from different embed URLs must
-    # only be processed once (they resolve to the exact same stream URL).
+    # Deduplicate by key value
     seen_keys: set[str] = set()
     unique_options: list[ServerOption] = []
     for opt in all_options:
@@ -326,7 +406,7 @@ def stage1_fetch_api_keys(
 # ═══════════════════════════════════════════════════════════════
 
 FLARESOLVERR_DEFAULT_URL = "http://localhost:8191"
-FLARESOLVERR_MAX_TIMEOUT = 45_000  # ms (raised from 30s — Cloudflare challenges were timing out)
+FLARESOLVERR_MAX_TIMEOUT = 45_000  # ms
 
 _print_lock: asyncio.Lock | None = None
 
@@ -416,10 +496,7 @@ async def _fs_create_session(base_url: str, session_id: str) -> None:
     loop = asyncio.get_running_loop()
     resp = await loop.run_in_executor(
         None,
-        lambda: _fs_post(base_url, {
-            "cmd": "sessions.create",
-            "session": session_id,
-        }),
+        lambda: _fs_post(base_url, {"cmd": "sessions.create", "session": session_id}),
     )
     if resp.get("status") not in ("ok", "warning"):
         log_warn(f"FlareSolverr session.create status: {resp.get('status')} — {resp.get('message')}")
@@ -432,10 +509,7 @@ async def _fs_destroy_session(base_url: str, session_id: str) -> None:
     try:
         await loop.run_in_executor(
             None,
-            lambda: _fs_post(base_url, {
-                "cmd": "sessions.destroy",
-                "session": session_id,
-            }),
+            lambda: _fs_post(base_url, {"cmd": "sessions.destroy", "session": session_id}),
         )
         log_info(f"FlareSolverr session destroyed: {session_id}")
     except Exception:
@@ -473,95 +547,86 @@ async def _resolve_one_flaresolverr(
 ) -> dict[str, Any]:
     loop  = asyncio.get_running_loop()
     label = f"[{index:>3}/{total}]"
-    # Each key gets its own isolated browser session so concurrent requests
-    # never share a tab and never return each other's cached response.
     key_session_id = f"{session_id}_{index}"
 
     async with sem:
         await safe_print(f"{label} → {api_url}")
-        # Create a dedicated session for this key
         await loop.run_in_executor(None, lambda: _fs_post(base_url, {
             "cmd": "sessions.create", "session": key_session_id
         }))
         last_error: str | None = None
 
         try:
-          for attempt in range(reloads + 1):
-            if attempt:
-                # Exponential backoff (1.5s, 3s, 6s, 12s …), with a longer
-                # forced cool-down whenever Cloudflare is actively blocking
-                # or banning the IP — hammering it again immediately just
-                # burns retries without ever succeeding.
-                delay = 1.5 * (2 ** (attempt - 1))
-                if last_error and re.search(r"banned|blocked", last_error, re.I):
-                    delay = max(delay, 8.0)
-                await safe_print(f"{label} ↻ FlareSolverr retry {attempt}/{reloads} (waiting {delay:.1f}s)")
-                await asyncio.sleep(delay)
+            for attempt in range(reloads + 1):
+                if attempt:
+                    delay = 1.5 * (2 ** (attempt - 1))
+                    if last_error and re.search(r"banned|blocked", last_error, re.I):
+                        delay = max(delay, 8.0)
+                    await safe_print(f"{label} ↻ FlareSolverr retry {attempt}/{reloads} (waiting {delay:.1f}s)")
+                    await asyncio.sleep(delay)
 
-            # ── Route Everything Directly Through FlareSolverr ──────────────────────
-            try:
-                fs_resp = await loop.run_in_executor(
-                    None,
-                    lambda: _fs_post(base_url, {
-                        "cmd":        "request.get",
-                        "url":        api_url,
-                        "maxTimeout": timeout_ms,
-                        "session":    key_session_id,
-                    }),
-                )
-
-                if fs_resp.get("status") != "ok":
-                    last_error = (
-                        f"FlareSolverr error: {fs_resp.get('message', '')}"
-                        + (f" (HTTP {fs_resp.get('_http_status')})" if "_http_status" in fs_resp else "")
+                try:
+                    fs_resp = await loop.run_in_executor(
+                        None,
+                        lambda: _fs_post(base_url, {
+                            "cmd":        "request.get",
+                            "url":        api_url,
+                            "maxTimeout": timeout_ms,
+                            "session":    key_session_id,
+                        }),
                     )
+
+                    if fs_resp.get("status") != "ok":
+                        last_error = (
+                            f"FlareSolverr error: {fs_resp.get('message', '')}"
+                            + (f" (HTTP {fs_resp.get('_http_status')})" if "_http_status" in fs_resp else "")
+                        )
+                        await safe_print(f"{label} ✗ (FS) {last_error}")
+                        _record_log_entry("ERR", f"{label} {api_url} — {last_error}")
+                        continue
+
+                    data     = _parse_flaresolverr_response(fs_resp)
+                    play_url = get_play_url(data)
+
+                    if play_url:
+                        await safe_print(f"{label} ✓ (FlareSolverr) {play_url}")
+                        return {
+                            "index":         index,
+                            "api_url":       api_url,
+                            "data":          data,
+                            "extracted_url": play_url,
+                            "method":        "flaresolverr",
+                        }
+
+                    if isinstance(data, dict):
+                        for candidate_key in ("url", "link", "redirect", "location"):
+                            candidate = data.get(candidate_key, "")
+                            if isinstance(candidate, str) and candidate.startswith("http"):
+                                await safe_print(f"{label} ✓ (FS/redirect) {candidate}")
+                                return {
+                                    "index":         index,
+                                    "api_url":       api_url,
+                                    "data":          data,
+                                    "extracted_url": candidate,
+                                    "method":        "flaresolverr",
+                                }
+
+                    last_error = f"no play URL in FS response: {str(data)[:120]}"
                     await safe_print(f"{label} ✗ (FS) {last_error}")
                     _record_log_entry("ERR", f"{label} {api_url} — {last_error}")
-                    continue
 
-                data     = _parse_flaresolverr_response(fs_resp)
-                play_url = get_play_url(data)
+                except Exception as exc:
+                    last_error = str(exc)
+                    await safe_print(f"{label} ✗ (FS) {last_error}")
+                    _record_log_entry("ERR", f"{label} {api_url} — {last_error}")
 
-                if play_url:
-                    await safe_print(f"{label} ✓ (FlareSolverr) {play_url}")
-                    return {
-                        "index":         index,
-                        "api_url":       api_url,
-                        "data":          data,
-                        "extracted_url": play_url,
-                        "method":        "flaresolverr",
-                    }
-
-                if isinstance(data, dict):
-                    for candidate_key in ("url", "link", "redirect", "location"):
-                        candidate = data.get(candidate_key, "")
-                        if isinstance(candidate, str) and candidate.startswith("http"):
-                            await safe_print(f"{label} ✓ (FS/redirect) {candidate}")
-                            return {
-                                "index":         index,
-                                "api_url":       api_url,
-                                "data":          data,
-                                "extracted_url": candidate,
-                                "method":        "flaresolverr",
-                            }
-
-                last_error = f"no play URL in FS response: {str(data)[:120]}"
-                await safe_print(f"{label} ✗ (FS) {last_error}")
-                _record_log_entry("ERR", f"{label} {api_url} — {last_error}")
-
-            except Exception as exc:
-                last_error = str(exc)
-                await safe_print(f"{label} ✗ (FS) {last_error}")
-                _record_log_entry("ERR", f"{label} {api_url} — {last_error}")
-
-          return {
-            "index":         index,
-            "api_url":       api_url,
-            "error":         last_error or "failed",
-            "extracted_url": None,
-          }
+            return {
+                "index":         index,
+                "api_url":       api_url,
+                "error":         last_error or "failed",
+                "extracted_url": None,
+            }
         finally:
-            # Always destroy the per-key session to free browser resources
             try:
                 await loop.run_in_executor(None, lambda: _fs_post(base_url, {
                     "cmd": "sessions.destroy", "session": key_session_id
@@ -595,8 +660,8 @@ async def _process_batch_fs(
 
 async def stage2_extract_stream_urls(
     api_list_file: Path,
-    stream_out_file: Path,
     args: argparse.Namespace,
+    stage1_options: list[ServerOption],
 ) -> list[dict[str, Any]]:
     log_head("STAGE 2  –  Resolve keys → stream/embed URLs via FlareSolverr")
 
@@ -612,26 +677,9 @@ async def stage2_extract_stream_urls(
         log_warn("output_stage1_api_urls_list.txt is empty – nothing to resolve in Stage 2.")
         return []
 
-    # ── Load already-processed URLs so we never re-scrape them ──────────
-    processed_urls_file: Path = getattr(args, "processed_urls", DEFAULT_PROCESSED_URLS)
-    already_processed: set[str] = set()
-    if processed_urls_file.exists():
-        for _line in processed_urls_file.read_text(encoding="utf-8").splitlines():
-            _line = _line.strip()
-            if _line and not _line.startswith("#"):
-                already_processed.add(_line)
-    original_count = len(api_urls)
-    api_urls = [u for u in api_urls if u not in already_processed]
-    skipped_count = original_count - len(api_urls)
-    if skipped_count:
-        log_info(f"Skipped {skipped_count} already-processed URL(s) — loaded from {processed_urls_file}")
-    if not api_urls:
-        log_ok("All URLs already processed — nothing new to resolve in Stage 2.")
-        return []
-
-    base_url    = _flaresolverr_url(args)
-    timeout_ms  = getattr(args, "fs_timeout_ms", FLARESOLVERR_MAX_TIMEOUT)
-    session_id  = f"primesrc_{int(time.time())}"
+    base_url   = _flaresolverr_url(args)
+    timeout_ms = getattr(args, "fs_timeout_ms", FLARESOLVERR_MAX_TIMEOUT)
+    session_id = f"primesrc_{int(time.time())}"
 
     log_info(f"API keys to resolve : {len(api_urls)}")
     log_info(f"FlareSolverr URL    : {base_url}")
@@ -656,7 +704,7 @@ async def stage2_extract_stream_urls(
     results: list[dict[str, Any]] = []
 
     try:
-        indexed = list(enumerate(api_urls, 1))
+        indexed     = list(enumerate(api_urls, 1))
         batch_total = (len(indexed) + args.batch_size - 1) // args.batch_size
 
         for batch_num, start in enumerate(range(0, len(indexed), args.batch_size), 1):
@@ -668,10 +716,6 @@ async def stage2_extract_stream_urls(
             )
             results.extend(batch_results)
 
-            # Pace requests between batches so traffic looks less like a
-            # bot hammering the site. If this batch tripped a Cloudflare
-            # block/ban, cool down a lot harder before the next one —
-            # retrying straight into an active ban just burns attempts.
             if batch_num < batch_total:
                 banned = any(
                     re.search(r"banned|blocked", r.get("error", "") or "", re.I)
@@ -709,22 +753,57 @@ async def stage2_extract_stream_urls(
 
     results.sort(key=lambda r: r.get("index", 0))
 
-    lines: list[str] = []
-    for item in results:
-        if item.get("extracted_url"):
-            lines.append(item["extracted_url"])
-        else:
-            lines.append(f"# FAILED: {item['api_url']}  ({item.get('error', 'no URL')})")
-    stream_out_file.write_text("\n".join(lines) + "\n", encoding="utf-8")
-    log_ok(f"Stream URLs → {stream_out_file}")
+    # ── Build api_url → tmdb_id map from stage1_options ─────────────
+    api_url_to_tmdb: dict[str, str] = {}
+    for opt in stage1_options:
+        tmdb_id = _extract_tmdb_id(opt.main_url)
+        if tmdb_id:
+            api_url_to_tmdb[opt.api_url] = tmdb_id
 
-    # ── Persist successfully-resolved URLs into the processed tracker ──
-    newly_done = [r["api_url"] for r in results if r.get("extracted_url")]
-    if newly_done:
+    # ── For each successfully-resolved result:
+    #    1. Find which tmdb_id it belongs to
+    #    2. Check if ALL keys for that tmdb_id are now resolved
+    #    3. If yes → save that tmdb_id to already_processed_urls_list.txt
+    #    4. Remove any error log lines mentioning that API URL (resolved now)
+    processed_urls_file: Path = getattr(args, "processed_urls", DEFAULT_PROCESSED_URLS)
+    error_log_file: Path      = getattr(args, "error_log", DEFAULT_ERROR_LOG)
+
+    # Group: tmdb_id → set of api_urls that belong to it
+    tmdb_to_api_urls: dict[str, set[str]] = defaultdict(set)
+    for opt in stage1_options:
+        tmdb_id = _extract_tmdb_id(opt.main_url)
+        if tmdb_id:
+            tmdb_to_api_urls[tmdb_id].add(opt.api_url)
+
+    # Which api_urls succeeded this run
+    succeeded_api_urls: set[str] = {
+        r["api_url"] for r in results if r.get("extracted_url")
+    }
+
+    # tmdb_ids where every api_url in this batch succeeded
+    fully_resolved_tmdb: set[str] = set()
+    for tmdb_id, required_urls in tmdb_to_api_urls.items():
+        if required_urls and required_urls.issubset(succeeded_api_urls):
+            fully_resolved_tmdb.add(tmdb_id)
+
+    # Load existing processed tmdb_ids
+    existing_processed: set[str] = set()
+    if processed_urls_file.exists():
+        for _line in processed_urls_file.read_text(encoding="utf-8").splitlines():
+            _line = _line.strip()
+            if _line and not _line.startswith("#"):
+                existing_processed.add(_line)
+
+    new_tmdb_ids = fully_resolved_tmdb - existing_processed
+    if new_tmdb_ids:
         with open(processed_urls_file, "a", encoding="utf-8") as _pf:
-            for _u in newly_done:
-                _pf.write(_u + "\n")
-        log_ok(f"Appended {len(newly_done)} processed URL(s) → {processed_urls_file}")
+            for tmdb_id in sorted(new_tmdb_ids):
+                _pf.write(tmdb_id + "\n")
+        log_ok(f"Saved {len(new_tmdb_ids)} fully-resolved tmdb_id(s) → {processed_urls_file}: {sorted(new_tmdb_ids)}")
+
+    # ── Clean errorsfaced.txt: remove lines for any succeeded API URL ─
+    if succeeded_api_urls:
+        clean_error_log_for_resolved_api_urls(error_log_file, succeeded_api_urls)
 
     elapsed = time.monotonic() - t_start
     ok      = [r for r in results if r.get("extracted_url")]
@@ -787,23 +866,6 @@ def _fetch_tmdb_info(tmdb_id: str) -> tuple[str, str]:
 
 
 # ═══════════════════════════════════════════════════════════════
-# GZIP / BASE64 COMPRESSOR
-# ═══════════════════════════════════════════════════════════════
-
-def _to_gz_b64_json(pretty_path: Path, gz_path: Path) -> None:
-    raw   = pretty_path.read_bytes()
-    gz    = gzip.compress(raw, compresslevel=9)
-    b64   = base64.b64encode(gz).decode("ascii")
-    wrapper = {
-        "encoding":    "gzip+base64",
-        "source_file": pretty_path.name,
-        "compressed":  b64,
-    }
-    gz_path.write_text(json.dumps(wrapper, ensure_ascii=False), encoding="utf-8")
-    log_ok(f"Compressed JSON → {gz_path}  ({len(raw):,} B → {len(gz):,} B gz → {len(b64):,} B b64)")
-
-
-# ═══════════════════════════════════════════════════════════════
 # SUMMARY WRITER
 # ═══════════════════════════════════════════════════════════════
 
@@ -853,19 +915,15 @@ def _write_summary(
     stage1_options: list[ServerOption],
     stage2_results: list[dict[str, Any]],
     json_path: Path,
-    html_path: Path,
 ) -> None:
     link_map = {r["api_url"]: r.get("extracted_url") or "" for r in stage2_results}
 
-    # Key by api_url (the unique key string) so every server option is kept
-    # as a separate source entry, even if two keys happen to resolve to the
-    # same stream URL at this moment (URLs rotate; they may differ next run).
     new_groups_raw: dict[str, dict[str, dict[str, Any]]] = defaultdict(dict)
     for opt in stage1_options:
         stream_url = link_map.get(opt.api_url, "")
         if not stream_url:
             continue
-        qs = dict(x.split("=", 1) for x in urlparse(opt.main_url).query.split("&") if "=" in x)
+        qs   = dict(x.split("=", 1) for x in urlparse(opt.main_url).query.split("&") if "=" in x)
         tmdb = qs.get("tmdb", "")
         if not tmdb:
             continue
@@ -891,7 +949,6 @@ def _write_summary(
         sources: list[dict[str, str]] = []
         n = 1
         while f"host-{n}" in e:
-            # Restore key field if stored, else use url as fallback identifier
             sources.append({"host": e[f"host-{n}"], "url": e[f"url-{n}"], "key": e.get(f"key-{n}", e[f"url-{n}"])})
             n += 1
         index[tmdb_int] = {
@@ -902,16 +959,15 @@ def _write_summary(
             "_sources":     sources,
         }
 
-    extracted_at = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    extracted_at     = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     tmdb_meta_cache: dict[int, tuple[str, Any]] = {}
 
     for tmdb_str, new_sources in new_groups.items():
         tmdb_int = int(tmdb_str)
-
         if tmdb_int in index:
-            entry = index[tmdb_int]
+            entry         = index[tmdb_int]
             existing_keys = {s["key"] for s in entry["_sources"]}
-            added = [s for s in new_sources if s["key"] not in existing_keys]
+            added         = [s for s in new_sources if s["key"] not in existing_keys]
             entry["_sources"].extend(added)
             entry["extracted_at"] = extracted_at
             log_info(f"  tmdb={tmdb_int} — merged {len(added)} new source(s)")
@@ -948,7 +1004,7 @@ def _write_summary(
         for n, src in enumerate(e["_sources"], 1):
             row[f"host-{n}"] = src["host"]
             row[f"url-{n}"]  = src["url"]
-            row[f"key-{n}"]  = src.get("key", src["url"])  # persisted for dedup on re-runs
+            row[f"key-{n}"]  = src.get("key", src["url"])
         output.append(row)
 
     json_path.write_text(_format_summary_json(output), encoding="utf-8")
@@ -1057,7 +1113,6 @@ def _gh_get_text_file(
     path: str,
     branch: str,
 ) -> tuple[str, str | None]:
-    """Like _gh_get_file but for plain text (not JSON) — returns (text, sha)."""
     api_path = f"/repos/{repo}/contents/{path}?ref={branch}"
     try:
         meta = _gh_api_request("GET", api_path, token)
@@ -1084,14 +1139,9 @@ def github_sync_error_log(
     branch: str,
     filename: str = ERROR_LOG_GH_FILENAME,
 ) -> None:
-    """
-    Append this run's WARN/ERR block onto errorsfaced.txt *inside the GitHub
-    repo* (not just the ephemeral runner disk), so it survives across runs
-    and doesn't depend on artifact retention windows.
-    """
     block = _format_error_log_block()
     if not block:
-        return  # nothing went wrong this run — don't touch the remote file
+        return
 
     existing_text, sha = _gh_get_text_file(token, repo, filename, branch)
     merged = existing_text + block
@@ -1118,7 +1168,7 @@ def _gh_fetch_all_summary_files(
     file_meta:   list[tuple[str, str | None]] = []
 
     for n in range(1, 9999):
-        fname     = _gh_filename(n)
+        fname        = _gh_filename(n)
         records, sha = _gh_get_file(token, repo, fname, branch)
         file_meta.append((fname, sha))
         all_records.extend(records)
@@ -1175,9 +1225,6 @@ def github_sync_summary(
     log_info(f"Remote total: {len(remote_records)} entries across {len(file_meta)} file(s)")
 
     link_map = {r["api_url"]: r.get("extracted_url") or "" for r in stage2_results}
-    # Key by api_url (the unique key string) so every server option is kept
-    # as a separate source entry, even if two keys happen to resolve to the
-    # same stream URL at this moment (URLs rotate; they may differ next run).
     new_groups_raw: dict[str, dict[str, dict[str, Any]]] = defaultdict(dict)
     for opt in stage1_options:
         stream_url = link_map.get(opt.api_url, "")
@@ -1210,7 +1257,7 @@ def github_sync_summary(
             "_sources":     sources,
         }
 
-    extracted_at    = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    extracted_at     = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     tmdb_meta_cache: dict[int, tuple[str, Any]] = {}
 
     for tmdb_str, new_sources in new_groups.items():
@@ -1255,7 +1302,7 @@ def github_sync_summary(
         for n, src in enumerate(e["_sources"], 1):
             row[f"host-{n}"] = src["host"]
             row[f"url-{n}"]  = src["url"]
-            row[f"key-{n}"]  = src.get("key", src["url"])  # persisted for dedup on re-runs
+            row[f"key-{n}"]  = src.get("key", src["url"])
         output.append(row)
 
     total_sources = sum(sum(1 for k in r if k.startswith("url-")) for r in output)
@@ -1290,26 +1337,24 @@ def github_sync_summary(
 
 def _parse_args(argv: list[str]) -> argparse.Namespace:
     p = argparse.ArgumentParser(description="PrimeSrc unified pipeline: embed URLs → API keys → stream URLs")
-    p.add_argument("--input",       type=Path, default=DEFAULT_INPUT_FILE)
-    p.add_argument("--api-list",    type=Path, default=DEFAULT_API_LIST)
-    p.add_argument("--output",      type=Path, default=DEFAULT_STREAM_OUT)
-    p.add_argument("--json-out",    type=Path, default=DEFAULT_JSON_SUMMARY)
-    p.add_argument("--html-out",    type=Path, default=DEFAULT_HTML_OUT)
-    p.add_argument("--skip-stage1", action="store_true", help="Skip Stage 1; use existing output_stage1_api_urls_list.txt")
-    p.add_argument("--skip-stage2", action="store_true", help="Skip Stage 2; only collect keys, no FlareSolverr")
-    p.add_argument("--type",        choices=("movie", "tv"), default="movie")
-    p.add_argument("--flaresolverr-url", default=None, dest="flaresolverr_url", help="FlareSolverr URL")
-    p.add_argument("--fs-timeout",   type=int, default=FLARESOLVERR_MAX_TIMEOUT, dest="fs_timeout_ms", help="Solver timeout (ms)")
-    p.add_argument("--batch-size",   type=int, default=STAGE2_BATCH_SIZE, dest="batch_size", help="Batch process sizing")
-    p.add_argument("--batch-delay",  type=float, default=STAGE2_BATCH_DELAY, dest="batch_delay", help="Seconds to pause between batches")
-    p.add_argument("--reloads",      type=int, default=STAGE2_RELOADS, help="Retry attempts per URL")
-    p.add_argument("--final-retries", type=int, default=STAGE2_FINAL_RETRIES, dest="final_retries", help="Extra fallback cycles")
-    p.add_argument("--error-log",    type=Path, default=DEFAULT_ERROR_LOG, dest="error_log", help="Local file that accumulates every WARN/ERR line from each run")
-    p.add_argument("--processed-urls", type=Path, default=DEFAULT_PROCESSED_URLS, dest="processed_urls", help="File tracking already-processed Stage-2 API URLs to skip on re-runs")
-    p.add_argument("--no-github-sync", action="store_true", default=False, dest="no_github_sync")
-    p.add_argument("--gh-token",   default=None, dest="gh_token")
-    p.add_argument("--gh-repo",    default=None, dest="gh_repo")
-    p.add_argument("--gh-branch",  default=None, dest="gh_branch")
+    p.add_argument("--input",          type=Path, default=DEFAULT_INPUT_FILE)
+    p.add_argument("--api-list",       type=Path, default=DEFAULT_API_LIST)
+    p.add_argument("--json-out",       type=Path, default=DEFAULT_JSON_SUMMARY)
+    p.add_argument("--skip-stage1",    action="store_true", help="Skip Stage 1; use existing output_stage1_api_urls_list.txt")
+    p.add_argument("--skip-stage2",    action="store_true", help="Skip Stage 2; only collect keys, no FlareSolverr")
+    p.add_argument("--type",           choices=("movie", "tv"), default="movie")
+    p.add_argument("--flaresolverr-url", default=None, dest="flaresolverr_url")
+    p.add_argument("--fs-timeout",     type=int,   default=FLARESOLVERR_MAX_TIMEOUT, dest="fs_timeout_ms")
+    p.add_argument("--batch-size",     type=int,   default=STAGE2_BATCH_SIZE,        dest="batch_size")
+    p.add_argument("--batch-delay",    type=float, default=STAGE2_BATCH_DELAY,       dest="batch_delay")
+    p.add_argument("--reloads",        type=int,   default=STAGE2_RELOADS)
+    p.add_argument("--final-retries",  type=int,   default=STAGE2_FINAL_RETRIES,     dest="final_retries")
+    p.add_argument("--error-log",      type=Path,  default=DEFAULT_ERROR_LOG,        dest="error_log")
+    p.add_argument("--processed-urls", type=Path,  default=DEFAULT_PROCESSED_URLS,   dest="processed_urls")
+    p.add_argument("--no-github-sync", action="store_true", default=False,           dest="no_github_sync")
+    p.add_argument("--gh-token",       default=None, dest="gh_token")
+    p.add_argument("--gh-repo",        default=None, dest="gh_repo")
+    p.add_argument("--gh-branch",      default=None, dest="gh_branch")
     return p.parse_args(argv)
 
 
@@ -1317,13 +1362,10 @@ async def _run(args: argparse.Namespace) -> int:
     log_head("PrimeSRC UNIFIED PIPELINE")
     log_info(f"Input   : {args.input}")
     log_info(f"API list: {args.api_list}")
-    log_info(f"Output  : {args.output}")
 
     stage1_options: list[ServerOption] = []
     stage2_results: list[dict[str, Any]] = []
 
-    # Resolved once, up front, so the finally-block can also use them to
-    # push errorsfaced.txt to GitHub regardless of how the run ends.
     gh_token  = args.gh_token  or os.environ.get("GH_TOKEN", "")
     gh_repo   = args.gh_repo   or os.environ.get("GH_REPO",  "")
     gh_branch = args.gh_branch or os.environ.get("GH_BRANCH", "main")
@@ -1336,7 +1378,9 @@ async def _run(args: argparse.Namespace) -> int:
             if not args.input.exists():
                 log_err(f"Input file not found: {args.input}")
                 return 1
-            stage1_options = stage1_fetch_api_keys(args.input, args.api_list, args.type)
+            stage1_options = stage1_fetch_api_keys(
+                args.input, args.api_list, args.processed_urls, args.type
+            )
 
         if args.skip_stage2:
             log_info("Stage 2 skipped.")
@@ -1345,7 +1389,9 @@ async def _run(args: argparse.Namespace) -> int:
                 log_err(f"API list not found: {args.api_list}")
                 return 1
             try:
-                stage2_results = await stage2_extract_stream_urls(args.api_list, args.output, args)
+                stage2_results = await stage2_extract_stream_urls(
+                    args.api_list, args, stage1_options
+                )
             except ConnectionError:
                 log_err("FlareSolverr unreachable – verification failed.")
                 return 2
@@ -1364,7 +1410,7 @@ async def _run(args: argparse.Namespace) -> int:
             else:
                 if not args.no_github_sync and not gh_token:
                     log_warn("GH_TOKEN not set — writing locally only")
-                _write_summary(stage1_options, stage2_results, args.json_out, args.html_out)
+                _write_summary(stage1_options, stage2_results, args.json_out)
 
         log_head("DONE")
         if not args.skip_stage2 and stage2_results:
@@ -1372,8 +1418,6 @@ async def _run(args: argparse.Namespace) -> int:
             log_ok(f"Stream URLs extracted : {ok} / {len(stage2_results)}")
         return 0
     finally:
-        # Always flush collected warnings/errors to the local repo file,
-        # whether the run finished cleanly, returned early, or raised.
         write_error_log(args.error_log)
 
 
