@@ -1,1 +1,13 @@
 
+
+======================================================================
+Pipeline run finished: 2026-08-17T16:32:11.850281+00:00
+Total warnings/errors: 7
+======================================================================
+[2026-08-17 16:29:37 UTC] [WARN] Could not load known media URLs from /home/runner/work/flaresover_primesrc/flaresover_primesrc/movie_streaming_data.json: Expecting value: line 2 column 1 (char 1)
+[2026-08-17 16:29:51 UTC] [ERR] [  1/19] https://primesrc.me/api/v1/l?key=QANww — No JSON object found in page
+[2026-08-17 16:30:08 UTC] [ERR] [  4/19] https://primesrc.me/api/v1/l?key=ysjUu — No JSON object found in page
+[2026-08-17 16:31:10 UTC] [ERR] [ 11/19] https://primesrc.me/api/v1/l?key=v8a6r — No JSON object found in page
+[2026-08-17 16:31:26 UTC] [ERR] [ 14/19] https://primesrc.me/api/v1/l?key=rJyrs — No JSON object found in page
+[2026-08-17 16:32:11 UTC] [WARN] GH_TOKEN not set — writing locally only
+[2026-08-17 16:32:11 UTC] [WARN] Could not load existing JSON (Expecting value: line 2 column 1 (char 1)) — starting fresh
