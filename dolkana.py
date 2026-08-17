@@ -1105,14 +1105,17 @@ def _fetch_tmdb_info(tmdb_id: str) -> tuple[str, str]:
     return title, imdb_id
 
 
-def fetch_latest_holly_bolly_movies(
+def fetch_tmdb_now_playing_and_top_rated(
     target_file: Path,
     existing_input_files: list[Path] | Path | None = None,
     processed_urls_file: Path | None = None,
     limit: int = 50,
 ) -> list[str]:
     """
-    Fetch latest released Hollywood (en) and Bollywood (hi) movies using TMDB API (up to limit total, e.g. 50).
+    Fetch movies from TMDB Now Playing (/movie/now_playing) and Top Rated (/movie/top_rated) combined
+    up to limit total (default 50).
+    First takes all available from now_playing; if fewer than limit (e.g. only 5 or 9), fills the remainder
+    from top_rated.
     Excludes any movies already in target_file, existing_input_files, or processed_urls_file.
     Appends newly discovered movie embed URLs (https://primesrc.me/embed/movie?tmdb=<id>) to target_file.
     Returns the list of newly added embed URLs.
@@ -1143,21 +1146,13 @@ def fetch_latest_holly_bolly_movies(
 
     log_info(f"Existing known TMDB IDs to exclude: {len(known_tmdb_ids)}")
 
-    today_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    half_limit = max(1, limit // 2)
-
-    def _fetch_language_movies(lang_code: str, target_count: int) -> list[str]:
+    def _fetch_from_endpoint(endpoint: str, target_count: int) -> list[str]:
         added: list[str] = []
         page = 1
-        max_pages = 20
+        max_pages = 25
         while len(added) < target_count and page <= max_pages:
-            path = (
-                f"/discover/movie?sort_by=primary_release_date.desc"
-                f"&with_original_language={lang_code}"
-                f"&primary_release_date.lte={today_str}"
-                f"&vote_count.gte=1"
-                f"&page={page}"
-            )
+            sep = "&" if "?" in endpoint else "?"
+            path = f"{endpoint}{sep}page={page}"
             try:
                 data = _tmdb_request(path)
                 results = data.get("results", [])
@@ -1175,26 +1170,30 @@ def fetch_latest_holly_bolly_movies(
                             break
                 page += 1
             except Exception as exc:
-                log_warn(f"Failed fetching TMDB discover for lang={lang_code} page={page}: {exc}")
+                log_warn(f"Failed fetching TMDB {endpoint} page={page}: {exc}")
                 break
         return added
 
-    log_info(f"Fetching latest Hollywood (en) movies from TMDB (target: {half_limit})…")
-    hw_urls = _fetch_language_movies("en", half_limit)
-    log_ok(f"Found {len(hw_urls)} new Hollywood movie(s)")
+    # 1. Query Now Playing first
+    log_info(f"Fetching from TMDB Now Playing (target: up to {limit})…")
+    np_urls = _fetch_from_endpoint("/movie/now_playing", limit)
+    log_ok(f"Found {len(np_urls)} new Now Playing movie(s)")
 
-    remaining = limit - len(hw_urls)
-    log_info(f"Fetching latest Bollywood (hi) movies from TMDB (target: {remaining})…")
-    bw_urls = _fetch_language_movies("hi", remaining)
-    log_ok(f"Found {len(bw_urls)} new Bollywood movie(s)")
+    # 2. Fill remainder from Top Rated
+    remaining = limit - len(np_urls)
+    tr_urls: list[str] = []
+    if remaining > 0:
+        log_info(f"Filling remaining ({remaining}) from TMDB Top Rated…")
+        tr_urls = _fetch_from_endpoint("/movie/top_rated", remaining)
+        log_ok(f"Found {len(tr_urls)} new Top Rated movie(s)")
 
-    new_urls = hw_urls + bw_urls
+    new_urls = np_urls + tr_urls
     if new_urls:
         lines_to_append = "\n".join(new_urls) + "\n"
         target_file_written = _append_split_text(target_file, lines_to_append, max_bytes=MAX_OUTPUT_FILE_SIZE)
-        log_ok(f"Stored {len(new_urls)} new latest released movie(s) → {target_file_written}")
+        log_ok(f"Stored {len(new_urls)} combined (now-playing: {len(np_urls)}, top-rated: {len(tr_urls)}) movie(s) → {target_file_written}")
     else:
-        log_info("No new Hollywood/Bollywood movies found that aren't already recorded.")
+        log_info("No new Now Playing or Top Rated movies found that aren't already recorded.")
 
     return new_urls
 
@@ -1750,10 +1749,10 @@ async def _run(args: argparse.Namespace) -> int:
     _ensure_file_exists(args.error_log, "")
     _ensure_file_exists(args.json_out, "[]\n")
 
-    # Fetch latest released Hollywood and Bollywood movies if enabled
+    # Fetch TMDB Now Playing and Top Rated movies if enabled
     if args.fetch_latest and args.include_latest_input:
-        log_head(f"FETCHING LATEST HOLLYWOOD & BOLLYWOOD MOVIES (Limit: {args.latest_limit})")
-        fetch_latest_holly_bolly_movies(
+        log_head(f"FETCHING TMDB NOW PLAYING & TOP RATED MOVIES (Limit: {args.latest_limit})")
+        fetch_tmdb_now_playing_and_top_rated(
             target_file=args.latest_input,
             existing_input_files=[args.input],
             processed_urls_file=args.processed_urls,
