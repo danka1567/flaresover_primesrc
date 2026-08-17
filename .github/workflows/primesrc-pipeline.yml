@@ -22,6 +22,9 @@ on:
           - tv
         default: movie
 
+permissions:
+  contents: write
+
 jobs:
   extract-urls:
     runs-on: ubuntu-latest
