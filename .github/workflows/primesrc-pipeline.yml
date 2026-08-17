@@ -1,8 +1,25 @@
 name: PrimeSrc Pipeline
 
 on:
+  schedule:
+    # Runs daily at 00:00 UTC automatically for latest Hollywood/Bollywood movies
+    - cron: '0 0 * * *'
   workflow_dispatch:
     inputs:
+      mode:
+        description: 'Execution mode'
+        required: true
+        type: choice
+        options:
+          - 'both (process tmdb_movie_input_list.txt AND latest Hollywood/Bollywood)'
+          - 'manual_only (tmdb_movie_input_list.txt ONLY)'
+          - 'latest_only (lastet_released_holly_bolly_movies_list.txt ONLY)'
+        default: 'both (process tmdb_movie_input_list.txt AND latest Hollywood/Bollywood)'
+      latest_limit:
+        description: 'Number of latest movies to fetch from TMDB'
+        required: false
+        type: number
+        default: 50
       skip_stage1:
         description: 'Skip Stage 1'
         required: false
@@ -40,9 +57,6 @@ jobs:
 
       # ── FlareSolverr ──────────────────────────────────────────────
       # Pulls the official image and starts it on port 8191.
-      # No Cloudflare challenge is expected on /api/v1/l — FlareSolverr
-      # just provides a fresh browser session so the site doesn't block
-      # the plain HTTP request.
       - name: Start FlareSolverr
         run: |
           docker pull ghcr.io/flaresolverr/flaresolverr:latest
@@ -67,23 +81,48 @@ jobs:
           # Final verification
           curl -sf http://localhost:8191/health || (echo "FlareSolverr failed to start" && exit 1)
 
-      # ── Python (no extra deps — stdlib only) ─────────────────────
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
-          # No third-party packages needed
 
-      - name: Create input file if not exists
+      # ── Ensure all input and output files exist ──────────────────
+      - name: Ensure all input and output files exist
         run: |
-          if [ ! -f "tmdb_movie_input_list.txt" ]; then
-            echo "# Add your PrimeSrc embed URLs here, one per line" > tmdb_movie_input_list.txt
-            echo "# Example: https://primesrc.me/embed/movie?tmdb=12345" >> tmdb_movie_input_list.txt
+          touch tmdb_movie_input_list.txt
+          touch lastet_released_holly_bolly_movies_list.txt
+          touch output_stage1_api_urls_list_found.txt
+          touch output_stage1_api_urls_list_not_found.txt
+          touch final_stream_urls_stage2.txt
+          touch already_processed_urls_list.txt
+          touch errorsfaced.txt
+          if [ ! -f "movie_streaming_data.json" ]; then
+            echo "[]" > movie_streaming_data.json
           fi
 
       # ── Run the pipeline ─────────────────────────────────────────
       - name: Run PrimeSrc Pipeline
         run: |
           CMD="python dolkana.py"
+
+          # Automatic scheduled daily run: only process latest_released_holly_bolly_movies_list.txt (skip tmdb_movie_input_list.txt)
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            echo "Running in automated daily schedule mode (latest Hollywood/Bollywood only)"
+            CMD="$CMD --no-manual-input --fetch-latest"
+          else
+            # Manual run via workflow_dispatch
+            MODE="${{ github.event.inputs.mode }}"
+            if [[ "$MODE" == *"manual_only"* ]]; then
+              CMD="$CMD --no-latest-input --no-fetch-latest --include-manual-input"
+            elif [[ "$MODE" == *"latest_only"* ]]; then
+              CMD="$CMD --no-manual-input --include-latest-input --fetch-latest"
+            else
+              CMD="$CMD --include-manual-input --include-latest-input --fetch-latest"
+            fi
+          fi
+
+          if [ -n "${{ github.event.inputs.latest_limit }}" ]; then
+            CMD="$CMD --latest-limit ${{ github.event.inputs.latest_limit }}"
+          fi
 
           if [ "${{ github.event.inputs.skip_stage1 }}" = "true" ]; then
             CMD="$CMD --skip-stage1"
@@ -112,9 +151,6 @@ jobs:
         run: docker logs flaresolverr || true
 
       # ── Commit & push all input/output files back to main repo ───
-      # Every file produced (or updated) by the pipeline is committed
-      # directly into this repo so results persist across runs and are
-      # always visible in the repository without downloading artifacts.
       - name: Save all pipeline files to repo
         if: always()
         run: |
@@ -141,7 +177,3 @@ jobs:
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # ── GitHub sync is handled inside dolkana.py (Stage 3) ──────
-      # The script calls the GitHub Contents API directly to push
-      # movie_streaming_data.json (and -2, -3 … if > 20 MB) to srtfile/movie-data.
