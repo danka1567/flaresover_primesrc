@@ -4,10 +4,10 @@ primesrc_pipeline.py  –  Unified PrimeSrc pipeline
 
 Stage 1  (primesrcembed.py logic)
     Read tmdb_movie_input_list.txt  →  fetch /api/v1/s for every tmdb embed URL
-    →  collect all server option keys  →  write output_stage1_api_urls_list.txt
+    →  collect all server option keys  →  write output_stage1_api_urls_list_found.txt and output_stage1_api_urls_list_not_found.txt
 
 Stage 2  (extract_primesrc_urls.py logic)
-    Read output_stage1_api_urls_list.txt  →  send every /api/v1/l?key=… to FlareSolverr
+    Resolve keys from Stage 1  →  send every /api/v1/l?key=… to FlareSolverr
     →  extract stream URL from the JSON response
     →  on success: save tmdb_id to already_processed_urls_list.txt
                    remove that tmdb_id's error entries from errorsfaced.txt
@@ -60,12 +60,13 @@ warnings.filterwarnings("ignore", category=ResourceWarning)
 # PATHS & TUNABLES
 # ═══════════════════════════════════════════════════════════════
 
-HERE                   = Path(__file__).parent
-DEFAULT_INPUT_FILE     = HERE / "tmdb_movie_input_list.txt"
-DEFAULT_API_LIST       = HERE / "output_stage1_api_urls_list.txt"
-DEFAULT_JSON_SUMMARY   = HERE / "movie_streaming_data.json"
-DEFAULT_ERROR_LOG      = HERE / "errorsfaced.txt"
-DEFAULT_PROCESSED_URLS = HERE / "already_processed_urls_list.txt"
+HERE                       = Path(__file__).parent
+DEFAULT_INPUT_FILE         = HERE / "tmdb_movie_input_list.txt"
+DEFAULT_API_LIST_FOUND     = HERE / "output_stage1_api_urls_list_found.txt"
+DEFAULT_API_LIST_NOT_FOUND = HERE / "output_stage1_api_urls_list_not_found.txt"
+DEFAULT_JSON_SUMMARY       = HERE / "movie_streaming_data.json"
+DEFAULT_ERROR_LOG          = HERE / "errorsfaced.txt"
+DEFAULT_PROCESSED_URLS     = HERE / "already_processed_urls_list.txt"
 
 STAGE1_REQUEST_TIMEOUT = 20    # urllib timeout per /api/v1/s call
 STAGE2_BATCH_SIZE      = 2     # concurrent requests per batch
@@ -213,7 +214,7 @@ def clean_error_log_for_resolved_api_urls(path: Path, resolved_api_urls: set[str
 
 
 # ═══════════════════════════════════════════════════════════════
-# STAGE 1  –  embed URLs → /api/v1/s → output_stage1_api_urls_list.txt
+# STAGE 1  –  embed URLs → /api/v1/s → output_stage1_api_urls_list_found.txt
 # ═══════════════════════════════════════════════════════════════
 
 @dataclass
@@ -314,9 +315,10 @@ def _options_from_server_list(servers: list[dict], main_url: str) -> list[Server
 
 def stage1_fetch_api_keys(
     input_file: Path,
-    api_list_file: Path,
     processed_urls_file: Path,
     media_type: str = "movie",
+    api_list_found_file: Path | None = None,
+    api_list_not_found_file: Path | None = None,
 ) -> list[ServerOption]:
     log_head("STAGE 1  –  Fetch server keys from PrimeSrc /api/v1/s")
 
@@ -365,6 +367,8 @@ def stage1_fetch_api_keys(
 
     all_options: list[ServerOption] = []
     errors: list[tuple[str, str]] = []
+    found_lines: list[str] = []
+    not_found_embed_urls: list[str] = []
 
     for idx, embed_url in enumerate(embed_urls, 1):
         label = f"  [{idx:>4}/{len(embed_urls)}]"
@@ -374,17 +378,27 @@ def stage1_fetch_api_keys(
             server_lists = _find_server_lists(obj)
             if not server_lists:
                 log_warn(f"{label} no server list  {embed_url}")
+                not_found_embed_urls.append(embed_url)
                 continue
+            movie_options: list[ServerOption] = []
             for sl in server_lists:
                 opts = _options_from_server_list(sl.get("servers", []), embed_url)
-                all_options.extend(opts)
-            count = sum(
-                len(_options_from_server_list(sl.get("servers", []), embed_url))
-                for sl in server_lists
-            )
-            log_ok(f"{label} {count} keys  {embed_url}")
+                movie_options.extend(opts)
+            if not movie_options:
+                log_warn(f"{label} 0 keys found  {embed_url}")
+                not_found_embed_urls.append(embed_url)
+                continue
+
+            total_keys = len(movie_options)
+            unique_movie_keys = {opt.key for opt in movie_options}
+            unique_count = len(unique_movie_keys)
+
+            all_options.extend(movie_options)
+            found_lines.append(f"{embed_url} {unique_count} keys of {total_keys}")
+            log_ok(f"{label} {unique_count} keys of {total_keys}  {embed_url}")
         except Exception as exc:
             errors.append((embed_url, str(exc)))
+            not_found_embed_urls.append(embed_url)
             log_err(f"{label} {exc}  {embed_url}")
 
     # Deduplicate by key value
@@ -395,13 +409,26 @@ def stage1_fetch_api_keys(
             seen_keys.add(opt.key)
             unique_options.append(opt)
 
-    api_list_file.write_text(
-        "\n".join(opt.api_url for opt in unique_options) + "\n",
-        encoding="utf-8",
-    )
     log_info(f"Total keys : {len(all_options)}  (unique: {len(unique_options)})")
     log_info(f"Errors     : {len(errors)}")
-    log_ok(f"Written → {api_list_file}")
+
+    if api_list_found_file:
+        found_content = (
+            "\n".join(found_lines) + "\n"
+            if found_lines
+            else ""
+        )
+        api_list_found_file.write_text(found_content, encoding="utf-8")
+        log_ok(f"Written found summaries ({len(found_lines)}) → {api_list_found_file}")
+
+    if api_list_not_found_file:
+        not_found_content = (
+            "\n".join(not_found_embed_urls) + "\n"
+            if not_found_embed_urls
+            else ""
+        )
+        api_list_not_found_file.write_text(not_found_content, encoding="utf-8")
+        log_ok(f"Written not-found embed URLs ({len(not_found_embed_urls)}) → {api_list_not_found_file}")
 
     if errors:
         log_warn("Failed embed URLs (stage 1):")
@@ -412,7 +439,7 @@ def stage1_fetch_api_keys(
 
 
 # ═══════════════════════════════════════════════════════════════
-# STAGE 2  –  output_stage1_api_urls_list.txt → FlareSolverr → stream URLs
+# STAGE 2  –  Resolve keys → FlareSolverr → stream URLs
 # ═══════════════════════════════════════════════════════════════
 
 FLARESOLVERR_DEFAULT_URL = "http://localhost:8191"
@@ -709,22 +736,24 @@ def _load_known_media_urls(json_path: Path) -> set[str]:
 
 
 async def stage2_extract_stream_urls(
-    api_list_file: Path,
-    args: argparse.Namespace,
     stage1_options: list[ServerOption],
+    args: argparse.Namespace,
 ) -> list[dict[str, Any]]:
     log_head("STAGE 2  –  Resolve keys → stream/embed URLs via FlareSolverr")
 
     global _print_lock
     _print_lock = asyncio.Lock()
 
-    api_urls = [
-        l.strip()
-        for l in api_list_file.read_text(encoding="utf-8").splitlines()
-        if l.strip() and not l.startswith("#")
-    ]
+    # Deduplicate API URLs from stage1_options
+    seen_api_urls: set[str] = set()
+    api_urls: list[str] = []
+    for opt in stage1_options:
+        if opt.api_url and opt.api_url not in seen_api_urls:
+            seen_api_urls.add(opt.api_url)
+            api_urls.append(opt.api_url)
+
     if not api_urls:
-        log_warn("output_stage1_api_urls_list.txt is empty – nothing to resolve in Stage 2.")
+        log_warn("No API keys to resolve in Stage 2.")
         return []
 
     # Load already-known media URLs so we can suppress errors for keys
@@ -1436,31 +1465,33 @@ def github_sync_summary(
 
 def _parse_args(argv: list[str]) -> argparse.Namespace:
     p = argparse.ArgumentParser(description="PrimeSrc unified pipeline: embed URLs → API keys → stream URLs")
-    p.add_argument("--input",          type=Path, default=DEFAULT_INPUT_FILE)
-    p.add_argument("--api-list",       type=Path, default=DEFAULT_API_LIST)
-    p.add_argument("--json-out",       type=Path, default=DEFAULT_JSON_SUMMARY)
-    p.add_argument("--skip-stage1",    action="store_true", help="Skip Stage 1; use existing output_stage1_api_urls_list.txt")
-    p.add_argument("--skip-stage2",    action="store_true", help="Skip Stage 2; only collect keys, no FlareSolverr")
-    p.add_argument("--type",           choices=("movie", "tv"), default="movie")
-    p.add_argument("--flaresolverr-url", default=None, dest="flaresolverr_url")
-    p.add_argument("--fs-timeout",     type=int,   default=FLARESOLVERR_MAX_TIMEOUT, dest="fs_timeout_ms")
-    p.add_argument("--batch-size",     type=int,   default=STAGE2_BATCH_SIZE,        dest="batch_size")
-    p.add_argument("--batch-delay",    type=float, default=STAGE2_BATCH_DELAY,       dest="batch_delay")
-    p.add_argument("--reloads",        type=int,   default=STAGE2_RELOADS)
-    p.add_argument("--final-retries",  type=int,   default=STAGE2_FINAL_RETRIES,     dest="final_retries")
-    p.add_argument("--error-log",      type=Path,  default=DEFAULT_ERROR_LOG,        dest="error_log")
-    p.add_argument("--processed-urls", type=Path,  default=DEFAULT_PROCESSED_URLS,   dest="processed_urls")
-    p.add_argument("--no-github-sync", action="store_true", default=False,           dest="no_github_sync")
-    p.add_argument("--gh-token",       default=None, dest="gh_token")
-    p.add_argument("--gh-repo",        default=None, dest="gh_repo")
-    p.add_argument("--gh-branch",      default=None, dest="gh_branch")
+    p.add_argument("--input",              type=Path, default=DEFAULT_INPUT_FILE)
+    p.add_argument("--api-list-found",     type=Path, default=DEFAULT_API_LIST_FOUND,     dest="api_list_found")
+    p.add_argument("--api-list-not-found", type=Path, default=DEFAULT_API_LIST_NOT_FOUND, dest="api_list_not_found")
+    p.add_argument("--json-out",           type=Path, default=DEFAULT_JSON_SUMMARY)
+    p.add_argument("--skip-stage1",        action="store_true", help="Skip Stage 1")
+    p.add_argument("--skip-stage2",        action="store_true", help="Skip Stage 2; only collect keys, no FlareSolverr")
+    p.add_argument("--type",               choices=("movie", "tv"), default="movie")
+    p.add_argument("--flaresolverr-url",   default=None, dest="flaresolverr_url")
+    p.add_argument("--fs-timeout",         type=int,   default=FLARESOLVERR_MAX_TIMEOUT, dest="fs_timeout_ms")
+    p.add_argument("--batch-size",         type=int,   default=STAGE2_BATCH_SIZE,        dest="batch_size")
+    p.add_argument("--batch-delay",        type=float, default=STAGE2_BATCH_DELAY,       dest="batch_delay")
+    p.add_argument("--reloads",            type=int,   default=STAGE2_RELOADS)
+    p.add_argument("--final-retries",      type=int,   default=STAGE2_FINAL_RETRIES,     dest="final_retries")
+    p.add_argument("--error-log",          type=Path,  default=DEFAULT_ERROR_LOG,        dest="error_log")
+    p.add_argument("--processed-urls",     type=Path,  default=DEFAULT_PROCESSED_URLS,   dest="processed_urls")
+    p.add_argument("--no-github-sync",     action="store_true", default=False,           dest="no_github_sync")
+    p.add_argument("--gh-token",           default=None, dest="gh_token")
+    p.add_argument("--gh-repo",            default=None, dest="gh_repo")
+    p.add_argument("--gh-branch",          default=None, dest="gh_branch")
     return p.parse_args(argv)
 
 
 async def _run(args: argparse.Namespace) -> int:
     log_head("PrimeSRC UNIFIED PIPELINE")
     log_info(f"Input   : {args.input}")
-    log_info(f"API list: {args.api_list}")
+    log_info(f"API list found: {args.api_list_found}")
+    log_info(f"API list not found: {args.api_list_not_found}")
 
     stage1_options: list[ServerOption] = []
     stage2_results: list[dict[str, Any]] = []
@@ -1472,38 +1503,34 @@ async def _run(args: argparse.Namespace) -> int:
 
     try:
         if args.skip_stage1:
-            log_info("Stage 1 skipped — using existing output_stage1_api_urls_list.txt")
+            log_info("Stage 1 skipped.")
         else:
             if not args.input.exists():
                 log_err(f"Input file not found: {args.input}")
                 return 1
             stage1_options = stage1_fetch_api_keys(
-                args.input, args.api_list, args.processed_urls, args.type
+                args.input,
+                args.processed_urls,
+                args.type,
+                args.api_list_found,
+                args.api_list_not_found,
             )
 
         if args.skip_stage2:
             log_info("Stage 2 skipped.")
         else:
-            if not args.api_list.exists():
-                log_err(f"API list not found: {args.api_list}")
-                return 1
-            try:
-                stage2_results = await stage2_extract_stream_urls(
-                    args.api_list, args, stage1_options
-                )
-            except ConnectionError:
-                log_err("FlareSolverr unreachable – verification failed.")
-                return 2
+            if not stage1_options:
+                log_warn("No keys from Stage 1 — skipping Stage 2.")
+            else:
+                try:
+                    stage2_results = await stage2_extract_stream_urls(
+                        stage1_options, args
+                    )
+                except ConnectionError:
+                    log_err("FlareSolverr unreachable – verification failed.")
+                    return 2
 
         if stage1_options or stage2_results:
-            if not stage1_options and args.api_list.exists():
-                for line in args.api_list.read_text(encoding="utf-8").splitlines():
-                    line = line.strip()
-                    if not line or line.startswith("#"):
-                        continue
-                    key = line.split("key=")[-1] if "key=" in line else ""
-                    stage1_options.append(ServerOption("", key, line, ""))
-
             if gh_available:
                 github_sync_summary(stage1_options, stage2_results, args.json_out, gh_token, gh_repo, gh_branch)
             else:
