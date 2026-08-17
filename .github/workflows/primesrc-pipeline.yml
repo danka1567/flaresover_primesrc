@@ -21,15 +21,6 @@ on:
           - movie
           - tv
         default: movie
-  schedule:
-    - cron: '0 0 * * *'
-  push:
-    branches:
-      - main
-    paths:
-      - 'dolkana.py'
-      - '.github/workflows/primesrc-pipeline.yml'
-      - 'tmdb_movie_input_list.txt'
 
 jobs:
   extract-urls:
@@ -117,50 +108,40 @@ jobs:
         if: failure()
         run: docker logs flaresolverr || true
 
-      # ── Artifacts ────────────────────────────────────────────────
-      - name: Upload API URL list
+      # ── Commit & push all input/output files back to main repo ───
+      # Every file produced (or updated) by the pipeline is committed
+      # directly into this repo so results persist across runs and are
+      # always visible in the repository without downloading artifacts.
+      - name: Save all pipeline files to repo
         if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: stage1-api-urls-list
-          path: output_stage1_api_urls_list.txt
-          if-no-files-found: ignore
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Upload stream URLs
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: final-stream-urls
-          path: final_stream_urls.txt
-          if-no-files-found: ignore
+          # Stage every tracked input/output file (only if it exists)
+          for FILE in \
+            tmdb_movie_input_list.txt \
+            output_stage1_api_urls_list.txt \
+            final_stream_urls_stage2.txt \
+            movie_streaming_data.json \
+            already_processed_urls_list.txt \
+            errorsfaced.txt; do
+            if [ -f "$FILE" ]; then
+              git add "$FILE"
+            fi
+          done
 
-      - name: Upload JSON summary
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: movie-streaming-data
-          path: |
-            movie_streaming_data.json
-            movie_streaming_data.gz.json
-          if-no-files-found: ignore
-
-      - name: Upload error/warning log
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: errors-faced-log
-          path: errorsfaced.txt
-          if-no-files-found: ignore
-
-      - name: Upload processed URLs tracker
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: already-processed-urls
-          path: already_processed_urls_list.txt
-          if-no-files-found: ignore
+          # Commit only if there is something new to commit
+          if git diff --cached --quiet; then
+            echo "No file changes to commit."
+          else
+            git commit -m "Pipeline run: update output files [$(date -u '+%Y-%m-%dT%H:%M:%SZ')]"
+            git push origin HEAD:main
+            echo "Files committed and pushed to main."
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # ── GitHub sync is handled inside dolkana.py (Stage 3) ──────
       # The script calls the GitHub Contents API directly to push
       # movie_streaming_data.json (and -2, -3 … if > 20 MB) to srtfile/movie-data.
-      # No git push needed here.
