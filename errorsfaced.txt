@@ -94,7 +94,6 @@ Total warnings/errors: 23
 [2026-08-19 01:39:08 UTC] [ERR]   [  34/92] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1712439
 [2026-08-19 01:39:09 UTC] [ERR]   [  37/92] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1739320
 [2026-08-19 01:39:10 UTC] [ERR]   [  41/92] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1541125
-[2026-08-19 01:39:11 UTC] [ERR]   [  43/92] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1538273
 [2026-08-19 01:39:16 UTC] [ERR]   [  58/92] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1745518
 [2026-08-19 01:39:17 UTC] [ERR]   [  59/92] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1746143
 [2026-08-19 01:39:18 UTC] [ERR]   [  63/92] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1741711
@@ -122,7 +121,6 @@ Total warnings/errors: 38
 [2026-08-20 01:37:35 UTC] [ERR]   [  34/114] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1712439
 [2026-08-20 01:37:36 UTC] [ERR]   [  37/114] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1739320
 [2026-08-20 01:37:37 UTC] [ERR]   [  41/114] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1541125
-[2026-08-20 01:37:38 UTC] [ERR]   [  43/114] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1538273
 [2026-08-20 01:37:41 UTC] [ERR]   [  51/114] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1745518
 [2026-08-20 01:37:42 UTC] [ERR]   [  52/114] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1746143
 [2026-08-20 01:37:42 UTC] [ERR]   [  53/114] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1741711
@@ -165,7 +163,6 @@ Total warnings/errors: 50
 [2026-08-21 01:42:23 UTC] [ERR]   [  33/137] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1712439
 [2026-08-21 01:42:24 UTC] [ERR]   [  36/137] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1739320
 [2026-08-21 01:42:26 UTC] [ERR]   [  40/137] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1541125
-[2026-08-21 01:42:26 UTC] [ERR]   [  41/137] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1538273
 [2026-08-21 01:42:28 UTC] [ERR]   [  49/137] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1745518
 [2026-08-21 01:42:29 UTC] [ERR]   [  50/137] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1746143
 [2026-08-21 01:42:29 UTC] [ERR]   [  51/137] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1741711
@@ -201,3 +198,73 @@ Total warnings/errors: 50
 [2026-08-21 01:42:53 UTC] [ERR]   [ 133/137] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1740068
 [2026-08-21 01:42:53 UTC] [ERR]   [ 134/137] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1739573
 [2026-08-21 01:42:54 UTC] [ERR]   [ 137/137] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1745569
+
+======================================================================
+Pipeline run finished: 2026-08-22T02:00:54.275781+00:00
+Total warnings/errors: 65
+======================================================================
+[2026-08-22 01:36:06 UTC] [ERR]   [   1/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1751405
+[2026-08-22 01:36:06 UTC] [ERR]   [   2/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1747951
+[2026-08-22 01:36:06 UTC] [ERR]   [   3/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1750885
+[2026-08-22 01:36:07 UTC] [ERR]   [   4/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1750855
+[2026-08-22 01:36:07 UTC] [ERR]   [   5/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1750510
+[2026-08-22 01:36:07 UTC] [ERR]   [   6/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1721282
+[2026-08-22 01:36:08 UTC] [ERR]   [   7/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1748651
+[2026-08-22 01:36:08 UTC] [ERR]   [   8/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1740946
+[2026-08-22 01:36:08 UTC] [ERR]   [   9/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1733214
+[2026-08-22 01:36:14 UTC] [ERR]   [  28/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1307247
+[2026-08-22 01:36:15 UTC] [ERR]   [  31/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1249458
+[2026-08-22 01:36:15 UTC] [ERR]   [  33/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1712439
+[2026-08-22 01:36:16 UTC] [ERR]   [  36/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1739320
+[2026-08-22 01:36:17 UTC] [ERR]   [  40/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1541125
+[2026-08-22 01:36:20 UTC] [ERR]   [  49/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1745518
+[2026-08-22 01:36:20 UTC] [ERR]   [  50/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1746143
+[2026-08-22 01:36:21 UTC] [ERR]   [  51/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1741711
+[2026-08-22 01:36:21 UTC] [ERR]   [  53/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1744799
+[2026-08-22 01:36:21 UTC] [ERR]   [  54/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1671541
+[2026-08-22 01:36:22 UTC] [ERR]   [  55/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1730821
+[2026-08-22 01:36:22 UTC] [ERR]   [  57/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1740777
+[2026-08-22 01:36:23 UTC] [ERR]   [  60/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1746465
+[2026-08-22 01:36:25 UTC] [ERR]   [  67/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1746116
+[2026-08-22 01:36:26 UTC] [ERR]   [  71/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1742932
+[2026-08-22 01:36:27 UTC] [ERR]   [  72/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1744669
+[2026-08-22 01:36:27 UTC] [ERR]   [  73/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1736202
+[2026-08-22 01:36:27 UTC] [ERR]   [  74/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1742499
+[2026-08-22 01:36:28 UTC] [ERR]   [  75/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1738265
+[2026-08-22 01:36:28 UTC] [ERR]   [  77/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1706435
+[2026-08-22 01:36:28 UTC] [ERR]   [  78/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1746210
+[2026-08-22 01:36:29 UTC] [ERR]   [  79/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1745702
+[2026-08-22 01:36:29 UTC] [ERR]   [  80/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1745152
+[2026-08-22 01:36:30 UTC] [ERR]   [  82/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1743060
+[2026-08-22 01:36:30 UTC] [ERR]   [  83/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1711796
+[2026-08-22 01:36:30 UTC] [ERR]   [  84/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1740332
+[2026-08-22 01:36:31 UTC] [ERR]   [  85/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1708627
+[2026-08-22 01:36:31 UTC] [ERR]   [  86/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1745493
+[2026-08-22 01:36:32 UTC] [ERR]   [  89/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1747727
+[2026-08-22 01:36:32 UTC] [ERR]   [  91/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1745280
+[2026-08-22 01:36:33 UTC] [ERR]   [  94/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1694783
+[2026-08-22 01:36:34 UTC] [ERR]   [  96/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1746668
+[2026-08-22 01:36:34 UTC] [ERR]   [  98/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1743572
+[2026-08-22 01:36:36 UTC] [ERR]   [ 104/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1730925
+[2026-08-22 01:36:36 UTC] [ERR]   [ 105/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1706696
+[2026-08-22 01:36:37 UTC] [ERR]   [ 106/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1567937
+[2026-08-22 01:36:38 UTC] [ERR]   [ 109/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1739732
+[2026-08-22 01:36:39 UTC] [ERR]   [ 112/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1740068
+[2026-08-22 01:36:39 UTC] [ERR]   [ 113/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1739573
+[2026-08-22 01:36:39 UTC] [ERR]   [ 114/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1745569
+[2026-08-22 01:36:41 UTC] [ERR]   [ 122/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1577326
+[2026-08-22 01:36:42 UTC] [ERR]   [ 123/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1747359
+[2026-08-22 01:36:43 UTC] [ERR]   [ 127/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1533282
+[2026-08-22 01:36:45 UTC] [ERR]   [ 133/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1741635
+[2026-08-22 01:36:46 UTC] [ERR]   [ 136/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1746402
+[2026-08-22 01:36:47 UTC] [ERR]   [ 140/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1744007
+[2026-08-22 01:36:47 UTC] [ERR]   [ 142/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1736101
+[2026-08-22 01:36:48 UTC] [ERR]   [ 144/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1725909
+[2026-08-22 01:36:48 UTC] [ERR]   [ 145/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1560599
+[2026-08-22 01:36:49 UTC] [ERR]   [ 147/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1737292
+[2026-08-22 01:36:49 UTC] [ERR]   [ 148/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1745094
+[2026-08-22 01:36:50 UTC] [ERR]   [ 151/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1726595
+[2026-08-22 01:36:50 UTC] [ERR]   [ 152/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1523433
+[2026-08-22 01:36:51 UTC] [ERR]   [ 153/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1739639
+[2026-08-22 01:36:52 UTC] [ERR]   [ 157/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1718220
+[2026-08-22 01:36:53 UTC] [ERR]   [ 160/164] HTTP Error 400: Bad Request  https://primesrc.me/embed/movie?tmdb=1740090
