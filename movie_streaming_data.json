@@ -114,6 +114,25 @@
   },
   {
     "serial": 7,
+    "title": "Memento",
+    "tmdb/imdb": "77/tt0209144",
+    "extracted_at": "2026-09-01T05:12:14Z",
+    "host-1": "https://bysejikuar.com/e/w9t1l22b4el8",
+    "host-2": "https://bysejikuar.com/e/ivct63kibtis/memento-2000-1080p-bluray-yify",
+    "host-3": "https://voe.sx/e/ovoibf6xczp2",
+    "host-4": "https://voe.sx/e/hh7firxtjbaf",
+    "host-5": "https://streamta.site/e/qvBKK2QBz9hz9pL/",
+    "host-6": "https://streamta.site/e/7kqGLPvrQyHA3aD/Memento.2000.REPACK.1080p.BluRay.x265-YAWNTiC.mkv",
+    "host-7": "https://dood.watch/e/ftu5pebnuklo",
+    "host-8": "https://dood.watch/e/9mxw3xjag4vr",
+    "host-9": "https://luluvdoo.com/e/zrkxm12ti0mf",
+    "host-10": "https://vidmoly.biz/embed-bnnaigy9s83f.html",
+    "host-11": "https://vidmoly.biz/embed-qi0ngugudmu3.html",
+    "host-12": "https://mixdrop.ag/e/921z4lu",
+    "host-13": "https://mixdrop.ag/e/0q89r8lsr6"
+  },
+  {
+    "serial": 8,
     "title": "Blade Runner",
     "tmdb/imdb": "78/tt0083658",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -137,7 +156,7 @@
     "host-18": "https://archive.org/embed/2021-04-04-15-24-06"
   },
   {
-    "serial": 8,
+    "serial": 9,
     "title": "Gladiator",
     "tmdb/imdb": "98/tt0172495",
     "extracted_at": "2026-08-31T05:58:09Z",
@@ -167,7 +186,7 @@
     "host-24": "https://archive.org/embed/cast.-away.-2000.1080p-z-flix-co/03+-+Hollywood+-+2000/Gladiator.2000.EXTENDED.1080p_zFlix+CO.mp4"
   },
   {
-    "serial": 9,
+    "serial": 10,
     "title": "Léon: The Professional",
     "tmdb/imdb": "101/tt0110413",
     "extracted_at": "2026-08-30T05:43:28Z",
@@ -188,7 +207,7 @@
     "host-15": "https://filelions.to/v/s9r5jq2z3fr0"
   },
   {
-    "serial": 10,
+    "serial": 11,
     "title": "Taxi Driver",
     "tmdb/imdb": "103/tt0075314",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -208,7 +227,7 @@
     "host-14": "https://vidnest.io/e/lz9ych8l6h7a"
   },
   {
-    "serial": 11,
+    "serial": 12,
     "title": "Run Lola Run",
     "tmdb/imdb": "104/tt0130827",
     "extracted_at": "2026-08-20T02:21:28Z",
@@ -219,7 +238,7 @@
     "host-5": "https://luluvdoo.com/e/gtiay32nlloz/"
   },
   {
-    "serial": 12,
+    "serial": 13,
     "title": "Back to the Future",
     "tmdb/imdb": "105/tt0088763",
     "extracted_at": "2026-08-29T07:42:01Z",
@@ -241,7 +260,7 @@
     "host-16": "https://filelions.to/v/dfv3n89egsvl"
   },
   {
-    "serial": 13,
+    "serial": 14,
     "title": "The Lord of the Rings: The Fellowship of the Ring",
     "tmdb/imdb": "120/tt0120737",
     "extracted_at": "2026-08-29T07:42:01Z",
@@ -269,7 +288,7 @@
     "host-22": "https://vidnest.io/e/9082r87f783o"
   },
   {
-    "serial": 14,
+    "serial": 15,
     "title": "The Lord of the Rings: The Two Towers",
     "tmdb/imdb": "121/tt0167261",
     "extracted_at": "2026-08-29T07:42:01Z",
@@ -299,7 +318,7 @@
     "host-24": "https://vidnest.io/e/rzxf9evfhn0o"
   },
   {
-    "serial": 15,
+    "serial": 16,
     "title": "The Lord of the Rings: The Return of the King",
     "tmdb/imdb": "122/tt0167260",
     "extracted_at": "2026-08-28T12:04:00Z",
@@ -323,7 +342,7 @@
     "host-18": "https://savefiles.com/e/p7ydrt7zuo4n"
   },
   {
-    "serial": 16,
+    "serial": 17,
     "title": "Princess Mononoke",
     "tmdb/imdb": "128/tt0119698",
     "extracted_at": "2026-08-29T07:42:01Z",
@@ -335,7 +354,7 @@
     "host-6": "https://mixdrop.ag/e/kn01dk8psvrv9"
   },
   {
-    "serial": 17,
+    "serial": 18,
     "title": "Spirited Away",
     "tmdb/imdb": "129/tt0245429",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -348,7 +367,7 @@
     "host-7": "https://mixdrop.ag/e/pk7v7pnocgwv3kn"
   },
   {
-    "serial": 18,
+    "serial": 19,
     "title": "Akira",
     "tmdb/imdb": "149/tt0094625",
     "extracted_at": "2026-08-18T05:59:51Z",
@@ -363,7 +382,7 @@
     "host-9": "https://mixdrop.ag/e/9wvemr0xhz0m7e"
   },
   {
-    "serial": 19,
+    "serial": 20,
     "title": "The Dark Knight",
     "tmdb/imdb": "155/tt0468569",
     "extracted_at": "2026-08-28T12:04:00Z",
@@ -387,7 +406,29 @@
     "host-18": "https://vidnest.io/e/brli5txqqziu"
   },
   {
-    "serial": 20,
+    "serial": 21,
+    "title": "A Clockwork Orange",
+    "tmdb/imdb": "185/tt0066921",
+    "extracted_at": "2026-09-01T05:12:14Z",
+    "host-1": "https://bysejikuar.com/e/re4ja2yfvmsq",
+    "host-2": "https://bysejikuar.com/e/bg2bnadegqv1/a-clockwork-orange-1971-1080p-brrip-yify",
+    "host-3": "https://voe.sx/e/piclnoi9jzgb",
+    "host-4": "https://voe.sx/e/arsjpcifpfus",
+    "host-5": "https://streamta.site/e/Q3640pBQrbC01wL/A.Clockwork.Orange.1971.REPACK.1080p.BluRay.x265-YAWNTiC.mkv",
+    "host-6": "https://dood.watch/e/xb9hx7k64o0a",
+    "host-7": "https://dood.watch/e/92h5g2rq3vk4",
+    "host-8": "https://dood.watch/e/uax3wkls3qas",
+    "host-9": "https://luluvdoo.com/e/u3oe46qyjm0q",
+    "host-10": "https://vidmoly.biz/embed-w93qprcwtko6.html",
+    "host-11": "https://vidmoly.biz/embed-ejx01yoq4o5r.html",
+    "host-12": "https://mixdrop.ag/e/zg5xhu9dai",
+    "host-13": "https://mixdrop.ag/e/1vkwq3pnbw1v8o",
+    "host-14": "https://mixdrop.ag/e/k0wzzx3xskg0j0",
+    "host-15": "https://mixdrop.ag/e/4ng3gx10fd4w1z",
+    "host-16": "https://filelions.to/v/e94kwt19itqx"
+  },
+  {
+    "serial": 22,
     "title": "Dead Poets Society",
     "tmdb/imdb": "207/tt0097165",
     "extracted_at": "2026-08-30T05:43:28Z",
@@ -409,7 +450,7 @@
     "host-16": "https://filelions.to/v/9y3jmbcb5qrk"
   },
   {
-    "serial": 21,
+    "serial": 23,
     "title": "The Terminator",
     "tmdb/imdb": "218/tt0088247",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -431,14 +472,14 @@
     "host-16": "https://vidnest.io/e/gd8ri6a1li7n"
   },
   {
-    "serial": 22,
+    "serial": 24,
     "title": "The Cabinet of Dr. Caligari",
     "tmdb/imdb": "234/tt0010323",
     "extracted_at": "2026-08-28T12:04:00Z",
     "host-1": "https://www.youtube.com/embed/j288cj5Phho"
   },
   {
-    "serial": 23,
+    "serial": 25,
     "title": "The Godfather",
     "tmdb/imdb": "238/tt0068646",
     "extracted_at": "2026-08-28T12:04:00Z",
@@ -468,7 +509,7 @@
     "host-24": "https://vidnest.io/e/iepjbox88ujd"
   },
   {
-    "serial": 24,
+    "serial": 26,
     "title": "The Godfather Part II",
     "tmdb/imdb": "240/tt0071562",
     "extracted_at": "2026-08-28T12:04:00Z",
@@ -492,7 +533,7 @@
     "host-18": "https://vidnest.io/e/ciqff4urproh"
   },
   {
-    "serial": 25,
+    "serial": 27,
     "title": "Willy Wonka & the Chocolate Factory",
     "tmdb/imdb": "252/tt0067992",
     "extracted_at": "2026-08-18T05:59:51Z",
@@ -509,7 +550,7 @@
     "host-11": "https://mixdrop.ag/e/84dmle7qsjpogz"
   },
   {
-    "serial": 26,
+    "serial": 28,
     "title": "The Silence of the Lambs",
     "tmdb/imdb": "274/tt0102926",
     "extracted_at": "2026-08-29T07:42:01Z",
@@ -529,7 +570,7 @@
     "host-14": "https://vidnest.io/e/fbwidm2f9slg"
   },
   {
-    "serial": 27,
+    "serial": 29,
     "title": "The Shawshank Redemption",
     "tmdb/imdb": "278/tt0111161",
     "extracted_at": "2026-08-26T02:29:38Z",
@@ -560,7 +601,20 @@
     "host-25": "https://vidnest.io/e/r8u8dsznmk00"
   },
   {
-    "serial": 28,
+    "serial": 30,
+    "title": "The Apartment",
+    "tmdb/imdb": "284/tt0053604",
+    "extracted_at": "2026-09-01T05:12:14Z",
+    "host-1": "https://bysejikuar.com/e/9a15yfv7wffc/the-apartment-1960-1080p-bluray-x264-yts-ag",
+    "host-2": "https://voe.sx/e/izd8enhyly84",
+    "host-3": "https://streamta.site/e/G60oy9gYmZT1J0e/The_Apartment_1960_1080p_MUBI_WEB-DL_x264_AAC_-_HdT.ff.mp4",
+    "host-4": "https://dood.watch/e/p4k7dtcpta7m",
+    "host-5": "https://dood.watch/e/byvcp8rjj2ue",
+    "host-6": "https://luluvdoo.com/e/gvcn6ngknb67",
+    "host-7": "https://mixdrop.ag/e/elnzmz9qc8zr80"
+  },
+  {
+    "serial": 31,
     "title": "Casablanca",
     "tmdb/imdb": "289/tt0034583",
     "extracted_at": "2026-08-18T05:59:51Z",
@@ -579,7 +633,7 @@
     "host-13": "https://vidnest.io/e/htgk0r2id9fb"
   },
   {
-    "serial": 29,
+    "serial": 32,
     "title": "Once Upon a Time in America",
     "tmdb/imdb": "311/tt0087843",
     "extracted_at": "2026-08-29T07:42:01Z",
@@ -595,7 +649,7 @@
     "host-10": "https://archive.org/embed/vhs-tape-once-upon-a-time-in-america"
   },
   {
-    "serial": 30,
+    "serial": 33,
     "title": "Once Upon a Time in the West",
     "tmdb/imdb": "335/tt0064116",
     "extracted_at": "2026-08-30T05:43:28Z",
@@ -607,7 +661,7 @@
     "host-6": "https://www.youtube.com/embed/KBNTWzbcuuk"
   },
   {
-    "serial": 31,
+    "serial": 34,
     "title": "Seven Samurai",
     "tmdb/imdb": "346/tt0047478",
     "extracted_at": "2026-08-29T07:42:01Z",
@@ -620,7 +674,7 @@
     "host-7": "https://mixdrop.ag/e/r6wp1qr6h1qn8x"
   },
   {
-    "serial": 32,
+    "serial": 35,
     "title": "Alien",
     "tmdb/imdb": "348/tt0078748",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -643,7 +697,7 @@
     "host-17": "https://filelions.to/v/2b13bn0ewgmn"
   },
   {
-    "serial": 33,
+    "serial": 36,
     "title": "12 Angry Men",
     "tmdb/imdb": "389/tt0050083",
     "extracted_at": "2026-08-28T12:04:00Z",
@@ -664,7 +718,7 @@
     "host-15": "https://filelions.to/v/4q1e63u8fw6a"
   },
   {
-    "serial": 34,
+    "serial": 37,
     "title": "The Pianist",
     "tmdb/imdb": "423/tt0253474",
     "extracted_at": "2026-08-29T07:42:01Z",
@@ -682,7 +736,7 @@
     "host-12": "https://www.youtube.com/embed/zLSNh-LwJrI"
   },
   {
-    "serial": 35,
+    "serial": 38,
     "title": "Schindler's List",
     "tmdb/imdb": "424/tt0108052",
     "extracted_at": "2026-08-28T12:04:00Z",
@@ -707,7 +761,7 @@
     "host-19": "https://vidnest.io/e/ljiap13nmmfd"
   },
   {
-    "serial": 36,
+    "serial": 39,
     "title": "Mon Oncle",
     "tmdb/imdb": "427/tt0050706",
     "extracted_at": "2026-08-24T01:56:30Z",
@@ -715,7 +769,7 @@
     "host-2": "https://mixdrop.ag/e/el6r0rqqbp0mn4"
   },
   {
-    "serial": 37,
+    "serial": 40,
     "title": "The Good, the Bad and the Ugly",
     "tmdb/imdb": "429/tt0060196",
     "extracted_at": "2026-08-29T07:42:01Z",
@@ -736,14 +790,14 @@
     "host-15": "https://www.youtube.com/embed/4oCdwxmeM2A"
   },
   {
-    "serial": 38,
+    "serial": 41,
     "title": "Klute",
     "tmdb/imdb": "466/tt0067309",
     "extracted_at": "2026-08-23T02:09:08Z",
     "host-1": "https://dood.watch/e/d8n407prhukc"
   },
   {
-    "serial": 39,
+    "serial": 42,
     "title": "The Green Mile",
     "tmdb/imdb": "497/tt0120689",
     "extracted_at": "2026-08-28T12:04:00Z",
@@ -769,7 +823,7 @@
     "host-20": "https://filelions.to/v/hqedvqhzi2jf"
   },
   {
-    "serial": 40,
+    "serial": 43,
     "title": "One Flew Over the Cuckoo's Nest",
     "tmdb/imdb": "510/tt0073486",
     "extracted_at": "2026-08-29T07:42:01Z",
@@ -789,7 +843,7 @@
     "host-14": "https://www.youtube.com/embed/xJcnbHccI7A"
   },
   {
-    "serial": 41,
+    "serial": 44,
     "title": "Psycho",
     "tmdb/imdb": "539/tt0054215",
     "extracted_at": "2026-08-29T07:42:01Z",
@@ -802,7 +856,7 @@
     "host-7": "https://mixdrop.ag/e/erltwzz2xk"
   },
   {
-    "serial": 42,
+    "serial": 45,
     "title": "Fight Club",
     "tmdb/imdb": "550/tt0137523",
     "extracted_at": "2026-08-29T07:42:01Z",
@@ -833,7 +887,7 @@
     "host-25": "https://filelions.to/v/lcrimmjdf165"
   },
   {
-    "serial": 43,
+    "serial": 46,
     "title": "Rear Window",
     "tmdb/imdb": "567/tt0047396",
     "extracted_at": "2026-08-29T07:42:01Z",
@@ -848,7 +902,7 @@
     "host-9": "https://mixdrop.ag/e/k0eov3mof8z0w1"
   },
   {
-    "serial": 44,
+    "serial": 47,
     "title": "Solaris",
     "tmdb/imdb": "593/tt0069293",
     "extracted_at": "2026-08-21T02:19:47Z",
@@ -859,7 +913,7 @@
     "host-5": "https://www.youtube.com/embed/Z8ZhQPaw4rE"
   },
   {
-    "serial": 45,
+    "serial": 48,
     "title": "City of God",
     "tmdb/imdb": "598/tt0317248",
     "extracted_at": "2026-08-29T07:42:01Z",
@@ -871,7 +925,7 @@
     "host-6": "https://luluvdoo.com/e/rk2pz46vkuto/"
   },
   {
-    "serial": 46,
+    "serial": 49,
     "title": "Sunset Boulevard",
     "tmdb/imdb": "599/tt0043014",
     "extracted_at": "2026-08-30T05:43:28Z",
@@ -883,7 +937,7 @@
     "host-6": "https://vidmoly.biz/embed-vd1hy68h07kk.html"
   },
   {
-    "serial": 47,
+    "serial": 50,
     "title": "The Matrix",
     "tmdb/imdb": "603/tt0133093",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -913,7 +967,7 @@
     "host-24": "https://vidnest.io/e/9gpgmpbl78f3"
   },
   {
-    "serial": 48,
+    "serial": 51,
     "title": "Trainspotting",
     "tmdb/imdb": "627/tt0117951",
     "extracted_at": "2026-08-30T05:43:28Z",
@@ -930,7 +984,7 @@
     "host-11": "https://mixdrop.ag/e/67pn338qcpjrm0"
   },
   {
-    "serial": 49,
+    "serial": 52,
     "title": "Life Is Beautiful",
     "tmdb/imdb": "637/tt0118799",
     "extracted_at": "2026-08-29T07:42:01Z",
@@ -938,7 +992,7 @@
     "host-2": "https://dood.watch/e/53zb8mradx8p"
   },
   {
-    "serial": 50,
+    "serial": 53,
     "title": "A.I. Artificial Intelligence",
     "tmdb/imdb": "644/tt0212720",
     "extracted_at": "2026-08-18T05:59:51Z",
@@ -957,7 +1011,7 @@
     "host-13": "https://archive.org/embed/a.-beautiful.-mind.-2001.1080p-z-flix-co/02+-+Hollywood+-+2001/Artificial+Intelligence+AI+%5B2001%5D_zFlix+CO.mp4"
   },
   {
-    "serial": 51,
+    "serial": 54,
     "title": "On the Waterfront",
     "tmdb/imdb": "654/tt0047296",
     "extracted_at": "2026-08-19T02:21:24Z",
@@ -966,7 +1020,7 @@
     "host-3": "https://mixdrop.ag/e/pjpjv93zfp3z43"
   },
   {
-    "serial": 52,
+    "serial": 55,
     "title": "Oldboy",
     "tmdb/imdb": "670/tt0364569",
     "extracted_at": "2026-08-31T05:58:09Z",
@@ -980,7 +1034,7 @@
     "host-8": "https://mixdrop.ag/e/m5k90"
   },
   {
-    "serial": 53,
+    "serial": 56,
     "title": "Harry Potter and the Philosopher's Stone",
     "tmdb/imdb": "671/tt0241527",
     "extracted_at": "2026-08-20T02:21:28Z",
@@ -1009,7 +1063,7 @@
     "host-23": "https://vidnest.io/e/nch7heufpa67"
   },
   {
-    "serial": 54,
+    "serial": 57,
     "title": "Harry Potter and the Chamber of Secrets",
     "tmdb/imdb": "672/tt0295297",
     "extracted_at": "2026-08-26T02:29:38Z",
@@ -1041,7 +1095,7 @@
     "host-26": "https://vidnest.io/e/cje6qkecmpgo"
   },
   {
-    "serial": 55,
+    "serial": 58,
     "title": "Harry Potter and the Prisoner of Azkaban",
     "tmdb/imdb": "673/tt0304141",
     "extracted_at": "2026-08-26T02:29:38Z",
@@ -1072,7 +1126,7 @@
     "host-25": "https://vidnest.io/e/e62uobo2sabi"
   },
   {
-    "serial": 56,
+    "serial": 59,
     "title": "Harry Potter and the Goblet of Fire",
     "tmdb/imdb": "674/tt0330373",
     "extracted_at": "2026-08-26T02:29:38Z",
@@ -1101,7 +1155,7 @@
     "host-23": "https://vidnest.io/e/tupnb1dba277"
   },
   {
-    "serial": 57,
+    "serial": 60,
     "title": "Harry Potter and the Order of the Phoenix",
     "tmdb/imdb": "675/tt0373889",
     "extracted_at": "2026-08-26T02:29:38Z",
@@ -1129,7 +1183,7 @@
     "host-22": "https://vidnest.io/e/qq9vn994nq2d"
   },
   {
-    "serial": 58,
+    "serial": 61,
     "title": "Pulp Fiction",
     "tmdb/imdb": "680/tt0110912",
     "extracted_at": "2026-08-28T12:04:00Z",
@@ -1157,7 +1211,7 @@
     "host-22": "https://vidnest.io/e/2701zj8vfj7c"
   },
   {
-    "serial": 59,
+    "serial": 62,
     "title": "The Shining",
     "tmdb/imdb": "694/tt0081505",
     "extracted_at": "2026-08-31T05:58:09Z",
@@ -1179,7 +1233,7 @@
     "host-16": "https://filelions.to/v/zcxmjwfame8k"
   },
   {
-    "serial": 60,
+    "serial": 63,
     "title": "Harry Potter and the Half-Blood Prince",
     "tmdb/imdb": "767/tt0417741",
     "extracted_at": "2026-08-26T02:29:38Z",
@@ -1205,7 +1259,7 @@
     "host-20": "https://vidnest.io/e/4jhrd81ad85i"
   },
   {
-    "serial": 61,
+    "serial": 64,
     "title": "GoodFellas",
     "tmdb/imdb": "769/tt0099685",
     "extracted_at": "2026-08-29T07:42:01Z",
@@ -1232,7 +1286,7 @@
     "host-21": "https://filelions.to/v/aey6uw6jjplj"
   },
   {
-    "serial": 62,
+    "serial": 65,
     "title": "Grand Illusion",
     "tmdb/imdb": "777/tt0028950",
     "extracted_at": "2026-08-23T02:09:08Z",
@@ -1240,7 +1294,7 @@
     "host-2": "https://dood.watch/e/xix1yf74z04l"
   },
   {
-    "serial": 63,
+    "serial": 66,
     "title": "Se7en",
     "tmdb/imdb": "807/tt0114369",
     "extracted_at": "2026-08-29T07:42:01Z",
@@ -1268,7 +1322,7 @@
     "host-22": "https://filelions.to/v/4iecdwvgm92r"
   },
   {
-    "serial": 64,
+    "serial": 67,
     "title": "Forbidden Planet",
     "tmdb/imdb": "830/tt0049223",
     "extracted_at": "2026-08-20T02:21:28Z",
@@ -1277,7 +1331,7 @@
     "host-3": "https://mixdrop.ag/e/xowlxpnpf108dx"
   },
   {
-    "serial": 65,
+    "serial": 68,
     "title": "Dune",
     "tmdb/imdb": "841/tt0087182",
     "extracted_at": "2026-08-18T05:59:51Z",
@@ -1297,7 +1351,7 @@
     "host-14": "https://archive.org/embed/DuneTheCompleteSagaVimeo"
   },
   {
-    "serial": 66,
+    "serial": 69,
     "title": "Saving Private Ryan",
     "tmdb/imdb": "857/tt0120815",
     "extracted_at": "2026-08-31T05:58:09Z",
@@ -1321,7 +1375,7 @@
     "host-18": "https://filelions.to/v/i92mjr7ammr7"
   },
   {
-    "serial": 67,
+    "serial": 70,
     "title": "Planet of the Apes",
     "tmdb/imdb": "871/tt0063442",
     "extracted_at": "2026-08-18T05:59:51Z",
@@ -1333,7 +1387,7 @@
     "host-6": "https://mixdrop.ag/e/n0evg14duzw4n3"
   },
   {
-    "serial": 68,
+    "serial": 71,
     "title": "Singin' in the Rain",
     "tmdb/imdb": "872/tt0045152",
     "extracted_at": "2026-08-18T05:59:51Z",
@@ -1344,7 +1398,7 @@
     "host-5": "https://luluvdoo.com/e/48cilh5u58o9"
   },
   {
-    "serial": 69,
+    "serial": 72,
     "title": "City Lights",
     "tmdb/imdb": "901/tt0021749",
     "extracted_at": "2026-08-31T05:58:09Z",
@@ -1353,7 +1407,7 @@
     "host-3": "https://dood.watch/e/a1krziagtl85"
   },
   {
-    "serial": 70,
+    "serial": 73,
     "title": "The Great Dictator",
     "tmdb/imdb": "914/tt0032553",
     "extracted_at": "2026-08-30T05:43:28Z",
@@ -1365,7 +1419,7 @@
     "host-6": "https://vidmoly.biz/embed-576tzigabu1x.html"
   },
   {
-    "serial": 71,
+    "serial": 74,
     "title": "Lawrence of Arabia",
     "tmdb/imdb": "947/tt0056172",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -1380,7 +1434,7 @@
     "host-9": "https://vidnest.io/e/h1qrqe4y5qhx"
   },
   {
-    "serial": 72,
+    "serial": 75,
     "title": "Paths of Glory",
     "tmdb/imdb": "975/tt0050825",
     "extracted_at": "2026-08-19T02:21:24Z",
@@ -1391,7 +1445,7 @@
     "host-5": "https://www.youtube.com/embed/PZ8mNy4pmJg"
   },
   {
-    "serial": 73,
+    "serial": 76,
     "title": "The Prestige",
     "tmdb/imdb": "1124/tt0482571",
     "extracted_at": "2026-08-31T05:58:09Z",
@@ -1419,7 +1473,7 @@
     "host-22": "https://www.youtube.com/embed/vSqerYAVUmY"
   },
   {
-    "serial": 74,
+    "serial": 77,
     "title": "The Dreamers",
     "tmdb/imdb": "1278/tt0309987",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -1432,7 +1486,7 @@
     "host-7": "https://filelions.to/v/uakkfs5juweb"
   },
   {
-    "serial": 75,
+    "serial": 78,
     "title": "It's a Wonderful Life",
     "tmdb/imdb": "1585/tt0038650",
     "extracted_at": "2026-08-30T05:43:28Z",
@@ -1442,7 +1496,7 @@
     "host-4": "https://luluvdoo.com/e/emyqdydqg1s5"
   },
   {
-    "serial": 76,
+    "serial": 79,
     "title": "The Double Life of Véronique",
     "tmdb/imdb": "1600/tt0101765",
     "extracted_at": "2026-08-23T02:09:08Z",
@@ -1454,7 +1508,7 @@
     "host-6": "https://mixdrop.ag/e/mkdzrxdgijn7o8"
   },
   {
-    "serial": 77,
+    "serial": 80,
     "title": "The Mummy Returns",
     "tmdb/imdb": "1734/tt0209163",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -1475,7 +1529,7 @@
     "host-15": "https://vidnest.io/e/vridmbrq6u5i"
   },
   {
-    "serial": 78,
+    "serial": 81,
     "title": "The Piano Teacher",
     "tmdb/imdb": "1791/tt0254686",
     "extracted_at": "2026-08-18T05:59:51Z",
@@ -1484,7 +1538,7 @@
     "host-3": "https://mixdrop.ag/e/03zn8goqhz90e9"
   },
   {
-    "serial": 79,
+    "serial": 82,
     "title": "The Empire Strikes Back",
     "tmdb/imdb": "1891/tt0080684",
     "extracted_at": "2026-08-29T07:42:01Z",
@@ -1505,7 +1559,7 @@
     "host-15": "https://archive.org/embed/star-wars-1977_20250424/Star+Wars%3B+The+Empire+Strikes+Back+(1980).mp4"
   },
   {
-    "serial": 80,
+    "serial": 83,
     "title": "Wet Hot American Summer",
     "tmdb/imdb": "2171/tt0243655",
     "extracted_at": "2026-08-21T02:19:47Z",
@@ -1518,14 +1572,14 @@
     "host-7": "https://mixdrop.ag/e/67qrjdv1cp7946"
   },
   {
-    "serial": 81,
+    "serial": 84,
     "title": "Zabriskie Point",
     "tmdb/imdb": "2998/tt0066601",
     "extracted_at": "2026-08-24T01:56:30Z",
     "host-1": "https://dood.watch/e/t1uqc9likk2a"
   },
   {
-    "serial": 82,
+    "serial": 85,
     "title": "Modern Times",
     "tmdb/imdb": "3082/tt0027977",
     "extracted_at": "2026-08-30T05:43:28Z",
@@ -1539,7 +1593,15 @@
     "host-8": "https://mixdrop.ag/e/03zqnojwfqj360"
   },
   {
-    "serial": 83,
+    "serial": 86,
+    "title": "Red Beard",
+    "tmdb/imdb": "3780/tt0058888",
+    "extracted_at": "2026-09-01T05:12:14Z",
+    "host-1": "https://dood.watch/e/wsmtm5t7w4v3",
+    "host-2": "https://mixdrop.ag/e/1nd0eknzukk1krj"
+  },
+  {
+    "serial": 87,
     "title": "Ikiru",
     "tmdb/imdb": "3782/tt0044741",
     "extracted_at": "2026-08-30T05:43:28Z",
@@ -1547,7 +1609,7 @@
     "host-2": "https://mixdrop.ag/e/rww639wjtv4o3r1"
   },
   {
-    "serial": 84,
+    "serial": 88,
     "title": "Howl's Moving Castle",
     "tmdb/imdb": "4935/tt0347149",
     "extracted_at": "2026-08-29T07:42:01Z",
@@ -1561,21 +1623,21 @@
     "host-8": "https://mixdrop.ag/e/jtd5q"
   },
   {
-    "serial": 85,
+    "serial": 89,
     "title": "The Swimming Pool",
     "tmdb/imdb": "4946/tt0064816",
     "extracted_at": "2026-08-20T02:21:28Z",
     "host-1": "https://www.youtube.com/embed/EqNTcDmdN9I"
   },
   {
-    "serial": 86,
+    "serial": 90,
     "title": "The Umbrellas of Cherbourg",
     "tmdb/imdb": "5967/tt0058450",
     "extracted_at": "2026-08-23T02:09:08Z",
     "host-1": "https://dood.watch/e/vgi3jijp4qzc"
   },
   {
-    "serial": 87,
+    "serial": 91,
     "title": "Practical Magic",
     "tmdb/imdb": "6435/tt0120791",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -1584,7 +1646,7 @@
     "host-3": "https://dood.watch/e/3gmhzje3l32w"
   },
   {
-    "serial": 88,
+    "serial": 92,
     "title": "The Lion King",
     "tmdb/imdb": "8587/tt0110357",
     "extracted_at": "2026-08-31T05:58:09Z",
@@ -1599,7 +1661,7 @@
     "host-9": "https://mixdrop.ag/e/1n4okxxpiwljxg"
   },
   {
-    "serial": 89,
+    "serial": 93,
     "title": "Nineteen Eighty-Four",
     "tmdb/imdb": "9314/tt0087803",
     "extracted_at": "2026-08-19T02:21:24Z",
@@ -1611,7 +1673,7 @@
     "host-6": "https://archive.org/embed/ORWELL1984"
   },
   {
-    "serial": 90,
+    "serial": 94,
     "title": "Ghost in the Shell",
     "tmdb/imdb": "9323/tt0113568",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -1624,7 +1686,14 @@
     "host-7": "https://www.youtube.com/embed/iHil4Y4r3Wk"
   },
   {
-    "serial": 91,
+    "serial": 95,
+    "title": "Wuthering Heights",
+    "tmdb/imdb": "9364/tt1181614",
+    "extracted_at": "2026-09-01T05:12:14Z",
+    "host-1": "https://mixdrop.ag/e/gn47qgweae1vmr"
+  },
+  {
+    "serial": 96,
     "title": "Martyrs",
     "tmdb/imdb": "9539/tt1029234",
     "extracted_at": "2026-08-18T05:59:51Z",
@@ -1634,7 +1703,7 @@
     "host-4": "https://mixdrop.ag/e/xo6en7xxt4ej16"
   },
   {
-    "serial": 92,
+    "serial": 97,
     "title": "Bound by Honor",
     "tmdb/imdb": "9702/tt0106469",
     "extracted_at": "2026-08-31T05:58:09Z",
@@ -1644,7 +1713,7 @@
     "host-4": "https://www.youtube.com/embed/Yp0UMzVYVk8"
   },
   {
-    "serial": 93,
+    "serial": 98,
     "title": "PlayTime",
     "tmdb/imdb": "10227/tt0062136",
     "extracted_at": "2026-08-22T02:00:50Z",
@@ -1658,7 +1727,7 @@
     "host-8": "https://archive.org/embed/playtime-tempo-de-diversao-1967-7-8"
   },
   {
-    "serial": 94,
+    "serial": 99,
     "title": "The Legend of 1900",
     "tmdb/imdb": "10376/tt0120731",
     "extracted_at": "2026-08-31T05:58:09Z",
@@ -1666,7 +1735,7 @@
     "host-2": "https://dood.watch/e/celhl2bvm63f"
   },
   {
-    "serial": 95,
+    "serial": 100,
     "title": "Perfect Blue",
     "tmdb/imdb": "10494/tt0156887",
     "extracted_at": "2026-08-30T05:43:28Z",
@@ -1677,7 +1746,7 @@
     "host-5": "https://mixdrop.ag/e/dyswx"
   },
   {
-    "serial": 96,
+    "serial": 101,
     "title": "WALL·E",
     "tmdb/imdb": "10681/tt0910970",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -1701,7 +1770,7 @@
     "host-18": "https://vidnest.io/e/6mxnikfzj48k"
   },
   {
-    "serial": 97,
+    "serial": 102,
     "title": "The Notebook",
     "tmdb/imdb": "11036/tt0332280",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -1731,7 +1800,7 @@
     "host-24": "https://vidnest.io/e/gjbz49z2fncz"
   },
   {
-    "serial": 98,
+    "serial": 103,
     "title": "Mysterious Skin",
     "tmdb/imdb": "11171/tt0370986",
     "extracted_at": "2026-08-27T09:02:11Z",
@@ -1741,7 +1810,7 @@
     "host-4": "https://mixdrop.ag/e/7uel5m4a6m"
   },
   {
-    "serial": 99,
+    "serial": 104,
     "title": "Cinema Paradiso",
     "tmdb/imdb": "11216/tt0095765",
     "extracted_at": "2026-08-29T07:42:01Z",
@@ -1750,7 +1819,34 @@
     "host-3": "https://mixdrop.ag/e/l7elrowxt4z7o8"
   },
   {
-    "serial": 100,
+    "serial": 105,
+    "title": "Shutter Island",
+    "tmdb/imdb": "11324/tt1130884",
+    "extracted_at": "2026-09-01T05:12:14Z",
+    "host-1": "https://bysejikuar.com/e/9qp42jothe6k/",
+    "host-2": "https://bysejikuar.com/e/1qgrf7199wy1",
+    "host-3": "https://bysejikuar.com/e/eikwz33vqerj",
+    "host-4": "https://voe.sx/e/jbrfodccjjvq",
+    "host-5": "https://voe.sx/e/5xyiyhqxwzri",
+    "host-6": "https://voe.sx/e/tfq0dg7ke0tu",
+    "host-7": "https://streamta.site/e/pYq0AOj0GWCrkZV/Shutter.Island.English.1080p.BluRay.x265.mkv",
+    "host-8": "https://streamta.site/e/LqzG7laDwwURKj9/",
+    "host-9": "https://streamta.site/e/L1wLv7X3jrfeq3",
+    "host-10": "https://dood.watch/e/w5p2ktyimf8s",
+    "host-11": "https://dood.watch/e/l8ha58fbcga6",
+    "host-12": "https://dood.watch/e/r57e6o8gcjmn",
+    "host-13": "https://luluvdoo.com/e/ad1bbr18443m",
+    "host-14": "https://luluvdoo.com/e/vf6nqxsspah4",
+    "host-15": "https://luluvdoo.com/e/sgfgkmmf7dcw",
+    "host-16": "https://mixdrop.ag/e/xwooppkmb1evx9",
+    "host-17": "https://mixdrop.ag/e/q164wrrktllmko",
+    "host-18": "https://mixdrop.ag/e/dkr1em9lark00p",
+    "host-19": "https://filelions.to/v/gfnya3v16441",
+    "host-20": "https://filelions.to/v/mu36mf6vw8ye",
+    "host-21": "https://filelions.to/v/7gl9wzcmqm21"
+  },
+  {
+    "serial": 106,
     "title": "Midnight Express",
     "tmdb/imdb": "11327/tt0077928",
     "extracted_at": "2026-08-18T05:59:51Z",
@@ -1762,7 +1858,7 @@
     "host-6": "https://www.youtube.com/embed/_ncyCsa91tg"
   },
   {
-    "serial": 101,
+    "serial": 107,
     "title": "Following",
     "tmdb/imdb": "11660/tt0154506",
     "extracted_at": "2026-08-20T02:21:28Z",
@@ -1776,7 +1872,7 @@
     "host-8": "https://mixdrop.ag/e/xwlxo3nkaknk76"
   },
   {
-    "serial": 102,
+    "serial": 108,
     "title": "Ghost in the Shell 2: Innocence",
     "tmdb/imdb": "12140/tt0347246",
     "extracted_at": "2026-08-21T02:19:47Z",
@@ -1784,7 +1880,7 @@
     "host-2": "https://dood.watch/e/6rzmfo0yc4e4"
   },
   {
-    "serial": 103,
+    "serial": 109,
     "title": "Harry Potter and the Deathly Hallows: Part 1",
     "tmdb/imdb": "12444/tt0926084",
     "extracted_at": "2026-08-26T02:29:38Z",
@@ -1814,7 +1910,7 @@
     "host-24": "https://vidnest.io/e/ydb32ab80dgm"
   },
   {
-    "serial": 104,
+    "serial": 110,
     "title": "Harry Potter and the Deathly Hallows: Part 2",
     "tmdb/imdb": "12445/tt1201607",
     "extracted_at": "2026-08-26T02:29:38Z",
@@ -1841,7 +1937,7 @@
     "host-21": "https://vidnest.io/e/4r1rbuphzsza"
   },
   {
-    "serial": 105,
+    "serial": 111,
     "title": "Grave of the Fireflies",
     "tmdb/imdb": "12477/tt0095327",
     "extracted_at": "2026-08-29T07:42:01Z",
@@ -1860,7 +1956,7 @@
     "host-13": "https://vidnest.io/e/an4ab6j36abf"
   },
   {
-    "serial": 106,
+    "serial": 112,
     "title": "High and Low",
     "tmdb/imdb": "12493/tt0057565",
     "extracted_at": "2026-08-29T07:42:01Z",
@@ -1868,7 +1964,7 @@
     "host-2": "https://dood.watch/e/fmsfw9c1q6xj"
   },
   {
-    "serial": 107,
+    "serial": 113,
     "title": "Harakiri",
     "tmdb/imdb": "14537/tt0056058",
     "extracted_at": "2026-08-29T07:42:01Z",
@@ -1876,7 +1972,7 @@
     "host-2": "https://dood.watch/e/8eqtryro54ce"
   },
   {
-    "serial": 108,
+    "serial": 114,
     "title": "Only Yesterday",
     "tmdb/imdb": "15080/tt0102587",
     "extracted_at": "2026-08-21T02:19:47Z",
@@ -1887,7 +1983,7 @@
     "host-5": "https://luluvdoo.com/e/zcvpj6gkc10w"
   },
   {
-    "serial": 109,
+    "serial": 115,
     "title": "A Brighter Summer Day",
     "tmdb/imdb": "15804/tt0101985",
     "extracted_at": "2026-08-31T05:58:09Z",
@@ -1895,7 +1991,7 @@
     "host-2": "https://dood.watch/e/aojmve1l107b"
   },
   {
-    "serial": 110,
+    "serial": 116,
     "title": "The Wicker Man",
     "tmdb/imdb": "16307/tt0070917",
     "extracted_at": "2026-08-19T02:21:24Z",
@@ -1906,7 +2002,7 @@
     "host-5": "https://archive.org/embed/The.Wicker.Man.1973.720p.BluRay.x264.YIFY"
   },
   {
-    "serial": 111,
+    "serial": 117,
     "title": "Kiki's Delivery Service",
     "tmdb/imdb": "16859/tt0097814",
     "extracted_at": "2026-08-20T02:21:28Z",
@@ -1920,7 +2016,7 @@
     "host-8": "https://mixdrop.ag/e/fq5fe"
   },
   {
-    "serial": 112,
+    "serial": 118,
     "title": "Inglourious Basterds",
     "tmdb/imdb": "16869/tt0361748",
     "extracted_at": "2026-08-31T05:58:09Z",
@@ -1949,7 +2045,7 @@
     "host-23": "https://filelions.to/v/i3h4k8q0nrrz"
   },
   {
-    "serial": 113,
+    "serial": 119,
     "title": "District 9",
     "tmdb/imdb": "17654/tt1136608",
     "extracted_at": "2026-08-18T05:59:51Z",
@@ -1969,7 +2065,7 @@
     "host-14": "https://vidnest.io/e/vhz5vjiali0e"
   },
   {
-    "serial": 114,
+    "serial": 120,
     "title": "Dilwale Dulhania Le Jayenge",
     "tmdb/imdb": "19404/tt0112870",
     "extracted_at": "2026-08-28T12:04:00Z",
@@ -1977,42 +2073,53 @@
     "host-2": "https://mixdrop.ag/e/r69wv7gkbdjmx"
   },
   {
-    "serial": 115,
+    "serial": 121,
     "title": "Neon Genesis Evangelion: Death and Rebirth",
     "tmdb/imdb": "21832/tt0169880",
     "extracted_at": "2026-08-21T02:19:47Z",
     "host-1": "https://dood.watch/e/ll8kq7ijv0em"
   },
   {
-    "serial": 116,
+    "serial": 122,
     "title": "Werckmeister Harmonies",
     "tmdb/imdb": "23160/tt0249241",
     "extracted_at": "2026-08-24T01:56:30Z",
     "host-1": "https://dood.watch/e/zyg8a1sgxh3p"
   },
   {
-    "serial": 117,
+    "serial": 123,
     "title": "Il Sorpasso",
     "tmdb/imdb": "24188/tt0056512",
     "extracted_at": "2026-08-31T05:58:09Z",
     "host-1": "https://www.youtube.com/embed/XySoNAPIHRg"
   },
   {
-    "serial": 118,
+    "serial": 124,
+    "title": "Come and See",
+    "tmdb/imdb": "25237/tt0091251",
+    "extracted_at": "2026-09-01T05:12:14Z",
+    "host-1": "https://dood.watch/e/iffceu31n318",
+    "host-2": "https://dood.watch/e/1e2mu24cb0tf",
+    "host-3": "https://mixdrop.ag/e/0xxpz56f1jks",
+    "host-4": "https://www.youtube.com/embed/zjIiApN6cfg",
+    "host-5": "https://archive.org/embed/come-and-see-english-subtitles"
+  },
+  {
+    "serial": 125,
     "title": "A Place in the Sun",
     "tmdb/imdb": "25673/tt0043924",
     "extracted_at": "2026-08-22T02:00:50Z",
     "host-1": "https://dood.watch/e/eb900rvx0af2"
   },
   {
-    "serial": 119,
+    "serial": 126,
     "title": "Wake in Fright",
     "tmdb/imdb": "26405/tt0067541",
     "extracted_at": "2026-08-30T05:43:28Z",
     "host-1": "https://www.youtube.com/embed/7TbYPslgR_Q"
   },
   {
-    "serial": 120,
+    "serial": 127,
     "title": "Triangle",
     "tmdb/imdb": "26466/tt1187064",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -2028,7 +2135,7 @@
     "host-10": "https://mixdrop.ag/e/u2nga2mxv"
   },
   {
-    "serial": 121,
+    "serial": 128,
     "title": "Inception",
     "tmdb/imdb": "27205/tt1375666",
     "extracted_at": "2026-08-29T07:42:01Z",
@@ -2058,14 +2165,14 @@
     "host-24": "https://vidnest.io/e/t2niq1fic194"
   },
   {
-    "serial": 122,
+    "serial": 129,
     "title": "Le Trou",
     "tmdb/imdb": "29259/tt0054407",
     "extracted_at": "2026-08-31T05:58:09Z",
     "host-1": "https://dood.watch/e/b3t60gd2314e"
   },
   {
-    "serial": 123,
+    "serial": 130,
     "title": "Witness for the Prosecution",
     "tmdb/imdb": "37257/tt0051201",
     "extracted_at": "2026-08-31T05:58:09Z",
@@ -2075,7 +2182,7 @@
     "host-4": "https://www.youtube.com/embed/IXCqOjxjtYc"
   },
   {
-    "serial": 124,
+    "serial": 131,
     "title": "Whisper of the Heart",
     "tmdb/imdb": "37797/tt0113824",
     "extracted_at": "2026-08-18T05:59:51Z",
@@ -2086,7 +2193,7 @@
     "host-5": "https://mixdrop.ag/e/pjk9w9ophpg3qz"
   },
   {
-    "serial": 125,
+    "serial": 132,
     "title": "Tales from Earthsea",
     "tmdb/imdb": "37933/tt0495596",
     "extracted_at": "2026-08-22T02:00:50Z",
@@ -2094,28 +2201,28 @@
     "host-2": "https://mixdrop.ag/e/k7l7pn1"
   },
   {
-    "serial": 126,
+    "serial": 133,
     "title": "One Piece Film: Strong World",
     "tmdb/imdb": "41498/tt1485763",
     "extracted_at": "2026-08-27T09:02:11Z",
     "host-1": "https://dood.watch/e/e4ujny1yrrj5"
   },
   {
-    "serial": 127,
+    "serial": 134,
     "title": "We All Loved Each Other So Much",
     "tmdb/imdb": "42269/tt0075793",
     "extracted_at": "2026-08-30T05:43:28Z",
     "host-1": "https://www.youtube.com/embed/Hh1cfh2JnVg"
   },
   {
-    "serial": 128,
+    "serial": 135,
     "title": "One Piece: Curse of the Sacred Sword",
     "tmdb/imdb": "44728/tt1010435",
     "extracted_at": "2026-08-24T01:56:30Z",
     "host-1": "https://bysejikuar.com/e/54cqbwefoaru/one-piece-movie-05-2004-the-cursed-holy-sword"
   },
   {
-    "serial": 129,
+    "serial": 136,
     "title": "One Piece: Giant Mecha Soldier of Karakuri Castle",
     "tmdb/imdb": "44730/tt1059950",
     "extracted_at": "2026-08-22T02:00:50Z",
@@ -2124,7 +2231,7 @@
     "host-3": "https://dood.watch/e/asq1g11j5ugd"
   },
   {
-    "serial": 130,
+    "serial": 137,
     "title": "The Help",
     "tmdb/imdb": "50014/tt1454029",
     "extracted_at": "2026-08-31T05:58:09Z",
@@ -2141,7 +2248,7 @@
     "host-11": "https://mixdrop.ag/e/r6pqqdloh9nrpk"
   },
   {
-    "serial": 131,
+    "serial": 138,
     "title": "The Twilight Saga: Breaking Dawn - Part 1",
     "tmdb/imdb": "50619/tt1324999",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -2166,7 +2273,7 @@
     "host-19": "https://filelions.to/v/k21qgfjvg8xg"
   },
   {
-    "serial": 132,
+    "serial": 139,
     "title": "The Twilight Saga: Breaking Dawn - Part 2",
     "tmdb/imdb": "50620/tt1673434",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -2188,14 +2295,35 @@
     "host-16": "https://vidnest.io/e/pg30nvybyvwp"
   },
   {
-    "serial": 133,
+    "serial": 140,
+    "title": "Django Unchained",
+    "tmdb/imdb": "68718/tt1853728",
+    "extracted_at": "2026-09-01T05:12:14Z",
+    "host-1": "https://bysejikuar.com/e/1i93x8d6q405/django-unchained-2012-1080p-bluray-yify",
+    "host-2": "https://bysejikuar.com/e/iuwvwaqud3ib",
+    "host-3": "https://voe.sx/e/kfz85kp2aqum",
+    "host-4": "https://voe.sx/e/sutkfk1n4qry",
+    "host-5": "https://voe.sx/e/yti6omdautma",
+    "host-6": "https://streamta.site/e/gPmx1mYvqXtq7eV/Django.Unchained.2012.1080p.PMTP.WEB-DL.DDP.5.1.H.264-PiRaTeS.mkv",
+    "host-7": "https://streamta.site/e/Z11yGPDa17HqVKP/",
+    "host-8": "https://dood.watch/e/toky5sdo2j77",
+    "host-9": "https://dood.watch/e/tarhazx9g36i",
+    "host-10": "https://streamwish.to/e/bxuxyof0gwaw",
+    "host-11": "https://luluvdoo.com/e/rn5d40nbhchy",
+    "host-12": "https://luluvdoo.com/e/kzqhuszftvh9",
+    "host-13": "https://mixdrop.ag/e/8ljezgvvaxrepl",
+    "host-14": "https://mixdrop.ag/e/nlm37go1az4go0",
+    "host-15": "https://archive.org/embed/DjangoUnchained2012"
+  },
+  {
+    "serial": 141,
     "title": "Oslo, August 31st",
     "tmdb/imdb": "75233/tt1736633",
     "extracted_at": "2026-08-28T12:04:00Z",
     "host-1": "https://dood.watch/e/qq9io8ujxoqk"
   },
   {
-    "serial": 134,
+    "serial": 142,
     "title": "The Intouchables",
     "tmdb/imdb": "77338/tt1675434",
     "extracted_at": "2026-08-30T05:43:28Z",
@@ -2210,7 +2338,7 @@
     "host-9": "https://mixdrop.ag/e/6imcwi"
   },
   {
-    "serial": 135,
+    "serial": 143,
     "title": "Boyhood",
     "tmdb/imdb": "85350/tt1065073",
     "extracted_at": "2026-08-19T02:21:24Z",
@@ -2223,7 +2351,7 @@
     "host-7": "https://vidnest.io/e/6ta6sbt84uu9"
   },
   {
-    "serial": 136,
+    "serial": 144,
     "title": "Seven Psychopaths",
     "tmdb/imdb": "86838/tt1931533",
     "extracted_at": "2026-08-18T05:59:51Z",
@@ -2240,7 +2368,7 @@
     "host-11": "https://mixdrop.ag/e/dkqxk1jmbvmp71"
   },
   {
-    "serial": 137,
+    "serial": 145,
     "title": "Motor City",
     "tmdb/imdb": "87513/tt2012616",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -2286,7 +2414,7 @@
     "host-40": "https://savefiles.com/e/1qmzaes7c4hw"
   },
   {
-    "serial": 138,
+    "serial": 146,
     "title": "Michael Jackson's Thriller",
     "tmdb/imdb": "92060/tt0088263",
     "extracted_at": "2026-08-30T05:43:28Z",
@@ -2295,21 +2423,21 @@
     "host-3": "https://dood.watch/e/xr02992yzm78"
   },
   {
-    "serial": 139,
+    "serial": 147,
     "title": "Hotarubi no Mori e",
     "tmdb/imdb": "92321/tt2061702",
     "extracted_at": "2026-08-30T05:43:28Z",
     "host-1": "https://dood.watch/e/ykb8jeyna6b9"
   },
   {
-    "serial": 140,
+    "serial": 148,
     "title": "Wolf Children",
     "tmdb/imdb": "110420/tt2140203",
     "extracted_at": "2026-08-31T05:58:09Z",
     "host-1": "https://dood.watch/e/lym06jcg20tw"
   },
   {
-    "serial": 141,
+    "serial": 149,
     "title": "Her",
     "tmdb/imdb": "152601/tt1798709",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -2328,7 +2456,7 @@
     "host-13": "https://filelions.to/v/umgc7p4e0pac"
   },
   {
-    "serial": 142,
+    "serial": 150,
     "title": "Interstellar",
     "tmdb/imdb": "157336/tt0816692",
     "extracted_at": "2026-08-28T12:04:00Z",
@@ -2358,7 +2486,7 @@
     "host-24": "https://upzur.com/embed-im6qf2esvfok.html"
   },
   {
-    "serial": 143,
+    "serial": 151,
     "title": "The Brink of War",
     "tmdb/imdb": "192139/tt33070884",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -2385,7 +2513,7 @@
     "host-21": "https://mixdrop.ag/e/elnlkd7eal0zjj"
   },
   {
-    "serial": 144,
+    "serial": 152,
     "title": "Puella Magi Madoka Magica the Movie Part III: Rebellion",
     "tmdb/imdb": "212162/tt2457282",
     "extracted_at": "2026-08-23T02:09:08Z",
@@ -2393,7 +2521,7 @@
     "host-2": "https://dood.watch/e/iv6o2ewii6bs"
   },
   {
-    "serial": 145,
+    "serial": 153,
     "title": "Whiplash",
     "tmdb/imdb": "244786/tt2582802",
     "extracted_at": "2026-08-29T07:42:01Z",
@@ -2409,7 +2537,7 @@
     "host-10": "https://www.youtube.com/embed/kRbzjAxJ29Y"
   },
   {
-    "serial": 146,
+    "serial": 154,
     "title": "Hope",
     "tmdb/imdb": "255709/tt3153634",
     "extracted_at": "2026-08-29T07:42:01Z",
@@ -2417,7 +2545,15 @@
     "host-2": "https://dood.watch/e/qwn0p9ycf2ow"
   },
   {
-    "serial": 147,
+    "serial": 155,
+    "title": "Mommy",
+    "tmdb/imdb": "265177/tt3612616",
+    "extracted_at": "2026-09-01T05:12:14Z",
+    "host-1": "https://dood.watch/e/tayp2zjbeaks",
+    "host-2": "https://dood.watch/e/sgl0bn41oevq"
+  },
+  {
+    "serial": 156,
     "title": "Evangelion: 3.0+1.0 Thrice Upon a Time",
     "tmdb/imdb": "283566/tt2458948",
     "extracted_at": "2026-08-31T05:58:09Z",
@@ -2427,7 +2563,17 @@
     "host-4": "https://mixdrop.ag/e/jd94q764fpe0vn"
   },
   {
-    "serial": 148,
+    "serial": 157,
+    "title": "The Handmaiden",
+    "tmdb/imdb": "290098/tt4016934",
+    "extracted_at": "2026-09-01T05:12:14Z",
+    "host-1": "https://voe.sx/e/gcttpcn2amwq",
+    "host-2": "https://streamta.site/e/7bovWjbLr1u81x/The_Handmaiden_2016_1080p_NF_WEB-DL_DDP5_1_AV1-Saon.mkv",
+    "host-3": "https://dood.watch/e/t5yyqexgofpi",
+    "host-4": "https://dood.watch/e/5nm2xk32hr03"
+  },
+  {
+    "serial": 158,
     "title": "Avengers: Endgame",
     "tmdb/imdb": "299534/tt4154796",
     "extracted_at": "2026-08-31T05:58:09Z",
@@ -2454,7 +2600,7 @@
     "host-21": "https://filelions.to/v/9felopemqn01"
   },
   {
-    "serial": 149,
+    "serial": 159,
     "title": "Avengers: Infinity War",
     "tmdb/imdb": "299536/tt4154756",
     "extracted_at": "2026-08-31T05:58:09Z",
@@ -2479,7 +2625,7 @@
     "host-19": "https://filelions.to/v/4f0ota1djhhm"
   },
   {
-    "serial": 150,
+    "serial": 160,
     "title": "Dragon Blade",
     "tmdb/imdb": "300168/tt3672840",
     "extracted_at": "2026-08-27T09:02:11Z",
@@ -2487,7 +2633,14 @@
     "host-2": "https://mixdrop.ag/e/3nxgrlvqtmvkvkn"
   },
   {
-    "serial": 151,
+    "serial": 161,
+    "title": "Doctor Who: The Day of the Doctor",
+    "tmdb/imdb": "313106/tt2779318",
+    "extracted_at": "2026-09-01T05:12:14Z",
+    "host-1": "https://luluvdoo.com/e/zf7rgfn52wtf"
+  },
+  {
+    "serial": 162,
     "title": "La La Land",
     "tmdb/imdb": "313369/tt3783958",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -2518,7 +2671,7 @@
     "host-25": "https://vidnest.io/e/6z3zoflmptfa"
   },
   {
-    "serial": 152,
+    "serial": 163,
     "title": "Puss in Boots: The Last Wish",
     "tmdb/imdb": "315162/tt3915174",
     "extracted_at": "2026-08-31T05:58:09Z",
@@ -2542,7 +2695,34 @@
     "host-18": "https://filelions.to/v/2264wcopsg5j"
   },
   {
-    "serial": 153,
+    "serial": 164,
+    "title": "Hacksaw Ridge",
+    "tmdb/imdb": "324786/tt2119532",
+    "extracted_at": "2026-09-01T05:12:14Z",
+    "host-1": "https://bysejikuar.com/e/hnlyqo79eal1/hacksaw-ridge-2016-2160p-4k-bluray-x265-10bit-aac5-1-yts-mx",
+    "host-2": "https://bysejikuar.com/e/e9zuvluetx6n",
+    "host-3": "https://bysejikuar.com/e/jn9udn5oyrsi/hacksaw-ridge-2016-1080p-bluray-x264-yts-ag",
+    "host-4": "https://voe.sx/e/3iscje8z9cfi",
+    "host-5": "https://voe.sx/e/uwryhf7amazm",
+    "host-6": "https://voe.sx/e/ptghjx22sn58",
+    "host-7": "https://streamta.site/e/dqP4KDov3WhkqGy",
+    "host-8": "https://streamta.site/e/3k3VoYOO7XIdQZr/Hacksaw_Ridge_2016_720p_AMZN_WEB-DL_DDP5_1_H_265-ViSTA.mkv",
+    "host-9": "https://dood.watch/e/oyngxibz1wjj",
+    "host-10": "https://dood.watch/e/l0ux816qp4pz",
+    "host-11": "https://dood.watch/e/aioeccsmwavj",
+    "host-12": "https://luluvdoo.com/e/v4i0dlmg2wo7",
+    "host-13": "https://luluvdoo.com/e/1isr1dhs4x92",
+    "host-14": "https://vidmoly.biz/embed-9w4gjtd379mg.html",
+    "host-15": "https://vidmoly.biz/embed-urc6dvu5gw8m.html",
+    "host-16": "https://mixdrop.ag/e/r6w0j01xfmv3re",
+    "host-17": "https://mixdrop.ag/e/l6lrzzvohnr668",
+    "host-18": "https://mixdrop.ag/e/o76nx6nga79nkv",
+    "host-19": "https://filelions.to/v/er6p2xguut16",
+    "host-20": "https://filelions.to/v/8jrjyl9jcxnt",
+    "host-21": "https://savefiles.com/e/6577apjguibh"
+  },
+  {
+    "serial": 165,
     "title": "Spider-Man: Into the Spider-Verse",
     "tmdb/imdb": "324857/tt4633694",
     "extracted_at": "2026-08-29T07:42:01Z",
@@ -2568,7 +2748,28 @@
     "host-20": "https://vids.st/e/35775"
   },
   {
-    "serial": 154,
+    "serial": 166,
+    "title": "Coco",
+    "tmdb/imdb": "354912/tt2380307",
+    "extracted_at": "2026-09-01T05:12:14Z",
+    "host-1": "https://bysejikuar.com/e/exgfqpgblo37/coco-2017-1080p-bluray-x264-yts-ag",
+    "host-2": "https://bysejikuar.com/e/vz3a1xqj44uy",
+    "host-3": "https://voe.sx/e/4bdo6ol0qnyo",
+    "host-4": "https://voe.sx/e/x1wld2imutlu",
+    "host-5": "https://streamta.site/e/69X6vYp1VlU90Xj/",
+    "host-6": "https://streamta.site/e/l7Lxz2moAAS7gdy/Coco_2017_720p_BluRay_x264-GeneMige.mkv",
+    "host-7": "https://dood.watch/e/7wfrl30sjj5v",
+    "host-8": "https://dood.watch/e/8o7ia3gcctcz",
+    "host-9": "https://luluvdoo.com/e/ecr63cy9jm6q",
+    "host-10": "https://vidmoly.biz/embed-218wdmkglz09.html",
+    "host-11": "https://vidmoly.biz/embed-0euf39f1u97f.html",
+    "host-12": "https://mixdrop.ag/e/ownm74x3blq89z0",
+    "host-13": "https://mixdrop.ag/e/4dkx7z3ru474l0",
+    "host-14": "https://filelions.to/v/2kq9lmeuvjeo",
+    "host-15": "https://filelions.to/v/i7z3kd4pxzu9"
+  },
+  {
+    "serial": 167,
     "title": "Your Name.",
     "tmdb/imdb": "372058/tt5311514",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -2580,7 +2781,7 @@
     "host-6": "https://mixdrop.ag/e/nl1ok36mtq11qp"
   },
   {
-    "serial": 155,
+    "serial": 168,
     "title": "Dou kyu sei – Classmates",
     "tmdb/imdb": "372754/tt5526028",
     "extracted_at": "2026-08-30T05:43:28Z",
@@ -2588,7 +2789,7 @@
     "host-2": "https://dood.watch/e/i4po0aobpp78"
   },
   {
-    "serial": 156,
+    "serial": 169,
     "title": "One Piece Film: GOLD",
     "tmdb/imdb": "374205/tt5251328",
     "extracted_at": "2026-08-20T02:21:28Z",
@@ -2596,7 +2797,7 @@
     "host-2": "https://dood.watch/e/aix80eaojewr"
   },
   {
-    "serial": 157,
+    "serial": 170,
     "title": "A Silent Voice: The Movie",
     "tmdb/imdb": "378064/tt5323662",
     "extracted_at": "2026-08-29T07:42:01Z",
@@ -2610,7 +2811,7 @@
     "host-8": "https://mixdrop.ag/e/j9mqz3jlb990g"
   },
   {
-    "serial": 158,
+    "serial": 171,
     "title": "Train to Busan",
     "tmdb/imdb": "396535/tt5700672",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -2623,7 +2824,7 @@
     "host-7": "https://mixdrop.ag/e/1v7x9wdefkqvdx7"
   },
   {
-    "serial": 159,
+    "serial": 172,
     "title": "Call Me by Your Name",
     "tmdb/imdb": "398818/tt5726616",
     "extracted_at": "2026-08-20T02:21:28Z",
@@ -2642,7 +2843,7 @@
     "host-13": "https://mixdrop.ag/e/kn0orepnf3dm9op"
   },
   {
-    "serial": 160,
+    "serial": 173,
     "title": "Kill Bill: The Whole Bloody Affair",
     "tmdb/imdb": "414419/tt6019206",
     "extracted_at": "2026-08-18T05:59:51Z",
@@ -2656,7 +2857,7 @@
     "host-8": "https://mixdrop.ag/e/nl178kwmfddk68"
   },
   {
-    "serial": 161,
+    "serial": 174,
     "title": "Space/Time",
     "tmdb/imdb": "434853/tt5050634",
     "extracted_at": "2026-08-21T02:19:47Z",
@@ -2674,7 +2875,48 @@
     "host-12": "https://mixdrop.ag/e/4dmkqk3kiqqp7qk"
   },
   {
-    "serial": 162,
+    "serial": 175,
+    "title": "Wolfwalkers",
+    "tmdb/imdb": "441130/tt5198068",
+    "extracted_at": "2026-09-01T05:12:14Z",
+    "host-1": "https://voe.sx/e/13hnsqm8ekoq",
+    "host-2": "https://streamta.site/e/dVXmM1aZMWtPzK/Wolfwalkers_2020_1080p_WEB-DL_H264_Atmos_TSRG.mkv",
+    "host-3": "https://dood.watch/e/1r08ziyzksiq",
+    "host-4": "https://dood.watch/e/ponfeely82y3",
+    "host-5": "https://mixdrop.ag/e/gjnnpkrefo33v4"
+  },
+  {
+    "serial": 176,
+    "title": "Idiots",
+    "tmdb/imdb": "445466/tt6628920",
+    "extracted_at": "2026-09-01T05:12:14Z",
+    "host-1": "https://bysejikuar.com/e/fngk4qq8bg32",
+    "host-2": "https://bysejikuar.com/e/5zbospdmmvc4",
+    "host-3": "https://bysejikuar.com/e/5h1egi17t056",
+    "host-4": "https://voe.sx/e/tpaicxb21mlt",
+    "host-5": "https://voe.sx/e/zzhmpeyoylgh",
+    "host-6": "https://voe.sx/e/miniodok5uen",
+    "host-7": "https://streamta.site/e/dKkwxO9jw1TkKRY",
+    "host-8": "https://dood.watch/e/u8dlno7ryksn",
+    "host-9": "https://dood.watch/e/uwf8g4yd7tt8",
+    "host-10": "https://dood.watch/e/n2z1uvnsl9t2",
+    "host-11": "https://streamwish.to/e/oheg1e4z56hw",
+    "host-12": "https://luluvdoo.com/e/co328jvf82bh",
+    "host-13": "https://luluvdoo.com/e/kqf82ktx4soo",
+    "host-14": "https://vidara.so/e/rALuKwEoIN0tK",
+    "host-15": "https://vidara.so/e/cYi9hHvWs7TJ2",
+    "host-16": "https://vidmoly.biz/embed-h226cflde520.html",
+    "host-17": "https://mixdrop.ag/e/pjkql0zvcg1w6z8",
+    "host-18": "https://mixdrop.ag/e/ow7rm69mapwlmk",
+    "host-19": "https://streamplay.to/embed-leopdjot8vq5.html",
+    "host-20": "https://streamplay.to/embed-g2kqwqbp1km0.html",
+    "host-21": "https://filelions.to/v/lmw0bnxu1u0a",
+    "host-22": "https://filelions.to/v/0pqydqkj27eh",
+    "host-23": "https://savefiles.com/e/22fj9pigs1vj",
+    "host-24": "https://savefiles.com/e/dnyftztzqapm"
+  },
+  {
+    "serial": 177,
     "title": "Life in a Year",
     "tmdb/imdb": "447362/tt6598238",
     "extracted_at": "2026-08-31T05:58:09Z",
@@ -2682,7 +2924,7 @@
     "host-2": "https://dood.watch/e/vyovhs5bmqi6"
   },
   {
-    "serial": 163,
+    "serial": 178,
     "title": "How to Make a Killing",
     "tmdb/imdb": "467905/tt4357198",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -2718,7 +2960,7 @@
     "host-30": "https://vidnest.io/e/ap1rpxwtjp8l"
   },
   {
-    "serial": 164,
+    "serial": 179,
     "title": "The Land of Sometimes",
     "tmdb/imdb": "467914/tt3517106",
     "extracted_at": "2026-08-28T12:04:00Z",
@@ -2737,7 +2979,7 @@
     "host-13": "https://vids.st/e/89478"
   },
   {
-    "serial": 165,
+    "serial": 180,
     "title": "Green Book",
     "tmdb/imdb": "490132/tt6966692",
     "extracted_at": "2026-08-31T05:58:09Z",
@@ -2763,7 +3005,7 @@
     "host-20": "https://filelions.to/v/maf0kqsrf6w2"
   },
   {
-    "serial": 166,
+    "serial": 181,
     "title": "Parasite",
     "tmdb/imdb": "496243/tt6751668",
     "extracted_at": "2026-08-28T12:04:00Z",
@@ -2779,7 +3021,7 @@
     "host-10": "https://filelions.to/v/8s6wbe90f28a"
   },
   {
-    "serial": 167,
+    "serial": 182,
     "title": "I Want to Eat Your Pancreas",
     "tmdb/imdb": "504253/tt7236034",
     "extracted_at": "2026-08-31T05:58:09Z",
@@ -2788,7 +3030,7 @@
     "host-3": "https://mixdrop.ag/e/7k9qlo60h19kg1"
   },
   {
-    "serial": 168,
+    "serial": 183,
     "title": "Klaus",
     "tmdb/imdb": "508965/tt4729430",
     "extracted_at": "2026-08-31T05:58:09Z",
@@ -2799,7 +3041,7 @@
     "host-5": "https://mixdrop.ag/e/9ng97grdh1qlww"
   },
   {
-    "serial": 169,
+    "serial": 184,
     "title": "The Chronology of Water",
     "tmdb/imdb": "524635/tt8667404",
     "extracted_at": "2026-08-22T02:00:50Z",
@@ -2812,7 +3054,7 @@
     "host-7": "https://mixdrop.ag/e/3636nqq3imkxp96"
   },
   {
-    "serial": 170,
+    "serial": 185,
     "title": "Five Feet Apart",
     "tmdb/imdb": "527641/tt6472976",
     "extracted_at": "2026-08-31T05:58:09Z",
@@ -2829,14 +3071,24 @@
     "host-11": "https://filelions.to/v/pmlajr1bz9vh"
   },
   {
-    "serial": 171,
+    "serial": 186,
     "title": "Violet Evergarden: The Movie",
     "tmdb/imdb": "533514/tt8652818",
     "extracted_at": "2026-08-30T05:43:28Z",
     "host-1": "https://dood.watch/e/6ikv47x6hgty"
   },
   {
-    "serial": 172,
+    "serial": 187,
+    "title": "Steven Universe: The Movie",
+    "tmdb/imdb": "537061/tt10515852",
+    "extracted_at": "2026-09-01T05:12:14Z",
+    "host-1": "https://dood.watch/e/qiw7fytk5zod",
+    "host-2": "https://dood.watch/e/17xdh122743q",
+    "host-3": "https://streamwish.to/e/mcu7ku0g47oj",
+    "host-4": "https://mixdrop.ag/e/l7ngrk7rtxpmxo"
+  },
+  {
+    "serial": 188,
     "title": "Animal Farm",
     "tmdb/imdb": "539745/tt2467700",
     "extracted_at": "2026-08-19T02:21:24Z",
@@ -2852,7 +3104,7 @@
     "host-10": "https://mixdrop.ag/e/eln6zok0u77g0x"
   },
   {
-    "serial": 173,
+    "serial": 189,
     "title": "One Piece: Stampede",
     "tmdb/imdb": "568012/tt9430698",
     "extracted_at": "2026-08-23T02:09:08Z",
@@ -2861,14 +3113,14 @@
     "host-3": "https://dood.watch/e/0rswzxyix3bi"
   },
   {
-    "serial": 174,
+    "serial": 190,
     "title": "Taylor Swift: Reputation Stadium Tour",
     "tmdb/imdb": "568332/tt9426852",
     "extracted_at": "2026-08-31T05:58:09Z",
     "host-1": "https://luluvdoo.com/e/7ny7al3szzgg"
   },
   {
-    "serial": 175,
+    "serial": 191,
     "title": "Spider-Man: Across the Spider-Verse",
     "tmdb/imdb": "569094/tt9362722",
     "extracted_at": "2026-08-29T07:42:01Z",
@@ -2894,7 +3146,7 @@
     "host-20": "https://vidnest.io/e/uy0rq8nwlcy4"
   },
   {
-    "serial": 176,
+    "serial": 192,
     "title": "Rascal Does Not Dream of a Dreaming Girl",
     "tmdb/imdb": "572154/tt9881586",
     "extracted_at": "2026-08-31T05:58:09Z",
@@ -2902,7 +3154,7 @@
     "host-2": "https://dood.watch/e/yggz9hsxixlb"
   },
   {
-    "serial": 177,
+    "serial": 193,
     "title": "RRR",
     "tmdb/imdb": "579974/tt8178634",
     "extracted_at": "2026-08-18T05:59:51Z",
@@ -2912,7 +3164,7 @@
     "host-4": "https://mixdrop.ag/e/zpw69qv4hm0nq3"
   },
   {
-    "serial": 178,
+    "serial": 194,
     "title": "Voicemails for Isabelle",
     "tmdb/imdb": "614945/tt10375624",
     "extracted_at": "2026-08-29T07:42:01Z",
@@ -2941,21 +3193,36 @@
     "host-23": "https://vids.st/e/92860"
   },
   {
-    "serial": 179,
+    "serial": 195,
+    "title": "Justice League Dark: Apokolips War",
+    "tmdb/imdb": "618344/tt11079148",
+    "extracted_at": "2026-09-01T05:12:14Z",
+    "host-1": "https://bysejikuar.com/e/ixf8hmlcver5/justice-league-dark-apokolips-war-2020-1080p-bluray-aac5-1-yts-mx",
+    "host-2": "https://voe.sx/e/vgpqiniuyb3q",
+    "host-3": "https://voe.sx/e/r0gbhw06eksw",
+    "host-4": "https://streamta.site/e/RBqmlQQwdmtdzJJ/Justice_League_Dark_Apokolips_War_2020_2160p_UHD_BluRay_x265_HDR_DD_5_1-Pahe_in.mkv",
+    "host-5": "https://dood.watch/e/qeq9d5hthwj2",
+    "host-6": "https://dood.watch/e/xhec7uldvn2g",
+    "host-7": "https://luluvdoo.com/e/oj4dw5656nri",
+    "host-8": "https://mixdrop.ag/e/1nvvodw6hrl7p1",
+    "host-9": "https://filelions.to/v/wrwss8mylmnp"
+  },
+  {
+    "serial": 196,
     "title": "The Legend of Hei",
     "tmdb/imdb": "620249/tt10734928",
     "extracted_at": "2026-08-29T07:42:01Z",
     "host-1": "https://mixdrop.ag/e/wlwlgr4muxxzpx"
   },
   {
-    "serial": 180,
+    "serial": 197,
     "title": "Clouds",
     "tmdb/imdb": "630566/tt6473066",
     "extracted_at": "2026-08-31T05:58:09Z",
     "host-1": "https://dood.watch/e/6vgn1lzaqevo"
   },
   {
-    "serial": 181,
+    "serial": 198,
     "title": "Demon Slayer -Kimetsu no Yaiba- The Movie: Mugen Train",
     "tmdb/imdb": "635302/tt11032374",
     "extracted_at": "2026-08-31T05:58:09Z",
@@ -2964,7 +3231,7 @@
     "host-3": "https://vidmoly.biz/embed-2ezs12gboea7.html"
   },
   {
-    "serial": 182,
+    "serial": 199,
     "title": "Miracle in Cell No. 7",
     "tmdb/imdb": "637920/tt10431500",
     "extracted_at": "2026-08-31T05:58:09Z",
@@ -2972,7 +3239,7 @@
     "host-2": "https://filelions.to/v/fg4ekiw9mua8"
   },
   {
-    "serial": 183,
+    "serial": 200,
     "title": "Josee, the Tiger and the Fish",
     "tmdb/imdb": "652837/tt12879624",
     "extracted_at": "2026-08-30T05:43:28Z",
@@ -2984,14 +3251,14 @@
     "host-6": "https://luluvdoo.com/e/xq8ydrkdboge"
   },
   {
-    "serial": 184,
+    "serial": 201,
     "title": "Out of the Clear Blue Sky",
     "tmdb/imdb": "654299/tt10946934",
     "extracted_at": "2026-08-30T05:43:28Z",
     "host-1": "https://streamwish.to/e/x7zn1utbo5md"
   },
   {
-    "serial": 185,
+    "serial": 202,
     "title": "Kayara",
     "tmdb/imdb": "666154/tt11846550",
     "extracted_at": "2026-08-22T02:00:50Z",
@@ -3003,7 +3270,7 @@
     "host-6": "https://mixdrop.ag/e/q1d0ox3dc1e49x"
   },
   {
-    "serial": 186,
+    "serial": 203,
     "title": "The Last Whale Singer",
     "tmdb/imdb": "677558/tt13518550",
     "extracted_at": "2026-08-24T01:56:30Z",
@@ -3018,7 +3285,7 @@
     "host-9": "https://mixdrop.ag/e/vk73jj4kurx88q"
   },
   {
-    "serial": 187,
+    "serial": 204,
     "title": "Project Hail Mary",
     "tmdb/imdb": "687163/tt12042730",
     "extracted_at": "2026-08-28T12:04:00Z",
@@ -3062,14 +3329,14 @@
     "host-38": "https://vids.st/e/17502"
   },
   {
-    "serial": 188,
+    "serial": 205,
     "title": "Gabriel's Inferno",
     "tmdb/imdb": "696374/tt11316854",
     "extracted_at": "2026-08-29T07:42:01Z",
     "host-1": "https://voe.sx/e/dn2e4uhilwic"
   },
   {
-    "serial": 189,
+    "serial": 206,
     "title": "Gabriel's Inferno: Part II",
     "tmdb/imdb": "724089/tt13535454",
     "extracted_at": "2026-08-29T07:42:01Z",
@@ -3080,7 +3347,7 @@
     "host-5": "https://mixdrop.ag/e/dqlkgowdhpgkzn"
   },
   {
-    "serial": 190,
+    "serial": 207,
     "title": "Mothers' Instinct",
     "tmdb/imdb": "758679/tt13397574",
     "extracted_at": "2026-08-18T05:59:51Z",
@@ -3097,7 +3364,7 @@
     "host-11": "https://filelions.to/v/s0eokznd3utb"
   },
   {
-    "serial": 191,
+    "serial": 208,
     "title": "Gabriel's Inferno: Part III",
     "tmdb/imdb": "761053/tt13535456",
     "extracted_at": "2026-08-29T07:42:01Z",
@@ -3106,7 +3373,7 @@
     "host-3": "https://mixdrop.ag/e/9wq6k7e4cn0erk"
   },
   {
-    "serial": 192,
+    "serial": 209,
     "title": "Lucy Shimmers and the Prince of Peace",
     "tmdb/imdb": "770156/tt11916254",
     "extracted_at": "2026-08-29T07:42:01Z",
@@ -3118,7 +3385,7 @@
     "host-6": "https://www.youtube.com/embed/GRTdp36Gpig"
   },
   {
-    "serial": 193,
+    "serial": 210,
     "title": "Arco",
     "tmdb/imdb": "804370/tt14883538",
     "extracted_at": "2026-08-20T02:21:28Z",
@@ -3133,7 +3400,7 @@
     "host-9": "https://vidnest.io/e/xawyg97n52qh"
   },
   {
-    "serial": 194,
+    "serial": 211,
     "title": "Hot Spot",
     "tmdb/imdb": "813418/tt14119302",
     "extracted_at": "2026-08-28T12:04:00Z",
@@ -3146,7 +3413,7 @@
     "host-7": "https://vidmoly.biz/embed-xitufbim3omc.html"
   },
   {
-    "serial": 195,
+    "serial": 212,
     "title": "The Quintessential Quintuplets Movie",
     "tmdb/imdb": "820067/tt15721650",
     "extracted_at": "2026-08-30T05:43:28Z",
@@ -3155,7 +3422,7 @@
     "host-3": "https://mixdrop.ag/e/z1oz7qn9ago1d6q"
   },
   {
-    "serial": 196,
+    "serial": 213,
     "title": "Flow",
     "tmdb/imdb": "823219/tt4772188",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -3166,7 +3433,18 @@
     "host-5": "https://filelions.to/v/bjib36b26zx3"
   },
   {
-    "serial": 197,
+    "serial": 214,
+    "title": "20th Century Girl",
+    "tmdb/imdb": "851644/tt15340724",
+    "extracted_at": "2026-09-01T05:12:14Z",
+    "host-1": "https://voe.sx/e/osu5hsoru5wm",
+    "host-2": "https://voe.sx/e/hweqywr3r1x9",
+    "host-3": "https://streamta.site/e/9R2xboQRQOualR0/20th_Century_Girl_2022_1080p_NF_WEB-DL_HIN-ENG-KOR_DDP5_1_Atmos_HDR_HEVC-Saon.mkv",
+    "host-4": "https://dood.watch/e/zeynqscbea2h",
+    "host-5": "https://mixdrop.ag/e/vknked4ebgg3mk"
+  },
+  {
+    "serial": 215,
     "title": "The Whisper Man",
     "tmdb/imdb": "860508/tt11561116",
     "extracted_at": "2026-08-28T12:04:00Z",
@@ -3194,7 +3472,7 @@
     "host-22": "https://savefiles.com/e/b9apbtwn9cky"
   },
   {
-    "serial": 198,
+    "serial": 216,
     "title": "Fireworks",
     "tmdb/imdb": "891636/tt15764854",
     "extracted_at": "2026-08-23T02:09:08Z",
@@ -3203,7 +3481,7 @@
     "host-3": "https://mixdrop.ag/e/l7nvg8jou8qol0"
   },
   {
-    "serial": 199,
+    "serial": 217,
     "title": "Desert Warrior",
     "tmdb/imdb": "898704/tt13570066",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -3217,7 +3495,7 @@
     "host-8": "https://mixdrop.ag/e/vknzz9zwtq4j39r"
   },
   {
-    "serial": 200,
+    "serial": 218,
     "title": "One Piece Film Red",
     "tmdb/imdb": "900667/tt16183464",
     "extracted_at": "2026-08-18T05:59:51Z",
@@ -3227,7 +3505,7 @@
     "host-4": "https://dood.watch/e/9qyzqu74zgi0"
   },
   {
-    "serial": 201,
+    "serial": 219,
     "title": "Michael",
     "tmdb/imdb": "936075/tt11378946",
     "extracted_at": "2026-08-26T02:29:38Z",
@@ -3264,7 +3542,7 @@
     "host-31": "https://vids.st/e/87503"
   },
   {
-    "serial": 202,
+    "serial": 220,
     "title": "72 HOURS",
     "tmdb/imdb": "949838/tt36304003",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -3307,7 +3585,7 @@
     "host-37": "https://savefiles.com/e/4oo3w61wi74f"
   },
   {
-    "serial": 203,
+    "serial": 221,
     "title": "The Invite",
     "tmdb/imdb": "950028/tt14173636",
     "extracted_at": "2026-08-17T20:12:12Z",
@@ -3328,7 +3606,7 @@
     "host-15": "https://vidara.so/e/fKBz6rvCycyJT"
   },
   {
-    "serial": 204,
+    "serial": 222,
     "title": "Nightborn",
     "tmdb/imdb": "964849/tt34383465",
     "extracted_at": "2026-08-20T02:21:28Z",
@@ -3358,7 +3636,7 @@
     "host-24": "https://savefiles.com/e/cnk7hafe74m3"
   },
   {
-    "serial": 205,
+    "serial": 223,
     "title": "Spider-Man: Brand New Day",
     "tmdb/imdb": "969681/tt22084616",
     "extracted_at": "2026-08-23T02:09:08Z",
@@ -3392,7 +3670,7 @@
     "host-28": "https://savefiles.com/e/hg33qb1att0c"
   },
   {
-    "serial": 206,
+    "serial": 224,
     "title": "Magellan",
     "tmdb/imdb": "975335/tt36456563",
     "extracted_at": "2026-08-31T05:58:09Z",
@@ -3409,7 +3687,7 @@
     "host-11": "https://upzur.com/embed-zwzhi2e1cc87.html"
   },
   {
-    "serial": 207,
+    "serial": 225,
     "title": "Avatar Aang: The Last Airbender",
     "tmdb/imdb": "980431/tt18259538",
     "extracted_at": "2026-08-17T20:12:12Z",
@@ -3455,7 +3733,7 @@
     "host-40": "https://bigshare.io/watch/e/75731"
   },
   {
-    "serial": 208,
+    "serial": 226,
     "title": "The Boy, the Mole, the Fox and the Horse",
     "tmdb/imdb": "995133/tt22667880",
     "extracted_at": "2026-08-31T05:58:09Z",
@@ -3464,7 +3742,7 @@
     "host-3": "https://mixdrop.ag/e/8l7x0vgoswj8kj"
   },
   {
-    "serial": 209,
+    "serial": 227,
     "title": "Left-Handed Girl",
     "tmdb/imdb": "999075/tt27722618",
     "extracted_at": "2026-08-22T02:00:50Z",
@@ -3472,7 +3750,7 @@
     "host-2": "https://vidmoly.biz/embed-vr8khzeilq0a.html"
   },
   {
-    "serial": 210,
+    "serial": 228,
     "title": "The Marching Band",
     "tmdb/imdb": "1000866/tt30327451",
     "extracted_at": "2026-08-23T02:09:08Z",
@@ -3482,7 +3760,7 @@
     "host-4": "https://mixdrop.ag/e/36nnzvqecmwxdlr"
   },
   {
-    "serial": 211,
+    "serial": 229,
     "title": "Swapped",
     "tmdb/imdb": "1007757/tt29552248",
     "extracted_at": "2026-08-28T12:04:00Z",
@@ -3514,7 +3792,7 @@
     "host-26": "https://vids.st/e/29672"
   },
   {
-    "serial": 212,
+    "serial": 230,
     "title": "The Strangers: Chapter 3",
     "tmdb/imdb": "1010755/tt28682323",
     "extracted_at": "2026-08-18T05:59:51Z",
@@ -3540,7 +3818,7 @@
     "host-20": "https://filelions.to/v/21ugn6ag9cui"
   },
   {
-    "serial": 213,
+    "serial": 231,
     "title": "Little Trouble Girls",
     "tmdb/imdb": "1019871/tt28834646",
     "extracted_at": "2026-08-23T02:09:08Z",
@@ -3550,7 +3828,7 @@
     "host-4": "https://luluvdoo.com/e/j6sqx830mmdu"
   },
   {
-    "serial": 214,
+    "serial": 232,
     "title": "Hundreds of Beavers",
     "tmdb/imdb": "1019939/tt12818328",
     "extracted_at": "2026-08-29T07:42:01Z",
@@ -3561,7 +3839,7 @@
     "host-5": "https://filelions.to/v/sipj71rikb5o"
   },
   {
-    "serial": 215,
+    "serial": 233,
     "title": "Peter Pan's Neverland Nightmare",
     "tmdb/imdb": "1020414/tt21955520",
     "extracted_at": "2026-08-21T02:19:47Z",
@@ -3577,7 +3855,7 @@
     "host-10": "https://mixdrop.ag/e/owx0vz4ga77qjo"
   },
   {
-    "serial": 216,
+    "serial": 234,
     "title": "Bureau 749",
     "tmdb/imdb": "1033462/tt10210064",
     "extracted_at": "2026-08-19T02:21:24Z",
@@ -3589,7 +3867,7 @@
     "host-6": "https://mixdrop.ag/e/l7qgp8q3cqpdj8"
   },
   {
-    "serial": 217,
+    "serial": 235,
     "title": "Jumbo",
     "tmdb/imdb": "1049082/tt27433995",
     "extracted_at": "2026-08-24T01:56:30Z",
@@ -3600,7 +3878,7 @@
     "host-5": "https://mixdrop.ag/e/03v3g7p4i4nqv3"
   },
   {
-    "serial": 218,
+    "serial": 236,
     "title": "The Invisible Guest",
     "tmdb/imdb": "1058588/tt17497130",
     "extracted_at": "2026-08-25T01:55:21Z",
@@ -3610,7 +3888,7 @@
     "host-4": "https://mixdrop.ag/e/gjnl4djrtoqop8"
   },
   {
-    "serial": 219,
+    "serial": 237,
     "title": "Radical",
     "tmdb/imdb": "1058694/tt14570440",
     "extracted_at": "2026-08-29T07:42:01Z",
@@ -3619,7 +3897,7 @@
     "host-3": "https://dood.watch/e/8u3mjencm0ye"
   },
   {
-    "serial": 220,
+    "serial": 238,
     "title": "The Beloved",
     "tmdb/imdb": "1074074/tt33451014",
     "extracted_at": "2026-08-31T05:58:09Z",
@@ -3633,14 +3911,14 @@
     "host-8": "https://vidmoly.biz/embed-h35ehs3krf9e.html"
   },
   {
-    "serial": 221,
+    "serial": 239,
     "title": "The Locksmith",
     "tmdb/imdb": "1075519/tt15829724",
     "extracted_at": "2026-08-23T02:09:08Z",
     "host-1": "https://dood.watch/e/5sjks2ktroky"
   },
   {
-    "serial": 222,
+    "serial": 240,
     "title": "Backrooms",
     "tmdb/imdb": "1083381/tt26657236",
     "extracted_at": "2026-08-17T20:12:12Z",
@@ -3672,7 +3950,7 @@
     "host-26": "https://filelions.to/v/gu6go8si9n19"
   },
   {
-    "serial": 223,
+    "serial": 241,
     "title": "Locked",
     "tmdb/imdb": "1083968/tt26671996",
     "extracted_at": "2026-08-21T02:19:47Z",
@@ -3692,7 +3970,7 @@
     "host-14": "https://mixdrop.ag/e/4dv3o3exi6vxer"
   },
   {
-    "serial": 224,
+    "serial": 242,
     "title": "Toy Story 5",
     "tmdb/imdb": "1084244/tt29355505",
     "extracted_at": "2026-08-17T19:25:49Z",
@@ -3740,7 +4018,7 @@
     "host-42": "https://savefiles.com/e/qt0t1fl6kndx"
   },
   {
-    "serial": 225,
+    "serial": 243,
     "title": "Bitter Christmas",
     "tmdb/imdb": "1088548/tt28088049",
     "extracted_at": "2026-08-19T02:21:24Z",
@@ -3750,7 +4028,7 @@
     "host-4": "https://mixdrop.ag/e/7krpjz6mu9k6w6"
   },
   {
-    "serial": 226,
+    "serial": 244,
     "title": "The End of Oak Street",
     "tmdb/imdb": "1101383/tt27165187",
     "extracted_at": "2026-08-17T19:25:49Z",
@@ -3781,7 +4059,7 @@
     "host-25": "https://savefiles.com/e/ogevnvnkjj3x"
   },
   {
-    "serial": 227,
+    "serial": 245,
     "title": "Mother Mary",
     "tmdb/imdb": "1102883/tt27200708",
     "extracted_at": "2026-08-18T05:59:51Z",
@@ -3814,7 +4092,7 @@
     "host-27": "https://vids.st/e/46408"
   },
   {
-    "serial": 228,
+    "serial": 246,
     "title": "Moana",
     "tmdb/imdb": "1108427/tt27419466",
     "extracted_at": "2026-08-17T19:25:49Z",
@@ -3850,7 +4128,7 @@
     "host-30": "https://savefiles.com/e/y6c7tbqms1tg"
   },
   {
-    "serial": 229,
+    "serial": 247,
     "title": "Kraken",
     "tmdb/imdb": "1110034/tt19838566",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -3869,7 +4147,7 @@
     "host-13": "https://bysejikuar.com/e/6f0d12f7qb01"
   },
   {
-    "serial": 230,
+    "serial": 248,
     "title": "Iron Lung",
     "tmdb/imdb": "1116201/tt27564844",
     "extracted_at": "2026-08-27T09:02:11Z",
@@ -3901,7 +4179,7 @@
     "host-26": "https://vids.st/e/70149"
   },
   {
-    "serial": 231,
+    "serial": 249,
     "title": "Good Luck, Have Fun, Don't Die",
     "tmdb/imdb": "1119449/tt1341338",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -3929,7 +4207,7 @@
     "host-22": "https://filelions.to/v/513tvuve640w"
   },
   {
-    "serial": 232,
+    "serial": 250,
     "title": "In the Grey",
     "tmdb/imdb": "1122573/tt27681354",
     "extracted_at": "2026-08-20T02:21:28Z",
@@ -3967,7 +4245,7 @@
     "host-32": "https://savefiles.com/e/5k944uy0xma7"
   },
   {
-    "serial": 233,
+    "serial": 251,
     "title": "The Rivals of Amziah King",
     "tmdb/imdb": "1124142/tt27706593",
     "extracted_at": "2026-08-18T05:59:51Z",
@@ -4003,7 +4281,7 @@
     "host-30": "https://savefiles.com/e/ga5phdpogeia"
   },
   {
-    "serial": 234,
+    "serial": 252,
     "title": "The Salt Path",
     "tmdb/imdb": "1127625/tt27766440",
     "extracted_at": "2026-08-27T09:02:11Z",
@@ -4019,14 +4297,14 @@
     "host-10": "https://filelions.to/v/4c5jpim35nb8"
   },
   {
-    "serial": 235,
+    "serial": 253,
     "title": "The Thing with Feathers",
     "tmdb/imdb": "1127628/tt27773954",
     "extracted_at": "2026-08-24T01:56:30Z",
     "host-1": "https://streamwish.to/e/stsmj3lgp2sh"
   },
   {
-    "serial": 236,
+    "serial": 254,
     "title": "Feed",
     "tmdb/imdb": "1128204/tt30505578",
     "extracted_at": "2026-08-24T01:56:30Z",
@@ -4044,7 +4322,7 @@
     "host-12": "https://mixdrop.ag/e/dkqkvv71tql7n"
   },
   {
-    "serial": 237,
+    "serial": 255,
     "title": "Sovereign",
     "tmdb/imdb": "1130022/tt26843513",
     "extracted_at": "2026-08-28T12:04:00Z",
@@ -4063,7 +4341,7 @@
     "host-13": "https://mixdrop.ag/e/mkqv1dxlsxdmkm3"
   },
   {
-    "serial": 238,
+    "serial": 256,
     "title": "Rosebush Pruning",
     "tmdb/imdb": "1130948/tt27844906",
     "extracted_at": "2026-08-21T02:19:47Z",
@@ -4076,7 +4354,7 @@
     "host-7": "https://vidmoly.biz/embed-dunpm5s7opm2.html"
   },
   {
-    "serial": 239,
+    "serial": 257,
     "title": "Dreams",
     "tmdb/imdb": "1134463/tt31710990",
     "extracted_at": "2026-08-20T02:21:28Z",
@@ -4089,7 +4367,14 @@
     "host-7": "https://filelions.to/v/k7rmax0vixm8"
   },
   {
-    "serial": 240,
+    "serial": 258,
+    "title": "The Proud Princess",
+    "tmdb/imdb": "1134680/tt10996076",
+    "extracted_at": "2026-09-01T05:12:14Z",
+    "host-1": "https://dood.watch/e/gqw70udj4x60"
+  },
+  {
+    "serial": 259,
     "title": "Once Upon a Studio",
     "tmdb/imdb": "1139087/tt28035641",
     "extracted_at": "2026-08-30T05:43:28Z",
@@ -4097,7 +4382,7 @@
     "host-2": "https://www.youtube.com/embed/gB90me0aqSY"
   },
   {
-    "serial": 241,
+    "serial": 260,
     "title": "The Magic Faraway Tree",
     "tmdb/imdb": "1140521/tt7734244",
     "extracted_at": "2026-08-18T05:59:51Z",
@@ -4118,7 +4403,7 @@
     "host-15": "https://mixdrop.ag/e/nl10kr7oidzexe"
   },
   {
-    "serial": 242,
+    "serial": 261,
     "title": "Redoubt",
     "tmdb/imdb": "1141491/tt35456230",
     "extracted_at": "2026-08-26T02:29:38Z",
@@ -4130,7 +4415,7 @@
     "host-6": "https://mixdrop.ag/e/1nvgpozdioglwl"
   },
   {
-    "serial": 243,
+    "serial": 262,
     "title": "The Pout-Pout Fish",
     "tmdb/imdb": "1146058/tt12824390",
     "extracted_at": "2026-08-18T05:59:51Z",
@@ -4151,7 +4436,7 @@
     "host-15": "https://mixdrop.ag/e/dkdmm609h1rxr0"
   },
   {
-    "serial": 244,
+    "serial": 263,
     "title": "Misdirection",
     "tmdb/imdb": "1146344/tt6374142",
     "extracted_at": "2026-08-28T12:04:00Z",
@@ -4174,7 +4459,7 @@
     "host-17": "https://upzur.com/embed-tq4wkyhwtvmq.html"
   },
   {
-    "serial": 245,
+    "serial": 264,
     "title": "Bring Her Back",
     "tmdb/imdb": "1151031/tt32246771",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -4195,7 +4480,7 @@
     "host-15": "https://filelions.to/v/yef3x17y1hn5"
   },
   {
-    "serial": 246,
+    "serial": 265,
     "title": "Nirvanna the Band the Show the Movie",
     "tmdb/imdb": "1154538/tt35522483",
     "extracted_at": "2026-08-19T02:21:24Z",
@@ -4218,7 +4503,7 @@
     "host-17": "https://filelions.to/v/a05e4npdt30y"
   },
   {
-    "serial": 247,
+    "serial": 266,
     "title": "Peter Hujar's Day",
     "tmdb/imdb": "1159539/tt34250044",
     "extracted_at": "2026-08-26T02:29:38Z",
@@ -4229,7 +4514,27 @@
     "host-5": "https://mixdrop.ag/e/8lq90vwesr19vv"
   },
   {
-    "serial": 248,
+    "serial": 267,
+    "title": "TAYLOR SWIFT | THE ERAS TOUR",
+    "tmdb/imdb": "1160164/tt28814949",
+    "extracted_at": "2026-09-01T05:12:14Z",
+    "host-1": "https://bysejikuar.com/e/u3pqlr84jeqs/taylor-swift-the-eras-tour-2023-extended-1080p-webrip-aac5-1-yts-mx",
+    "host-2": "https://voe.sx/e/7fkpyx1xgj1u",
+    "host-3": "https://voe.sx/e/rchjetk94nov",
+    "host-4": "https://streamta.site/e/xgA7oL8ABOFkdVr/Taylor_Swift_The_Eras_Tour_2023_EXTENDED_1080p_10bit_WEBRip_6CH_x265_HEVC-PSA.mkv",
+    "host-5": "https://dood.watch/e/03mczdgp9psz",
+    "host-6": "https://dood.watch/e/wikna72fh9mn",
+    "host-7": "https://luluvdoo.com/e/t1f36xzvj0f4",
+    "host-8": "https://luluvdoo.com/e/za16plvz65mg",
+    "host-9": "https://vidmoly.biz/embed-33m40y2hjkt3.html",
+    "host-10": "https://mixdrop.ag/e/jd99jo7wbdpmlz",
+    "host-11": "https://filelions.to/v/rxjzp4yb94vq",
+    "host-12": "https://filelions.to/v/3b1kzo0batm4",
+    "host-13": "https://filelions.to/v/eeiozconnyec",
+    "host-14": "https://filelions.to/v/8cks44z4uhlc"
+  },
+  {
+    "serial": 268,
     "title": "David",
     "tmdb/imdb": "1167307/tt15678738",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -4249,7 +4554,7 @@
     "host-14": "https://vidnest.io/e/xqchufxvyb16"
   },
   {
-    "serial": 249,
+    "serial": 269,
     "title": "Silent Friend",
     "tmdb/imdb": "1168719/tt27811632",
     "extracted_at": "2026-08-20T02:21:28Z",
@@ -4261,7 +4566,7 @@
     "host-6": "https://mixdrop.ag/e/nl0xz9wlilogvm8"
   },
   {
-    "serial": 250,
+    "serial": 270,
     "title": "Momo",
     "tmdb/imdb": "1175842/tt26325131",
     "extracted_at": "2026-08-22T02:00:50Z",
@@ -4276,7 +4581,7 @@
     "host-9": "https://vidnest.io/e/jjqc4vitegcl"
   },
   {
-    "serial": 251,
+    "serial": 271,
     "title": "The Wild Robot",
     "tmdb/imdb": "1184918/tt29623480",
     "extracted_at": "2026-08-30T05:43:28Z",
@@ -4289,7 +4594,7 @@
     "host-7": "https://filelions.to/v/ohyi5di99a3b"
   },
   {
-    "serial": 252,
+    "serial": 272,
     "title": "Blue Heron",
     "tmdb/imdb": "1184941/tt32252801",
     "extracted_at": "2026-08-28T12:04:00Z",
@@ -4312,7 +4617,7 @@
     "host-17": "https://filelions.to/v/ouxeqee7bxnj"
   },
   {
-    "serial": 253,
+    "serial": 273,
     "title": "PAW Patrol: The Dino Movie",
     "tmdb/imdb": "1185806/tt29356163",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -4339,7 +4644,14 @@
     "host-21": "https://savefiles.com/e/q7kvjlvjts8g"
   },
   {
-    "serial": 254,
+    "serial": 274,
+    "title": "The Forge",
+    "tmdb/imdb": "1186532/tt26731216",
+    "extracted_at": "2026-09-01T05:12:14Z",
+    "host-1": "https://dood.watch/e/inxrqhk5cd3p"
+  },
+  {
+    "serial": 275,
     "title": "Yunan",
     "tmdb/imdb": "1189738/tt24022322",
     "extracted_at": "2026-08-28T12:04:00Z",
@@ -4347,7 +4659,7 @@
     "host-2": "https://dood.watch/e/k1og0d2e789e"
   },
   {
-    "serial": 255,
+    "serial": 276,
     "title": "I Was a Stranger",
     "tmdb/imdb": "1193128/tt21272942",
     "extracted_at": "2026-08-28T12:04:00Z",
@@ -4365,7 +4677,7 @@
     "host-12": "https://upzur.com/embed-hukatgrqormh.html"
   },
   {
-    "serial": 256,
+    "serial": 277,
     "title": "Whistle",
     "tmdb/imdb": "1193501/tt29550683",
     "extracted_at": "2026-08-20T02:21:28Z",
@@ -4392,7 +4704,7 @@
     "host-21": "https://vidnest.io/e/frezwpi555or"
   },
   {
-    "serial": 257,
+    "serial": 278,
     "title": "Coyote vs. Acme",
     "tmdb/imdb": "1204680/tt1756855",
     "extracted_at": "2026-08-30T05:43:28Z",
@@ -4428,7 +4740,7 @@
     "host-30": "https://savefiles.com/e/pp6z45wp5cpq"
   },
   {
-    "serial": 258,
+    "serial": 279,
     "title": "Evil Dead Burn",
     "tmdb/imdb": "1212763/tt31170389",
     "extracted_at": "2026-08-17T20:12:12Z",
@@ -4471,7 +4783,7 @@
     "host-37": "https://savefiles.com/e/virgaqdwv13n"
   },
   {
-    "serial": 259,
+    "serial": 280,
     "title": "Stitch Head",
     "tmdb/imdb": "1214130/tt26720001",
     "extracted_at": "2026-08-22T02:00:50Z",
@@ -4485,7 +4797,7 @@
     "host-8": "https://mixdrop.ag/e/mkzeqxmpigorn0"
   },
   {
-    "serial": 260,
+    "serial": 281,
     "title": "Chickenhare and the Secret of the Groundhog",
     "tmdb/imdb": "1215532/tt31260224",
     "extracted_at": "2026-08-21T02:19:47Z",
@@ -4506,7 +4818,7 @@
     "host-15": "https://vids.st/e/88928"
   },
   {
-    "serial": 261,
+    "serial": 282,
     "title": "June and John",
     "tmdb/imdb": "1216571/tt20218618",
     "extracted_at": "2026-08-22T02:00:50Z",
@@ -4516,7 +4828,7 @@
     "host-4": "https://vidmoly.biz/embed-7dfqsl7aiv07.html"
   },
   {
-    "serial": 262,
+    "serial": 283,
     "title": "Torrente for President",
     "tmdb/imdb": "1217584/tt37969901",
     "extracted_at": "2026-08-18T05:59:51Z",
@@ -4528,7 +4840,7 @@
     "host-6": "https://mixdrop.ag/e/q1vje6ggtze8dj"
   },
   {
-    "serial": 263,
+    "serial": 284,
     "title": "Chainsaw Man - The Movie: Reze Arc",
     "tmdb/imdb": "1218925/tt30472557",
     "extracted_at": "2026-08-28T12:04:00Z",
@@ -4547,7 +4859,7 @@
     "host-13": "https://filelions.to/v/etuoof1s42e9"
   },
   {
-    "serial": 264,
+    "serial": 285,
     "title": "The Secret Agent",
     "tmdb/imdb": "1220564/tt27847051",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -4562,7 +4874,7 @@
     "host-9": "https://filelions.to/v/sugslu3yok70"
   },
   {
-    "serial": 265,
+    "serial": 286,
     "title": "Eagles of the Republic",
     "tmdb/imdb": "1220566/tt30781967",
     "extracted_at": "2026-08-22T02:00:50Z",
@@ -4574,7 +4886,7 @@
     "host-6": "https://mixdrop.ag/e/4dv6g9w0fze19q"
   },
   {
-    "serial": 266,
+    "serial": 287,
     "title": "The Wrong Girls",
     "tmdb/imdb": "1226699/tt35060353",
     "extracted_at": "2026-08-19T02:21:24Z",
@@ -4601,7 +4913,7 @@
     "host-21": "https://savefiles.com/e/b0anh9f1bga9"
   },
   {
-    "serial": 267,
+    "serial": 288,
     "title": "The Super Mario Galaxy Movie",
     "tmdb/imdb": "1226863/tt28650488",
     "extracted_at": "2026-08-31T05:58:09Z",
@@ -4639,7 +4951,7 @@
     "host-32": "https://vids.st/e/17316"
   },
   {
-    "serial": 268,
+    "serial": 289,
     "title": "Homebound",
     "tmdb/imdb": "1227739/tt26733325",
     "extracted_at": "2026-08-25T01:55:21Z",
@@ -4649,7 +4961,7 @@
     "host-4": "https://mixdrop.ag/e/gj01eqdoiwd797q"
   },
   {
-    "serial": 269,
+    "serial": 290,
     "title": "Dreams",
     "tmdb/imdb": "1228682/tt30810787",
     "extracted_at": "2026-08-24T01:56:30Z",
@@ -4663,7 +4975,7 @@
     "host-8": "https://filelions.to/v/llk1sfpujdxo"
   },
   {
-    "serial": 270,
+    "serial": 291,
     "title": "Young Hearts",
     "tmdb/imdb": "1232449/tt15245268",
     "extracted_at": "2026-08-28T12:04:00Z",
@@ -4671,7 +4983,7 @@
     "host-2": "https://mixdrop.ag/e/r6n44lx3ie7vk4"
   },
   {
-    "serial": 271,
+    "serial": 292,
     "title": "Pinocchio: Unstrung",
     "tmdb/imdb": "1232569/tt30887701",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -4700,21 +5012,21 @@
     "host-23": "https://savefiles.com/e/hvlz9ym7xk2r"
   },
   {
-    "serial": 272,
+    "serial": 293,
     "title": "Omaha",
     "tmdb/imdb": "1233655/tt29253299",
     "extracted_at": "2026-08-24T01:56:30Z",
     "host-1": "https://bysejikuar.com/e/i0dwd3fdjncx"
   },
   {
-    "serial": 273,
+    "serial": 294,
     "title": "Colours of Time",
     "tmdb/imdb": "1235304/tt31411349",
     "extracted_at": "2026-08-23T02:09:08Z",
     "host-1": "https://luluvdoo.com/e/vmdrdpgsdvzn"
   },
   {
-    "serial": 274,
+    "serial": 295,
     "title": "Jana Nayagan",
     "tmdb/imdb": "1235877/tt33379543",
     "extracted_at": "2026-08-26T02:29:38Z",
@@ -4722,7 +5034,7 @@
     "host-2": "https://vidara.so/e/Vwqz0BmDK5mz1"
   },
   {
-    "serial": 275,
+    "serial": 296,
     "title": "Teenage Sex and Death at Camp Miasma",
     "tmdb/imdb": "1240889/tt35298123",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -4753,7 +5065,7 @@
     "host-25": "https://savefiles.com/e/mxi0q4bspxhq"
   },
   {
-    "serial": 276,
+    "serial": 297,
     "title": "Warfare",
     "tmdb/imdb": "1241436/tt31434639",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -4773,7 +5085,7 @@
     "host-14": "https://filelions.to/v/zf9lg0p3fkum"
   },
   {
-    "serial": 277,
+    "serial": 298,
     "title": "Fuze",
     "tmdb/imdb": "1242265/tt31189814",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -4793,7 +5105,7 @@
     "host-14": "https://filelions.to/v/7pjhetunudob"
   },
   {
-    "serial": 278,
+    "serial": 299,
     "title": "H Is for Hawk",
     "tmdb/imdb": "1243006/tt10329560",
     "extracted_at": "2026-08-24T01:56:30Z",
@@ -4805,7 +5117,7 @@
     "host-6": "https://vidnest.io/e/jaacbmk6m8uo"
   },
   {
-    "serial": 279,
+    "serial": 300,
     "title": "Look Back",
     "tmdb/imdb": "1244492/tt31711040",
     "extracted_at": "2026-08-30T05:43:28Z",
@@ -4815,7 +5127,7 @@
     "host-4": "https://upzur.com/embed-s0ztyrhgodo8.html"
   },
   {
-    "serial": 280,
+    "serial": 301,
     "title": "Dracula",
     "tmdb/imdb": "1246049/tt31434030",
     "extracted_at": "2026-08-19T02:21:24Z",
@@ -4830,7 +5142,7 @@
     "host-9": "https://filelions.to/v/up61tuyjcn4o"
   },
   {
-    "serial": 281,
+    "serial": 302,
     "title": "Nouvelle Vague",
     "tmdb/imdb": "1254808/tt31688586",
     "extracted_at": "2026-08-19T02:21:24Z",
@@ -4843,7 +5155,7 @@
     "host-7": "https://mixdrop.ag/e/l7no134dcdxzv8"
   },
   {
-    "serial": 282,
+    "serial": 303,
     "title": "Primitive War",
     "tmdb/imdb": "1257009/tt18312380",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -4864,7 +5176,7 @@
     "host-15": "https://vidnest.io/e/krwwvaybl3tx"
   },
   {
-    "serial": 283,
+    "serial": 304,
     "title": "Tomorrow, You Pretty Ghost",
     "tmdb/imdb": "1259256/tt17052310",
     "extracted_at": "2026-08-30T05:43:28Z",
@@ -4883,7 +5195,7 @@
     "host-13": "https://mixdrop.ag/e/mkd38dd4uvgwn9"
   },
   {
-    "serial": 284,
+    "serial": 305,
     "title": "Dead Man's Wire",
     "tmdb/imdb": "1263012/tt15181326",
     "extracted_at": "2026-08-19T02:21:24Z",
@@ -4911,7 +5223,7 @@
     "host-22": "https://vidnest.io/e/w2wvke9koqgt"
   },
   {
-    "serial": 285,
+    "serial": 306,
     "title": "Ready or Not: Here I Come",
     "tmdb/imdb": "1266127/tt33978029",
     "extracted_at": "2026-08-20T02:21:28Z",
@@ -4948,7 +5260,7 @@
     "host-31": "https://vids.st/e/17504"
   },
   {
-    "serial": 286,
+    "serial": 307,
     "title": "The Desert Child",
     "tmdb/imdb": "1266800/tt37495239",
     "extracted_at": "2026-08-20T02:21:28Z",
@@ -4959,7 +5271,7 @@
     "host-5": "https://mixdrop.ag/e/ow743e46cmkezl"
   },
   {
-    "serial": 287,
+    "serial": 308,
     "title": "Battle of Oslo",
     "tmdb/imdb": "1272586/tt32080656",
     "extracted_at": "2026-08-20T02:21:28Z",
@@ -4970,7 +5282,7 @@
     "host-5": "https://mixdrop.ag/e/el67e1mgamm11w"
   },
   {
-    "serial": 288,
+    "serial": 309,
     "title": "Papa Zola: The Movie",
     "tmdb/imdb": "1274214/tt30761647",
     "extracted_at": "2026-08-26T02:29:38Z",
@@ -4978,7 +5290,7 @@
     "host-2": "https://mixdrop.ag/e/1n9dk930hz1lll"
   },
   {
-    "serial": 289,
+    "serial": 310,
     "title": "Charlie the Wonderdog",
     "tmdb/imdb": "1276521/tt29612071",
     "extracted_at": "2026-08-23T02:09:08Z",
@@ -5001,7 +5313,7 @@
     "host-17": "https://vids.st/e/19073"
   },
   {
-    "serial": 290,
+    "serial": 311,
     "title": "The Get Out",
     "tmdb/imdb": "1279493/tt32321803",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -5032,7 +5344,7 @@
     "host-25": "https://filelions.to/v/bfloedzl66so"
   },
   {
-    "serial": 291,
+    "serial": 312,
     "title": "Sunny Dancer",
     "tmdb/imdb": "1280015/tt32212403",
     "extracted_at": "2026-08-30T05:43:28Z",
@@ -5049,7 +5361,7 @@
     "host-11": "https://mixdrop.ag/e/wlnrwnm8tlv4n7"
   },
   {
-    "serial": 292,
+    "serial": 313,
     "title": "The Furious",
     "tmdb/imdb": "1280738/tt33311069",
     "extracted_at": "2026-08-17T20:12:12Z",
@@ -5087,7 +5399,7 @@
     "host-32": "https://savefiles.com/e/b02ik1974n98"
   },
   {
-    "serial": 293,
+    "serial": 314,
     "title": "Truly Naked",
     "tmdb/imdb": "1281195/tt8760666",
     "extracted_at": "2026-08-18T05:59:51Z",
@@ -5112,7 +5424,7 @@
     "host-19": "https://savefiles.com/e/8q96po9sz3cw"
   },
   {
-    "serial": 294,
+    "serial": 315,
     "title": "Peak Everything",
     "tmdb/imdb": "1283671/tt33335204",
     "extracted_at": "2026-08-26T02:29:38Z",
@@ -5120,7 +5432,7 @@
     "host-2": "https://mixdrop.ag/e/03jopzzdcqopwj"
   },
   {
-    "serial": 295,
+    "serial": 316,
     "title": "Power Ballad",
     "tmdb/imdb": "1284016/tt32267691",
     "extracted_at": "2026-08-18T05:59:51Z",
@@ -5151,7 +5463,7 @@
     "host-25": "https://vids.st/e/94507"
   },
   {
-    "serial": 296,
+    "serial": 317,
     "title": "The Last House",
     "tmdb/imdb": "1284041/tt32268156",
     "extracted_at": "2026-08-17T19:25:49Z",
@@ -5185,7 +5497,7 @@
     "host-28": "https://savefiles.com/e/105gvwgl2zoc"
   },
   {
-    "serial": 297,
+    "serial": 318,
     "title": "Sacrifice",
     "tmdb/imdb": "1284186/tt32268992",
     "extracted_at": "2026-08-22T02:00:50Z",
@@ -5206,7 +5518,7 @@
     "host-15": "https://mixdrop.ag/e/l76zw9d1cw149w"
   },
   {
-    "serial": 298,
+    "serial": 319,
     "title": "The Death of Robin Hood",
     "tmdb/imdb": "1284465/tt32273171",
     "extracted_at": "2026-08-17T19:25:49Z",
@@ -5231,7 +5543,7 @@
     "host-19": "https://filelions.to/v/6u9emv39nsad"
   },
   {
-    "serial": 299,
+    "serial": 320,
     "title": "Dangerous Animals",
     "tmdb/imdb": "1285965/tt32299316",
     "extracted_at": "2026-08-18T05:59:51Z",
@@ -5246,7 +5558,7 @@
     "host-9": "https://filelions.to/v/t1qttkq85b5m"
   },
   {
-    "serial": 300,
+    "serial": 321,
     "title": "Dora and the Search for Sol Dorado",
     "tmdb/imdb": "1287536/tt32621553",
     "extracted_at": "2026-08-21T02:19:47Z",
@@ -5257,7 +5569,7 @@
     "host-5": "https://mixdrop.ag/e/4dv30637f7rq6r"
   },
   {
-    "serial": 301,
+    "serial": 322,
     "title": "I Want Your Sex",
     "tmdb/imdb": "1288059/tt32332915",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -5277,7 +5589,7 @@
     "host-14": "https://filelions.to/v/1vpetr998rci"
   },
   {
-    "serial": 302,
+    "serial": 323,
     "title": "Keeper",
     "tmdb/imdb": "1288072/tt32332404",
     "extracted_at": "2026-08-19T02:21:24Z",
@@ -5297,7 +5609,7 @@
     "host-14": "https://vidnest.io/e/63m7x6jk1eka"
   },
   {
-    "serial": 303,
+    "serial": 324,
     "title": "Seven Snipers",
     "tmdb/imdb": "1288341/tt36926359",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -5320,7 +5632,7 @@
     "host-17": "https://mixdrop.ag/e/mk1wmm73fx1q70g"
   },
   {
-    "serial": 304,
+    "serial": 325,
     "title": "Mutiny",
     "tmdb/imdb": "1288445/tt32338669",
     "extracted_at": "2026-08-20T02:21:28Z",
@@ -5357,7 +5669,7 @@
     "host-31": "https://savefiles.com/e/ut7jzywzyvz7"
   },
   {
-    "serial": 305,
+    "serial": 326,
     "title": "A Private Life",
     "tmdb/imdb": "1290432/tt33852162",
     "extracted_at": "2026-08-19T02:21:24Z",
@@ -5366,7 +5678,7 @@
     "host-3": "https://dood.watch/e/2kky333dqtin"
   },
   {
-    "serial": 306,
+    "serial": 327,
     "title": "Shelter",
     "tmdb/imdb": "1290821/tt32357218",
     "extracted_at": "2026-08-26T02:29:38Z",
@@ -5393,7 +5705,7 @@
     "host-21": "https://vidnest.io/e/v0rw9svisozd"
   },
   {
-    "serial": 307,
+    "serial": 328,
     "title": "Insidious: Out of the Further",
     "tmdb/imdb": "1291595/tt32393988",
     "extracted_at": "2026-08-22T02:00:50Z",
@@ -5421,7 +5733,7 @@
     "host-22": "https://mixdrop.ag/e/7krd3e4jbd4r8x4"
   },
   {
-    "serial": 308,
+    "serial": 329,
     "title": "Dhurandhar",
     "tmdb/imdb": "1291608/tt33014583",
     "extracted_at": "2026-08-18T05:59:51Z",
@@ -5433,7 +5745,7 @@
     "host-6": "https://vidmoly.biz/embed-38nybjz3n4lt.html"
   },
   {
-    "serial": 309,
+    "serial": 330,
     "title": "The Wizard of the Kremlin",
     "tmdb/imdb": "1291659/tt32386654",
     "extracted_at": "2026-08-19T02:21:24Z",
@@ -5443,7 +5755,7 @@
     "host-4": "https://vidmoly.biz/embed-2kvkvjg35ja5.html"
   },
   {
-    "serial": 310,
+    "serial": 331,
     "title": "Beast",
     "tmdb/imdb": "1292415/tt7708226",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -5466,14 +5778,14 @@
     "host-17": "https://mixdrop.ag/e/0399gzdmb88mlq"
   },
   {
-    "serial": 311,
+    "serial": 332,
     "title": "Kuncen",
     "tmdb/imdb": "1292645/tt31601350",
     "extracted_at": "2026-08-26T02:29:38Z",
     "host-1": "https://dood.watch/e/qyiapqb2vcm6"
   },
   {
-    "serial": 312,
+    "serial": 333,
     "title": "The Mongoose",
     "tmdb/imdb": "1294189/tt13611778",
     "extracted_at": "2026-08-31T05:58:09Z",
@@ -5505,7 +5817,7 @@
     "host-26": "https://savefiles.com/e/xmg36zt7sea0"
   },
   {
-    "serial": 313,
+    "serial": 334,
     "title": "The Last Viking",
     "tmdb/imdb": "1295400/tt27817389",
     "extracted_at": "2026-08-19T02:21:24Z",
@@ -5528,7 +5840,7 @@
     "host-17": "https://mixdrop.ag/e/jdqew4l4bz3k4q"
   },
   {
-    "serial": 314,
+    "serial": 335,
     "title": "Diamonds",
     "tmdb/imdb": "1299046/tt32810496",
     "extracted_at": "2026-08-24T01:56:30Z",
@@ -5540,7 +5852,7 @@
     "host-6": "https://mixdrop.ag/e/369z894kbm7xq0"
   },
   {
-    "serial": 315,
+    "serial": 336,
     "title": "Soulm8te",
     "tmdb/imdb": "1307118/tt32654916",
     "extracted_at": "2026-08-17T20:12:12Z",
@@ -5573,7 +5885,7 @@
     "host-27": "https://savefiles.com/e/cs84l7ph4y2s"
   },
   {
-    "serial": 316,
+    "serial": 337,
     "title": "Wasteman",
     "tmdb/imdb": "1307373/tt29028515",
     "extracted_at": "2026-08-21T02:19:47Z",
@@ -5598,7 +5910,7 @@
     "host-19": "https://mixdrop.ag/e/el6r1l68aqqnxn9"
   },
   {
-    "serial": 317,
+    "serial": 338,
     "title": "Young Washington",
     "tmdb/imdb": "1308767/tt32104007",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -5639,7 +5951,7 @@
     "host-35": "https://savefiles.com/e/tio9w6m99uk8"
   },
   {
-    "serial": 318,
+    "serial": 339,
     "title": "Dolly",
     "tmdb/imdb": "1309083/tt32639175",
     "extracted_at": "2026-08-28T12:04:00Z",
@@ -5667,7 +5979,7 @@
     "host-22": "https://filelions.to/v/p5hay9tthvb1"
   },
   {
-    "serial": 319,
+    "serial": 340,
     "title": "Murder at the Embassy",
     "tmdb/imdb": "1310568/tt22772712",
     "extracted_at": "2026-08-21T02:19:47Z",
@@ -5683,7 +5995,7 @@
     "host-10": "https://mixdrop.ag/e/q1dgpoppaxwrmp"
   },
   {
-    "serial": 320,
+    "serial": 341,
     "title": "Demon Slayer: Kimetsu no Yaiba Infinity Castle",
     "tmdb/imdb": "1311031/tt32820897",
     "extracted_at": "2026-08-28T12:04:00Z",
@@ -5708,7 +6020,7 @@
     "host-19": "https://vidnest.io/e/ul3ebmlr50ob"
   },
   {
-    "serial": 321,
+    "serial": 342,
     "title": "Somebody to Love",
     "tmdb/imdb": "1312157/tt34621892",
     "extracted_at": "2026-08-24T01:56:30Z",
@@ -5717,7 +6029,7 @@
     "host-3": "https://luluvdoo.com/e/j3mtv6y5tmqo"
   },
   {
-    "serial": 322,
+    "serial": 343,
     "title": "Yellow Eyes",
     "tmdb/imdb": "1314826/tt32881432",
     "extracted_at": "2026-08-20T02:21:28Z",
@@ -5739,7 +6051,7 @@
     "host-16": "https://mixdrop.ag/e/dkq4qezqh7jnr3o"
   },
   {
-    "serial": 323,
+    "serial": 344,
     "title": "Minions & Monsters",
     "tmdb/imdb": "1315772/tt32890033",
     "extracted_at": "2026-08-17T19:25:49Z",
@@ -5786,7 +6098,7 @@
     "host-41": "https://savefiles.com/e/24z8vaymxzbl"
   },
   {
-    "serial": 324,
+    "serial": 345,
     "title": "Grand Prix of Europe",
     "tmdb/imdb": "1316147/tt32897929",
     "extracted_at": "2026-08-20T02:21:28Z",
@@ -5801,14 +6113,14 @@
     "host-9": "https://vidnest.io/e/yfzve5epnp6k"
   },
   {
-    "serial": 325,
+    "serial": 346,
     "title": "The Ugly",
     "tmdb/imdb": "1316719/tt33514451",
     "extracted_at": "2026-08-25T01:55:21Z",
     "host-1": "https://bysejikuar.com/e/2ohts1h92vc3/the-ugly-2025-1080p-korean-web-dl-hevc-x265-5-1-bone"
   },
   {
-    "serial": 326,
+    "serial": 347,
     "title": "I Swear",
     "tmdb/imdb": "1317149/tt31514146",
     "extracted_at": "2026-08-31T05:58:09Z",
@@ -5822,14 +6134,14 @@
     "host-8": "https://filelions.to/v/aztvb9ak868s"
   },
   {
-    "serial": 327,
+    "serial": 348,
     "title": "given the Movie: To the Sea",
     "tmdb/imdb": "1317276/tt35631332",
     "extracted_at": "2026-08-25T01:55:21Z",
     "host-1": "https://dood.watch/e/lliqvd3q6ryq"
   },
   {
-    "serial": 328,
+    "serial": 349,
     "title": "Pressure",
     "tmdb/imdb": "1318413/tt32547691",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -5850,7 +6162,7 @@
     "host-15": "https://vids.st/e/91398"
   },
   {
-    "serial": 329,
+    "serial": 350,
     "title": "Descendants: Wicked Wonderland",
     "tmdb/imdb": "1318621/tt34477910",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -5868,7 +6180,7 @@
     "host-12": "https://mixdrop.ag/e/xwoj3r3zfovm8z"
   },
   {
-    "serial": 330,
+    "serial": 351,
     "title": "The Drama",
     "tmdb/imdb": "1325734/tt33071426",
     "extracted_at": "2026-08-20T02:21:28Z",
@@ -5902,7 +6214,7 @@
     "host-28": "https://vids.st/e/34666"
   },
   {
-    "serial": 331,
+    "serial": 352,
     "title": "Tony",
     "tmdb/imdb": "1329016/tt33095251",
     "extracted_at": "2026-08-18T05:59:51Z",
@@ -5927,7 +6239,7 @@
     "host-19": "https://savefiles.com/e/zj7ha616cphr"
   },
   {
-    "serial": 332,
+    "serial": 353,
     "title": "Remarkably Bright Creatures",
     "tmdb/imdb": "1330021/tt33100314",
     "extracted_at": "2026-08-29T07:42:01Z",
@@ -5948,7 +6260,7 @@
     "host-15": "https://mixdrop.ag/e/jdqqndw8a3eeg8"
   },
   {
-    "serial": 333,
+    "serial": 354,
     "title": "Attack on Titan: THE LAST ATTACK",
     "tmdb/imdb": "1333100/tt33175825",
     "extracted_at": "2026-08-18T05:59:51Z",
@@ -5968,7 +6280,7 @@
     "host-14": "https://filelions.to/v/he573jj2kko6"
   },
   {
-    "serial": 334,
+    "serial": 355,
     "title": "Lesbian Space Princess",
     "tmdb/imdb": "1333141/tt29781139",
     "extracted_at": "2026-08-25T01:55:21Z",
@@ -5981,7 +6293,14 @@
     "host-7": "https://vidnest.io/e/6mkw714dqxae"
   },
   {
-    "serial": 335,
+    "serial": 356,
+    "title": "Unidentified",
+    "tmdb/imdb": "1337438/tt32298366",
+    "extracted_at": "2026-09-01T05:12:14Z",
+    "host-1": "https://bysejikuar.com/e/2hh5g7qvtg5j"
+  },
+  {
+    "serial": 357,
     "title": "The Birthday Party",
     "tmdb/imdb": "1339175/tt33269988",
     "extracted_at": "2026-08-18T05:59:51Z",
@@ -6010,7 +6329,7 @@
     "host-23": "https://savefiles.com/e/ar9qd5q99hwe"
   },
   {
-    "serial": 336,
+    "serial": 358,
     "title": "Finding Emily",
     "tmdb/imdb": "1339588/tt32499466",
     "extracted_at": "2026-08-27T09:02:11Z",
@@ -6040,7 +6359,7 @@
     "host-24": "https://vids.st/e/94707"
   },
   {
-    "serial": 337,
+    "serial": 359,
     "title": "Obsession",
     "tmdb/imdb": "1339713/tt37287335",
     "extracted_at": "2026-08-17T19:25:49Z",
@@ -6069,7 +6388,7 @@
     "host-23": "https://vids.st/e/99992"
   },
   {
-    "serial": 338,
+    "serial": 360,
     "title": "Tuner",
     "tmdb/imdb": "1340206/tt33296751",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -6106,7 +6425,7 @@
     "host-31": "https://vids.st/e/94540"
   },
   {
-    "serial": 339,
+    "serial": 361,
     "title": "Captain Sabertooth and the Countess of Grel",
     "tmdb/imdb": "1342341/tt33540970",
     "extracted_at": "2026-08-28T12:04:00Z",
@@ -6120,7 +6439,7 @@
     "host-8": "https://mixdrop.ag/e/36n14d94b4xg7w"
   },
   {
-    "serial": 340,
+    "serial": 362,
     "title": "Counterattack",
     "tmdb/imdb": "1356039/tt23648788",
     "extracted_at": "2026-08-30T05:43:28Z",
@@ -6135,7 +6454,7 @@
     "host-9": "https://mixdrop.ag/e/1nvvpdqdhd4el7"
   },
   {
-    "serial": 341,
+    "serial": 363,
     "title": "The Dink",
     "tmdb/imdb": "1361774/tt33499146",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -6162,7 +6481,7 @@
     "host-21": "https://savefiles.com/e/m36ie4ev365q"
   },
   {
-    "serial": 342,
+    "serial": 364,
     "title": "All Night Wrong",
     "tmdb/imdb": "1361969/tt18316986",
     "extracted_at": "2026-08-19T02:21:24Z",
@@ -6195,7 +6514,7 @@
     "host-27": "https://filelions.to/v/aqy0gkq9xwak"
   },
   {
-    "serial": 343,
+    "serial": 365,
     "title": "Saccharine",
     "tmdb/imdb": "1363387/tt35050712",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -6212,7 +6531,7 @@
     "host-11": "https://mixdrop.ag/e/mk1xp41vt8gowp"
   },
   {
-    "serial": 344,
+    "serial": 366,
     "title": "The Dangers in My Heart: The Movie",
     "tmdb/imdb": "1363979/tt38650422",
     "extracted_at": "2026-08-19T02:21:24Z",
@@ -6225,14 +6544,14 @@
     "host-7": "https://vidmoly.biz/embed-7lplsnir0qmw.html"
   },
   {
-    "serial": 345,
+    "serial": 367,
     "title": "Primavera",
     "tmdb/imdb": "1365683/tt33586629",
     "extracted_at": "2026-08-26T02:29:38Z",
     "host-1": "https://vidmoly.biz/embed-ws561x27vcib.html"
   },
   {
-    "serial": 346,
+    "serial": 368,
     "title": "Off the Grid",
     "tmdb/imdb": "1371151/tt27424511",
     "extracted_at": "2026-08-28T12:04:00Z",
@@ -6250,7 +6569,7 @@
     "host-12": "https://mixdrop.ag/e/1nm7310ki0x3q1"
   },
   {
-    "serial": 347,
+    "serial": 369,
     "title": "Colony",
     "tmdb/imdb": "1375646/tt34385135",
     "extracted_at": "2026-08-17T19:25:49Z",
@@ -6272,14 +6591,14 @@
     "host-16": "https://savefiles.com/e/9n39rkk6eo6z"
   },
   {
-    "serial": 348,
+    "serial": 370,
     "title": "The Money Maker",
     "tmdb/imdb": "1376415/tt35495035",
     "extracted_at": "2026-08-21T02:19:47Z",
     "host-1": "https://dood.watch/e/v64apg3lwd3m"
   },
   {
-    "serial": 349,
+    "serial": 371,
     "title": "Kokuho",
     "tmdb/imdb": "1379266/tt35231039",
     "extracted_at": "2026-08-20T02:21:28Z",
@@ -6290,7 +6609,7 @@
     "host-5": "https://savefiles.com/e/38vxc7b2etl7"
   },
   {
-    "serial": 350,
+    "serial": 372,
     "title": "Holy Days",
     "tmdb/imdb": "1381151/tt14734016",
     "extracted_at": "2026-08-23T02:09:08Z",
@@ -6321,7 +6640,7 @@
     "host-25": "https://vidnest.io/e/dmdbr9w34dbl"
   },
   {
-    "serial": 351,
+    "serial": 373,
     "title": "The Outer Threat",
     "tmdb/imdb": "1381202/tt33372918",
     "extracted_at": "2026-08-25T01:55:21Z",
@@ -6344,7 +6663,7 @@
     "host-17": "https://mixdrop.ag/e/ow7q4wmecwd7rj"
   },
   {
-    "serial": 352,
+    "serial": 374,
     "title": "Hungry",
     "tmdb/imdb": "1382832/tt34494076",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -6371,7 +6690,7 @@
     "host-21": "https://mixdrop.ag/e/z1ow8vezaj341m"
   },
   {
-    "serial": 353,
+    "serial": 375,
     "title": "Protector",
     "tmdb/imdb": "1383731/tt34471850",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -6402,7 +6721,7 @@
     "host-25": "https://vidnest.io/e/b0yky7ydy9ry"
   },
   {
-    "serial": 354,
+    "serial": 376,
     "title": "Haunted Heist",
     "tmdb/imdb": "1384040/tt34890565",
     "extracted_at": "2026-08-22T02:00:50Z",
@@ -6435,7 +6754,7 @@
     "host-27": "https://savefiles.com/e/adtm6nhe6wrp"
   },
   {
-    "serial": 355,
+    "serial": 377,
     "title": "The Dog Stars",
     "tmdb/imdb": "1384216/tt21285562",
     "extracted_at": "2026-08-31T05:58:09Z",
@@ -6462,7 +6781,7 @@
     "host-21": "https://mixdrop.ag/e/1nvj8v69sk86w93"
   },
   {
-    "serial": 356,
+    "serial": 378,
     "title": "Couture",
     "tmdb/imdb": "1390382/tt34688195",
     "extracted_at": "2026-08-18T05:59:51Z",
@@ -6482,7 +6801,7 @@
     "host-14": "https://vids.st/e/29536"
   },
   {
-    "serial": 357,
+    "serial": 379,
     "title": "Ghost in the Cell",
     "tmdb/imdb": "1393326/tt9000310",
     "extracted_at": "2026-08-20T02:21:28Z",
@@ -6493,14 +6812,14 @@
     "host-5": "https://mixdrop.ag/e/9wn6lpvwun8g0z"
   },
   {
-    "serial": 358,
+    "serial": 380,
     "title": "LUPIN THE IIIRD: The Movie - The Immortal Bloodline",
     "tmdb/imdb": "1395140/tt34812090",
     "extracted_at": "2026-08-26T02:29:38Z",
     "host-1": "https://mixdrop.ag/e/vkzxxzvxa7q8jm"
   },
   {
-    "serial": 359,
+    "serial": 381,
     "title": "Girls Like Girls",
     "tmdb/imdb": "1397485/tt32432654",
     "extracted_at": "2026-08-19T02:21:24Z",
@@ -6516,7 +6835,7 @@
     "host-10": "https://mixdrop.ag/e/1n9w3vpzajglnz"
   },
   {
-    "serial": 360,
+    "serial": 382,
     "title": "Driver's Ed",
     "tmdb/imdb": "1398050/tt9308022",
     "extracted_at": "2026-08-19T02:21:24Z",
@@ -6529,7 +6848,7 @@
     "host-7": "https://mixdrop.ag/e/gj0jw7n0aw4k6mz"
   },
   {
-    "serial": 361,
+    "serial": 383,
     "title": "The Christophers",
     "tmdb/imdb": "1400357/tt34966562",
     "extracted_at": "2026-08-21T02:19:47Z",
@@ -6547,7 +6866,7 @@
     "host-12": "https://mixdrop.ag/e/wlkop0r8adzpje"
   },
   {
-    "serial": 362,
+    "serial": 384,
     "title": "The Isolate Thief",
     "tmdb/imdb": "1404304/tt35051162",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -6573,7 +6892,7 @@
     "host-20": "https://mixdrop.ag/e/7krpmvzgh7x667"
   },
   {
-    "serial": 363,
+    "serial": 385,
     "title": "Exit 8",
     "tmdb/imdb": "1408208/tt35222590",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -6596,7 +6915,7 @@
     "host-17": "https://filelions.to/v/7egr2frrq2nu"
   },
   {
-    "serial": 364,
+    "serial": 386,
     "title": "Number One",
     "tmdb/imdb": "1411577/tt39380534",
     "extracted_at": "2026-08-23T02:09:08Z",
@@ -6608,7 +6927,7 @@
     "host-6": "https://mixdrop.ag/e/7krkq6d3h76n8m"
   },
   {
-    "serial": 365,
+    "serial": 387,
     "title": "ChaO",
     "tmdb/imdb": "1419053/tt36592916",
     "extracted_at": "2026-08-28T12:04:00Z",
@@ -6620,7 +6939,7 @@
     "host-6": "https://mixdrop.ag/e/1n9x3mkdskk0x3k"
   },
   {
-    "serial": 366,
+    "serial": 388,
     "title": "The Shadow's Edge",
     "tmdb/imdb": "1419406/tt34610311",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -6636,7 +6955,7 @@
     "host-10": "https://filelions.to/v/nk4ichcq1v7j"
   },
   {
-    "serial": 367,
+    "serial": 389,
     "title": "Panda Plan: The Magical Tribe",
     "tmdb/imdb": "1421552/tt35514520",
     "extracted_at": "2026-08-20T02:21:28Z",
@@ -6649,7 +6968,7 @@
     "host-7": "https://vidmoly.biz/embed-4nr6zb2k474k.html"
   },
   {
-    "serial": 368,
+    "serial": 390,
     "title": "Inside the Trustor Scandal",
     "tmdb/imdb": "1421594/tt5072334",
     "extracted_at": "2026-08-20T02:21:28Z",
@@ -6659,7 +6978,7 @@
     "host-4": "https://mixdrop.ag/e/9wnqm6wzs33od6x"
   },
   {
-    "serial": 369,
+    "serial": 391,
     "title": "It Ends",
     "tmdb/imdb": "1422011/tt35519455",
     "extracted_at": "2026-08-20T02:21:28Z",
@@ -6677,7 +6996,7 @@
     "host-12": "https://mixdrop.ag/e/z1jveezmfmr8m9"
   },
   {
-    "serial": 370,
+    "serial": 392,
     "title": "Good Boy",
     "tmdb/imdb": "1422096/tt35521922",
     "extracted_at": "2026-08-18T05:59:51Z",
@@ -6705,7 +7024,7 @@
     "host-22": "https://vidnest.io/e/7ah2iehtgvjg"
   },
   {
-    "serial": 371,
+    "serial": 393,
     "title": "Ice Skater",
     "tmdb/imdb": "1424965/tt34959976",
     "extracted_at": "2026-08-20T02:21:28Z",
@@ -6725,7 +7044,7 @@
     "host-14": "https://vidnest.io/e/8jrmvp0f9e0q"
   },
   {
-    "serial": 372,
+    "serial": 394,
     "title": "Penny Lane Is Dead",
     "tmdb/imdb": "1428766/tt35670732",
     "extracted_at": "2026-08-30T05:43:28Z",
@@ -6754,7 +7073,7 @@
     "host-23": "https://mixdrop.ag/e/r6w3ln4zhwn7nl"
   },
   {
-    "serial": 373,
+    "serial": 395,
     "title": "The Stranger",
     "tmdb/imdb": "1429348/tt36243564",
     "extracted_at": "2026-08-30T05:43:28Z",
@@ -6762,7 +7081,7 @@
     "host-2": "https://dood.watch/e/otkn4n51jmcw"
   },
   {
-    "serial": 374,
+    "serial": 396,
     "title": "Hokum",
     "tmdb/imdb": "1430077/tt35672862",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -6795,7 +7114,7 @@
     "host-27": "https://mixdrop.ag/e/7k91jw9zid161ov"
   },
   {
-    "serial": 375,
+    "serial": 397,
     "title": "The Bay",
     "tmdb/imdb": "1430698/tt30217600",
     "extracted_at": "2026-08-26T02:29:38Z",
@@ -6819,7 +7138,7 @@
     "host-18": "https://mixdrop.ag/e/eln8g9jqs46dld"
   },
   {
-    "serial": 376,
+    "serial": 398,
     "title": "40 Dates and 40 Nights",
     "tmdb/imdb": "1431804/tt33219707",
     "extracted_at": "2026-08-21T02:19:47Z",
@@ -6849,14 +7168,14 @@
     "host-24": "https://vids.st/e/100863"
   },
   {
-    "serial": 377,
+    "serial": 399,
     "title": "Palestine 36",
     "tmdb/imdb": "1432596/tt29271622",
     "extracted_at": "2026-08-28T12:04:00Z",
     "host-1": "https://luluvdoo.com/e/1jdscz38sjw0"
   },
   {
-    "serial": 378,
+    "serial": 400,
     "title": "My Father's Shadow",
     "tmdb/imdb": "1432605/tt35695538",
     "extracted_at": "2026-08-25T01:55:21Z",
@@ -6871,7 +7190,7 @@
     "host-9": "https://mixdrop.ag/e/7k94g9wvcrn7zm"
   },
   {
-    "serial": 379,
+    "serial": 401,
     "title": "Idhayam Murali",
     "tmdb/imdb": "1432631/tt35723557",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -6883,7 +7202,7 @@
     "host-6": "https://mixdrop.ag/e/r6wp98kzujrodx"
   },
   {
-    "serial": 380,
+    "serial": 402,
     "title": "One Night Only",
     "tmdb/imdb": "1433367/tt37853455",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -6904,7 +7223,7 @@
     "host-15": "https://mixdrop.ag/e/36n0zm0nc3mq4z"
   },
   {
-    "serial": 381,
+    "serial": 403,
     "title": "Muzzle: City of Wolves",
     "tmdb/imdb": "1439112/tt32395062",
     "extracted_at": "2026-08-19T02:21:24Z",
@@ -6926,7 +7245,7 @@
     "host-16": "https://mixdrop.ag/e/pj47g93qb84m7p"
   },
   {
-    "serial": 382,
+    "serial": 404,
     "title": "The Punisher: One Last Kill",
     "tmdb/imdb": "1439930/tt36042156",
     "extracted_at": "2026-08-30T05:43:28Z",
@@ -6956,7 +7275,7 @@
     "host-24": "https://bigshare.io/watch/e/83370"
   },
   {
-    "serial": 383,
+    "serial": 405,
     "title": "Chennai Love Story",
     "tmdb/imdb": "1443136/tt37161651",
     "extracted_at": "2026-08-26T02:29:38Z",
@@ -6964,7 +7283,7 @@
     "host-2": "https://vidara.so/e/NhrB9KAzGPgVH"
   },
   {
-    "serial": 384,
+    "serial": 406,
     "title": "Truth & Treason",
     "tmdb/imdb": "1443940/tt21825416",
     "extracted_at": "2026-08-23T02:09:08Z",
@@ -6984,7 +7303,7 @@
     "host-14": "https://mixdrop.ag/e/67pvkmoeij8l7l"
   },
   {
-    "serial": 385,
+    "serial": 407,
     "title": "Forbidden Fruits",
     "tmdb/imdb": "1450527/tt30691214",
     "extracted_at": "2026-08-19T02:21:24Z",
@@ -7017,7 +7336,7 @@
     "host-27": "https://filelions.to/v/5m282a46r6kj"
   },
   {
-    "serial": 386,
+    "serial": 408,
     "title": "You, Me & Tuscany",
     "tmdb/imdb": "1455079/tt36352591",
     "extracted_at": "2026-08-19T02:21:24Z",
@@ -7033,7 +7352,7 @@
     "host-10": "https://mixdrop.ag/e/nl10kk8zamx1lx"
   },
   {
-    "serial": 387,
+    "serial": 409,
     "title": "The Gentleman Thief",
     "tmdb/imdb": "1458215/tt36415524",
     "extracted_at": "2026-08-21T02:19:47Z",
@@ -7061,7 +7380,32 @@
     "host-22": "https://savefiles.com/e/4r45icahhif5"
   },
   {
-    "serial": 388,
+    "serial": 410,
+    "title": "Spider Island",
+    "tmdb/imdb": "1462861/tt22406048",
+    "extracted_at": "2026-09-01T05:12:14Z",
+    "host-1": "https://bysejikuar.com/e/iz8v6bdo9a7m",
+    "host-2": "https://bysejikuar.com/e/uttlgz86de77",
+    "host-3": "https://bysejikuar.com/e/90i43i89fzdw",
+    "host-4": "https://voe.sx/e/xfg0n5wtsxgg",
+    "host-5": "https://voe.sx/e/emycedtf7r3m",
+    "host-6": "https://voe.sx/e/qwmnjezfhqto",
+    "host-7": "https://streamta.site/e/17LlR0OLBKUegjm/Spider.Island.2026.1080p.WEB-DL.H264-PlayfulDarkness.mkv",
+    "host-8": "https://streamta.site/e/Jq3jDP6zOoTjjlB",
+    "host-9": "https://dood.watch/e/n6hxei29wb2g",
+    "host-10": "https://dood.watch/e/ms23664zdmn5",
+    "host-11": "https://luluvdoo.com/e/jwdrhfrcb02g",
+    "host-12": "https://luluvdoo.com/e/bcfbf6risbga",
+    "host-13": "https://vidara.so/e/WAbFJw6LQrKhO",
+    "host-14": "https://vidmoly.biz/embed-tdk0uze6osow.html",
+    "host-15": "https://mixdrop.ag/e/dkqw78jmb1dmvx",
+    "host-16": "https://mixdrop.ag/e/1nvjx0w9unmvxx",
+    "host-17": "https://mixdrop.ag/e/pjkqvloxtgdoq6d",
+    "host-18": "https://streamplay.to/embed-v8fibhxz24w6.html",
+    "host-19": "https://savefiles.com/e/x13v5onfe90j"
+  },
+  {
+    "serial": 411,
     "title": "The President's Cake",
     "tmdb/imdb": "1464883/tt36580119",
     "extracted_at": "2026-08-22T02:00:50Z",
@@ -7073,7 +7417,7 @@
     "host-6": "https://mixdrop.ag/e/369lj3p1sp4njm"
   },
   {
-    "serial": 389,
+    "serial": 412,
     "title": "Horsegirls",
     "tmdb/imdb": "1465818/tt13652006",
     "extracted_at": "2026-08-21T02:19:47Z",
@@ -7091,7 +7435,7 @@
     "host-12": "https://mixdrop.ag/e/7krgk4w9flz31p"
   },
   {
-    "serial": 390,
+    "serial": 413,
     "title": "Heartstopper Forever",
     "tmdb/imdb": "1468683/tt36619926",
     "extracted_at": "2026-08-18T05:59:51Z",
@@ -7116,7 +7460,7 @@
     "host-19": "https://mixdrop.ag/e/k0n8o77jc7wrx1"
   },
   {
-    "serial": 391,
+    "serial": 414,
     "title": "Her Private Hell",
     "tmdb/imdb": "1469342/tt36629665",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -7135,7 +7479,7 @@
     "host-13": "https://savefiles.com/e/0v3thvjjprxe"
   },
   {
-    "serial": 392,
+    "serial": 415,
     "title": "The Mortuary Assistant",
     "tmdb/imdb": "1470130/tt36647890",
     "extracted_at": "2026-08-26T02:29:38Z",
@@ -7154,7 +7498,7 @@
     "host-13": "https://filelions.to/v/p66fuspb7ims"
   },
   {
-    "serial": 393,
+    "serial": 416,
     "title": "Barreda",
     "tmdb/imdb": "1471168/tt43706402",
     "extracted_at": "2026-08-28T12:04:00Z",
@@ -7168,7 +7512,7 @@
     "host-8": "https://mixdrop.ag/e/wlnozlk0spwed8"
   },
   {
-    "serial": 394,
+    "serial": 417,
     "title": "Infiltrate",
     "tmdb/imdb": "1472951/tt29218808",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -7193,7 +7537,7 @@
     "host-19": "https://filelions.to/v/5p236ko0enbb"
   },
   {
-    "serial": 395,
+    "serial": 418,
     "title": "Speed Demon",
     "tmdb/imdb": "1473878/tt34386603",
     "extracted_at": "2026-08-21T02:19:47Z",
@@ -7218,7 +7562,7 @@
     "host-19": "https://vids.st/e/79548"
   },
   {
-    "serial": 396,
+    "serial": 419,
     "title": "Gail Daughtry and the Celebrity Sex Pass",
     "tmdb/imdb": "1476682/tt36834010",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -7251,7 +7595,7 @@
     "host-27": "https://savefiles.com/e/asc8q4xfq94d"
   },
   {
-    "serial": 397,
+    "serial": 420,
     "title": "Ice Cream Man",
     "tmdb/imdb": "1477712/tt36893729",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -7281,7 +7625,26 @@
     "host-24": "https://savefiles.com/e/4glljj5hn7xi"
   },
   {
-    "serial": 398,
+    "serial": 421,
+    "title": "Bad Counselors",
+    "tmdb/imdb": "1479537/tt6633934",
+    "extracted_at": "2026-09-01T05:12:14Z",
+    "host-1": "https://bysejikuar.com/e/5pn5h9oof5gb/Bad.Counselors.2026.1080p.WEBRip.x264-YTS",
+    "host-2": "https://bysejikuar.com/e/51d785n5gnl3",
+    "host-3": "https://voe.sx/e/bw6hhufgjmuc",
+    "host-4": "https://voe.sx/e/6fpyfszdfhd4",
+    "host-5": "https://streamta.site/e/OV38G0123KhZO1y/Bad.Counselors.2026.1080p.ANGEL.WEB-DL.AAC2.0.H.264-SNAKE.ff.mp4",
+    "host-6": "https://dood.watch/e/hkavf2l2wa66",
+    "host-7": "https://dood.watch/e/kfbwxttjzb9y",
+    "host-8": "https://luluvdoo.com/e/81vulw1lizje",
+    "host-9": "https://luluvdoo.com/e/gp7z358aotbn",
+    "host-10": "https://vidmoly.biz/embed-jdxvpv0bjltk.html",
+    "host-11": "https://mixdrop.ag/e/mkdre4r6c13mdm",
+    "host-12": "https://mixdrop.ag/e/r6w4qvzrt1wkj0",
+    "host-13": "https://mixdrop.ag/e/pjkqnv3kag1v1go"
+  },
+  {
+    "serial": 422,
     "title": "undertone",
     "tmdb/imdb": "1480387/tt35892608",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -7295,7 +7658,7 @@
     "host-8": "https://vinovo.to/e/w24p7o9xivr2no"
   },
   {
-    "serial": 399,
+    "serial": 423,
     "title": "The Devil's Mouth",
     "tmdb/imdb": "1481343/tt36958312",
     "extracted_at": "2026-08-17T20:12:12Z",
@@ -7329,7 +7692,7 @@
     "host-28": "https://savefiles.com/e/00ztm9cbje6k"
   },
   {
-    "serial": 400,
+    "serial": 424,
     "title": "Ikka",
     "tmdb/imdb": "1484913/tt39632269",
     "extracted_at": "2026-08-17T18:42:40Z",
@@ -7344,7 +7707,7 @@
     "host-9": "https://vidmoly.biz/embed-2gyqssglih02.html"
   },
   {
-    "serial": 401,
+    "serial": 425,
     "title": "Elize: Shadows of a Woman",
     "tmdb/imdb": "1487861/tt37042085",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -7357,7 +7720,7 @@
     "host-7": "https://mixdrop.ag/e/nl0p4vn4hz0mg"
   },
   {
-    "serial": 402,
+    "serial": 426,
     "title": "Nando Between Two Worlds - A Sintonia Film",
     "tmdb/imdb": "1487864/tt43640198",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -7366,7 +7729,7 @@
     "host-3": "https://mixdrop.ag/e/4dnn04rgbv74no"
   },
   {
-    "serial": 403,
+    "serial": 427,
     "title": "Camp Rock 3",
     "tmdb/imdb": "1493400/tt6743524",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -7400,7 +7763,7 @@
     "host-28": "https://savefiles.com/e/pbh5h1exwfbs"
   },
   {
-    "serial": 404,
+    "serial": 428,
     "title": "All That We Never Were",
     "tmdb/imdb": "1497463/tt37284855",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -7413,7 +7776,7 @@
     "host-7": "https://mixdrop.ag/e/jd9d1gn6f4gwkr"
   },
   {
-    "serial": 405,
+    "serial": 429,
     "title": "Tom and Jerry: Forbidden Compass",
     "tmdb/imdb": "1497970/tt37185884",
     "extracted_at": "2026-08-18T05:59:51Z",
@@ -7431,7 +7794,7 @@
     "host-12": "https://savefiles.com/e/uwaa3fo65f1k"
   },
   {
-    "serial": 406,
+    "serial": 430,
     "title": "Lockbox",
     "tmdb/imdb": "1500890/tt37369064",
     "extracted_at": "2026-08-19T02:21:24Z",
@@ -7455,7 +7818,7 @@
     "host-18": "https://mixdrop.ag/e/eln0d91ri9j313"
   },
   {
-    "serial": 407,
+    "serial": 431,
     "title": "Don't Say Good Luck",
     "tmdb/imdb": "1504358/tt36590417",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -7484,7 +7847,7 @@
     "host-23": "https://savefiles.com/e/ukwlelaqjz5h"
   },
   {
-    "serial": 408,
+    "serial": 432,
     "title": "Atlas King",
     "tmdb/imdb": "1510517/tt36460398",
     "extracted_at": "2026-08-23T02:09:08Z",
@@ -7519,7 +7882,38 @@
     "host-29": "https://savefiles.com/e/zyiyc5u910kr"
   },
   {
-    "serial": 409,
+    "serial": 433,
+    "title": "Buddy",
+    "tmdb/imdb": "1514026/tt37281055",
+    "extracted_at": "2026-09-01T05:12:14Z",
+    "host-1": "https://bysejikuar.com/e/hovsile13be0",
+    "host-2": "https://bysejikuar.com/e/vjgmaadga1eb",
+    "host-3": "https://bysejikuar.com/e/3szrq64wxxkx",
+    "host-4": "https://voe.sx/e/vvqrbvbph0je",
+    "host-5": "https://voe.sx/e/2e5cpztyhfsq",
+    "host-6": "https://voe.sx/e/baeioinyf4mf",
+    "host-7": "https://streamta.site/e/M7XVpYblgVImbVJ",
+    "host-8": "https://streamta.site/e/A6GR2B00V1UXp8a/Buddy.2026.1080p.CAM.x264-DKS.mp4",
+    "host-9": "https://dood.watch/e/fg1ivvdmiej7",
+    "host-10": "https://dood.watch/e/zzpc5ozqzcvp",
+    "host-11": "https://dood.watch/e/e3do5i9axkc1",
+    "host-12": "https://streamwish.to/e/tft87y7ocqfy",
+    "host-13": "https://luluvdoo.com/e/55ddlwqf6jgt",
+    "host-14": "https://luluvdoo.com/e/bsvxr2omyr3p",
+    "host-15": "https://vidara.so/e/vHb564KZSm3pa",
+    "host-16": "https://vidara.so/e/e9ZNyEh7jO2Q8",
+    "host-17": "https://vidmoly.biz/embed-jaephcrz5f9g.html",
+    "host-18": "https://mixdrop.ag/e/7kr6ljzocqx74o",
+    "host-19": "https://mixdrop.ag/e/gjnxpnr8a7zl0j",
+    "host-20": "https://mixdrop.ag/e/l76rkkx0tdkvxq",
+    "host-21": "https://streamplay.to/embed-fwibeo7l6tjk.html",
+    "host-22": "https://streamplay.to/embed-717g3f6x7az1.html",
+    "host-23": "https://filelions.to/v/3hnfvs6vqz3i",
+    "host-24": "https://savefiles.com/e/g4vsuc7l6hv8",
+    "host-25": "https://savefiles.com/e/4w8rzr8n2vp0"
+  },
+  {
+    "serial": 434,
     "title": "Above & Below",
     "tmdb/imdb": "1514682/tt37603783",
     "extracted_at": "2026-08-21T02:19:47Z",
@@ -7540,7 +7934,7 @@
     "host-15": "https://savefiles.com/e/rw5u5onajn77"
   },
   {
-    "serial": 410,
+    "serial": 435,
     "title": "The Last Sunrise",
     "tmdb/imdb": "1516698/tt37654096",
     "extracted_at": "2026-08-28T12:04:00Z",
@@ -7571,7 +7965,7 @@
     "host-25": "https://savefiles.com/e/xyccfo3tcxx0"
   },
   {
-    "serial": 411,
+    "serial": 436,
     "title": "The Jester 2",
     "tmdb/imdb": "1519168/tt37334010",
     "extracted_at": "2026-08-24T01:56:30Z",
@@ -7587,7 +7981,7 @@
     "host-10": "https://mixdrop.ag/e/q1dmkgz8aqwm7x"
   },
   {
-    "serial": 412,
+    "serial": 437,
     "title": "Your Heart Will Be Broken",
     "tmdb/imdb": "1523145/tt38190257",
     "extracted_at": "2026-08-17T20:12:12Z",
@@ -7603,7 +7997,7 @@
     "host-10": "https://vidmoly.biz/embed-2xzgwdshazhv.html"
   },
   {
-    "serial": 413,
+    "serial": 438,
     "title": "Pyaar Prema Kalyanam",
     "tmdb/imdb": "1538273/tt39260895",
     "extracted_at": "2026-08-22T02:00:50Z",
@@ -7614,7 +8008,7 @@
     "host-5": "https://mixdrop.ag/e/36n17nv9fxerx"
   },
   {
-    "serial": 414,
+    "serial": 439,
     "title": "Stop! That! Train!",
     "tmdb/imdb": "1541560/tt38128726",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -7640,14 +8034,14 @@
     "host-20": "https://vids.st/e/108792"
   },
   {
-    "serial": 415,
+    "serial": 440,
     "title": "Detective Conan: Fallen Angel of the Highway",
     "tmdb/imdb": "1545621/tt39123115",
     "extracted_at": "2026-08-18T04:46:52Z",
     "host-1": "https://mixdrop.ag/e/q1v0j06ntxkkmn"
   },
   {
-    "serial": 416,
+    "serial": 441,
     "title": "Leviticus",
     "tmdb/imdb": "1564614/tt39143902",
     "extracted_at": "2026-08-17T20:12:12Z",
@@ -7672,7 +8066,7 @@
     "host-19": "https://vidmoly.biz/embed-wevvzwrb2egi.html"
   },
   {
-    "serial": 417,
+    "serial": 442,
     "title": "The Convenience Store",
     "tmdb/imdb": "1567203/tt38772539",
     "extracted_at": "2026-08-22T02:00:50Z",
@@ -7683,7 +8077,7 @@
     "host-5": "https://mixdrop.ag/e/q1llwdpkh11g4l"
   },
   {
-    "serial": 418,
+    "serial": 443,
     "title": "Evolution",
     "tmdb/imdb": "1571101/tt6150344",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -7700,7 +8094,7 @@
     "host-11": "https://savefiles.com/e/wz8tsbhk0t62"
   },
   {
-    "serial": 419,
+    "serial": 444,
     "title": "Dhurandhar: The Revenge",
     "tmdb/imdb": "1582770/tt39139925",
     "extracted_at": "2026-08-18T05:59:51Z",
@@ -7710,7 +8104,7 @@
     "host-4": "https://bysejikuar.com/e/ieuylys7mw5x"
   },
   {
-    "serial": 420,
+    "serial": 445,
     "title": "My Best Friend, His Girlfriend and Me",
     "tmdb/imdb": "1589248/tt38662472",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -7718,7 +8112,7 @@
     "host-2": "https://mixdrop.ag/e/03v3j7nzsklxr67"
   },
   {
-    "serial": 421,
+    "serial": 446,
     "title": "Lydia and the Mist Rider",
     "tmdb/imdb": "1594694/tt39196986",
     "extracted_at": "2026-08-24T01:56:30Z",
@@ -7730,7 +8124,7 @@
     "host-6": "https://mixdrop.ag/e/4dveog46f8zkog"
   },
   {
-    "serial": 422,
+    "serial": 447,
     "title": "Lucky Strike",
     "tmdb/imdb": "1594914/tt19035928",
     "extracted_at": "2026-08-17T20:12:12Z",
@@ -7773,7 +8167,7 @@
     "host-37": "https://savefiles.com/e/gqc6gmg491wb"
   },
   {
-    "serial": 423,
+    "serial": 448,
     "title": "Night Nurse",
     "tmdb/imdb": "1596260/tt38906892",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -7809,7 +8203,7 @@
     "host-30": "https://savefiles.com/e/hbbm852z2j5y"
   },
   {
-    "serial": 424,
+    "serial": 449,
     "title": "Champagne",
     "tmdb/imdb": "1603145/tt38816122",
     "extracted_at": "2026-08-25T01:55:21Z",
@@ -7827,7 +8221,7 @@
     "host-12": "https://upzur.com/embed-q6sq3zzwufkf.html"
   },
   {
-    "serial": 425,
+    "serial": 450,
     "title": "Jackass: Best and Last",
     "tmdb/imdb": "1612018/tt39316472",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -7854,7 +8248,7 @@
     "host-21": "https://savefiles.com/e/9vgbxilenusu"
   },
   {
-    "serial": 426,
+    "serial": 451,
     "title": "A Child of My Own",
     "tmdb/imdb": "1616131/tt37961750",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -7866,7 +8260,7 @@
     "host-6": "https://mixdrop.ag/e/nl0l86qqalj8mlm"
   },
   {
-    "serial": 427,
+    "serial": 452,
     "title": "Me Before Me",
     "tmdb/imdb": "1616674/tt39370887",
     "extracted_at": "2026-08-18T05:59:51Z",
@@ -7878,7 +8272,7 @@
     "host-6": "https://mixdrop.ag/e/r6wx83vks71j6v"
   },
   {
-    "serial": 428,
+    "serial": 453,
     "title": "Love in Slow Motion",
     "tmdb/imdb": "1620682/tt43617119",
     "extracted_at": "2026-08-19T02:21:24Z",
@@ -7891,7 +8285,7 @@
     "host-7": "https://mixdrop.ag/e/r6wnz4g8f6k8qg"
   },
   {
-    "serial": 429,
+    "serial": 454,
     "title": "Facing El Chapo",
     "tmdb/imdb": "1621552/tt39390497",
     "extracted_at": "2026-08-22T02:00:50Z",
@@ -7914,7 +8308,7 @@
     "host-17": "https://savefiles.com/e/3ejv4axp59rq"
   },
   {
-    "serial": 430,
+    "serial": 455,
     "title": "No Ordinary Heist",
     "tmdb/imdb": "1624961/tt9661164",
     "extracted_at": "2026-08-24T01:56:30Z",
@@ -7933,7 +8327,7 @@
     "host-13": "https://vids.st/e/29540"
   },
   {
-    "serial": 431,
+    "serial": 456,
     "title": "Novak Djokovic: The Wolf in Winter",
     "tmdb/imdb": "1626188/tt43676563",
     "extracted_at": "2026-08-22T02:00:50Z",
@@ -7949,7 +8343,7 @@
     "host-10": "https://mixdrop.ag/e/eln4k188aqxw3nn"
   },
   {
-    "serial": 432,
+    "serial": 457,
     "title": "Ip Man: Kung Fu Legend",
     "tmdb/imdb": "1628071/tt38682795",
     "extracted_at": "2026-08-19T02:21:24Z",
@@ -7979,7 +8373,7 @@
     "host-24": "https://vids.st/e/101350"
   },
   {
-    "serial": 433,
+    "serial": 458,
     "title": "The Debt Collector",
     "tmdb/imdb": "1630409/tt39749953",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -8003,7 +8397,7 @@
     "host-18": "https://savefiles.com/e/82kxq00uyyjp"
   },
   {
-    "serial": 434,
+    "serial": 459,
     "title": "The Secret Woman",
     "tmdb/imdb": "1631807/tt37275992",
     "extracted_at": "2026-08-31T05:58:09Z",
@@ -8016,7 +8410,7 @@
     "host-7": "https://vidmoly.biz/embed-6gn9gm7malp5.html"
   },
   {
-    "serial": 435,
+    "serial": 460,
     "title": "This, That and Everything in Between",
     "tmdb/imdb": "1632473/tt39741670",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -8038,7 +8432,7 @@
     "host-16": "https://savefiles.com/e/qthcah93ukwn"
   },
   {
-    "serial": 436,
+    "serial": 461,
     "title": "The Last Assassins",
     "tmdb/imdb": "1641580/tt28370319",
     "extracted_at": "2026-08-28T12:04:00Z",
@@ -8056,7 +8450,7 @@
     "host-12": "https://mixdrop.ag/e/7kr8jnllsr9ejd"
   },
   {
-    "serial": 437,
+    "serial": 462,
     "title": "Iron Maiden: Burning Ambition",
     "tmdb/imdb": "1642859/tt36163614",
     "extracted_at": "2026-08-21T02:19:47Z",
@@ -8069,7 +8463,7 @@
     "host-7": "https://mixdrop.ag/e/dk3zjpw7fvpq94"
   },
   {
-    "serial": 438,
+    "serial": 463,
     "title": "Vanishing Point",
     "tmdb/imdb": "1658653/tt34885279",
     "extracted_at": "2026-08-27T09:02:11Z",
@@ -8081,7 +8475,7 @@
     "host-6": "https://mixdrop.ag/e/k0nnk1lds31qkkv"
   },
   {
-    "serial": 439,
+    "serial": 464,
     "title": "The Truthers",
     "tmdb/imdb": "1659155/tt41111628",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -8097,7 +8491,7 @@
     "host-10": "https://mixdrop.ag/e/r6wnzg1xfdr76p"
   },
   {
-    "serial": 440,
+    "serial": 465,
     "title": "Back to the 90s",
     "tmdb/imdb": "1676318/tt37540328",
     "extracted_at": "2026-08-23T02:09:08Z",
@@ -8111,7 +8505,7 @@
     "host-8": "https://vidmoly.biz/embed-0wgy1lqih61q.html"
   },
   {
-    "serial": 441,
+    "serial": 466,
     "title": "THE RIBBON HERO",
     "tmdb/imdb": "1679730/tt42186253",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -8133,7 +8527,7 @@
     "host-16": "https://filelions.to/v/pvciew4snkyv"
   },
   {
-    "serial": 442,
+    "serial": 467,
     "title": "Freefall: A Reckoning for Boeing",
     "tmdb/imdb": "1688804/tt32889884",
     "extracted_at": "2026-08-21T02:19:47Z",
@@ -8146,7 +8540,7 @@
     "host-7": "https://mixdrop.ag/e/dkq4lgx0c9lo7"
   },
   {
-    "serial": 443,
+    "serial": 468,
     "title": "Snoopy Presents: There's No Place Like Home, Snoopy",
     "tmdb/imdb": "1698575/tt42839367",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -8170,7 +8564,24 @@
     "host-18": "https://savefiles.com/e/bhmrlk2bujwn"
   },
   {
-    "serial": 444,
+    "serial": 469,
+    "title": "Much About Love",
+    "tmdb/imdb": "1704090/tt27860696",
+    "extracted_at": "2026-09-01T05:12:14Z",
+    "host-1": "https://bysejikuar.com/e/pludzdfkb6le",
+    "host-2": "https://bysejikuar.com/e/ximos6lnqnek/Much.About.Love.2026.1080p.WEBRip.x264-YTS",
+    "host-3": "https://voe.sx/e/zxs8ku5rxwln",
+    "host-4": "https://voe.sx/e/tqljcf2edddz",
+    "host-5": "https://streamta.site/e/erKrK23r02iYdXd/Much_About_Love_2026_1080p_AMZN_WEB-DL_DDP5_1_H_264-Kitsune.mkv",
+    "host-6": "https://dood.watch/e/xqc2en7wqoav",
+    "host-7": "https://luluvdoo.com/e/n4o9f2hvtlol",
+    "host-8": "https://luluvdoo.com/e/q0ace03bj8tl",
+    "host-9": "https://vidmoly.biz/embed-umpyrw5kz4d8.html",
+    "host-10": "https://mixdrop.ag/e/vknrv111b93l77",
+    "host-11": "https://mixdrop.ag/e/vknre6vps7mme9"
+  },
+  {
+    "serial": 470,
     "title": "Water Park Shark",
     "tmdb/imdb": "1712828/tt38890293",
     "extracted_at": "2026-08-26T02:29:38Z",
@@ -8185,7 +8596,7 @@
     "host-9": "https://mixdrop.ag/e/wlkq0k98t0zm3jo"
   },
   {
-    "serial": 445,
+    "serial": 471,
     "title": "A Toxic Love Story",
     "tmdb/imdb": "1723460/tt43619305",
     "extracted_at": "2026-08-18T05:59:51Z",
@@ -8210,7 +8621,7 @@
     "host-19": "https://mixdrop.ag/e/dkq1vv6midp773"
   },
   {
-    "serial": 446,
+    "serial": 472,
     "title": "Absolutely Devoted to You",
     "tmdb/imdb": "1725033/tt43639027",
     "extracted_at": "2026-08-25T01:55:21Z",
@@ -8233,7 +8644,7 @@
     "host-17": "https://vids.st/e/118394"
   },
   {
-    "serial": 447,
+    "serial": 473,
     "title": "Aussie at Heart",
     "tmdb/imdb": "1725038/tt41281879",
     "extracted_at": "2026-08-23T02:09:08Z",
@@ -8249,7 +8660,7 @@
     "host-10": "https://mixdrop.ag/e/r6wg9knxtp1696"
   },
   {
-    "serial": 448,
+    "serial": 474,
     "title": "Borderline",
     "tmdb/imdb": "1727780/tt28638842",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -8271,7 +8682,7 @@
     "host-16": "https://savefiles.com/e/q3fod9pswo4f"
   },
   {
-    "serial": 449,
+    "serial": 475,
     "title": "Big Chicken: A Fast Food Conspiracy",
     "tmdb/imdb": "1728056/tt43657327",
     "extracted_at": "2026-08-18T05:59:51Z",
@@ -8287,7 +8698,7 @@
     "host-10": "https://mixdrop.ag/e/jd9zo1wpcmovmr"
   },
   {
-    "serial": 450,
+    "serial": 476,
     "title": "My Grandfather Charles Manson",
     "tmdb/imdb": "1728954/tt43660866",
     "extracted_at": "2026-08-25T01:55:21Z",
@@ -8312,7 +8723,7 @@
     "host-19": "https://mixdrop.ag/e/xwo09pvliqkp6r"
   },
   {
-    "serial": 451,
+    "serial": 477,
     "title": "Generations: The Evolution of Spider-Man",
     "tmdb/imdb": "1732051/tt43691361",
     "extracted_at": "2026-08-25T01:55:21Z",
@@ -8327,7 +8738,7 @@
     "host-9": "https://mixdrop.ag/e/4dnmd6g9u78pep"
   },
   {
-    "serial": 452,
+    "serial": 478,
     "title": "Euphoria: A Look Back",
     "tmdb/imdb": "1732097/tt43683795",
     "extracted_at": "2026-08-18T05:59:51Z",
@@ -8342,7 +8753,7 @@
     "host-9": "https://mixdrop.ag/e/xwoj0zmqhl8l74p"
   },
   {
-    "serial": 453,
+    "serial": 479,
     "title": "LEGO Disney Princess: Magical Mayhem",
     "tmdb/imdb": "1732625/tt43689138",
     "extracted_at": "2026-08-22T02:00:50Z",
@@ -8355,14 +8766,14 @@
     "host-7": "https://mixdrop.ag/e/l76zjgrxaq109wv"
   },
   {
-    "serial": 454,
+    "serial": 480,
     "title": "Disney Worldbuilders",
     "tmdb/imdb": "1736062/tt43702934",
     "extracted_at": "2026-08-22T02:00:50Z",
     "host-1": "https://bysejikuar.com/e/ghv7ecwag32n/Disney.Worldbuilders.2026.1080p.WEBRip.x264-YTS"
   },
   {
-    "serial": 455,
+    "serial": 481,
     "title": "Kelsey Cook: Happy Hour",
     "tmdb/imdb": "1738070/tt43698006",
     "extracted_at": "2026-08-25T01:55:21Z",
@@ -8377,7 +8788,7 @@
     "host-9": "https://mixdrop.ag/e/03vojnv1twvo4q"
   },
   {
-    "serial": 456,
+    "serial": 482,
     "title": "Untold: The Testimony of Vince Young",
     "tmdb/imdb": "1739186/tt43700434",
     "extracted_at": "2026-08-27T09:02:11Z",
@@ -8390,7 +8801,7 @@
     "host-7": "https://mixdrop.ag/e/k0n3lgxvh87lk8"
   },
   {
-    "serial": 457,
+    "serial": 483,
     "title": "Stamptown",
     "tmdb/imdb": "1740313/tt42654471",
     "extracted_at": "2026-08-27T09:02:11Z",
@@ -8418,7 +8829,7 @@
     "host-22": "https://savefiles.com/e/27t1jdqjfe66"
   },
   {
-    "serial": 458,
+    "serial": 484,
     "title": "Storm on Sesame Street",
     "tmdb/imdb": "1740877/tt43729889",
     "extracted_at": "2026-08-18T04:46:52Z",
@@ -8430,7 +8841,7 @@
     "host-6": "https://savefiles.com/e/nkz0y4j0hr3x"
   },
   {
-    "serial": 459,
+    "serial": 485,
     "title": "Chompoo: Lost​ &​ Forgotten​",
     "tmdb/imdb": "1741201/tt39750720",
     "extracted_at": "2026-08-22T02:00:50Z",
@@ -8446,7 +8857,7 @@
     "host-10": "https://mixdrop.ag/e/7krgvqmoh9eg11"
   },
   {
-    "serial": 460,
+    "serial": 486,
     "title": "Simon Says",
     "tmdb/imdb": "1741329/tt43725159",
     "extracted_at": "2026-08-21T02:19:47Z",
@@ -8458,7 +8869,7 @@
     "host-6": "https://mixdrop.ag/e/wlnleer6u18kqj"
   },
   {
-    "serial": 461,
+    "serial": 487,
     "title": "Three Housewives and a Body",
     "tmdb/imdb": "1744151/tt38353630",
     "extracted_at": "2026-08-25T01:55:21Z",
@@ -8478,7 +8889,7 @@
     "host-14": "https://mixdrop.ag/e/jd91gx3nizq71l"
   },
   {
-    "serial": 462,
+    "serial": 488,
     "title": "Grand Theft Auto VI: An Extended Look",
     "tmdb/imdb": "1744462/tt43749709",
     "extracted_at": "2026-08-28T12:04:00Z",
@@ -8514,7 +8925,7 @@
     "host-30": "https://savefiles.com/e/71so9jo8xbeb"
   },
   {
-    "serial": 463,
+    "serial": 489,
     "title": "Shackled",
     "tmdb/imdb": "1745446/tt39445906",
     "extracted_at": "2026-08-24T01:56:30Z",
@@ -8528,7 +8939,22 @@
     "host-8": "https://mixdrop.ag/e/03vv1qkxcnnwj4"
   },
   {
-    "serial": 464,
+    "serial": 490,
+    "title": "Gaskins: The Hitchhiker Killer",
+    "tmdb/imdb": "1748756/tt33256086",
+    "extracted_at": "2026-09-01T05:12:14Z",
+    "host-1": "https://bysejikuar.com/e/dptm3qr2t4ws/Gaskins.The.Hitchhiker.Killer.2026.1080p.WEBRip.x264-YTS.mp4",
+    "host-2": "https://bysejikuar.com/e/hye6ok7xrs8a",
+    "host-3": "https://voe.sx/e/bxx1gjdol9qp",
+    "host-4": "https://streamta.site/e/4mwP72Yxj6FZm6/Gaskins.The.Hitchhiker.Killer.2026.720p.WEBRip.x264.AAC-%5B%5D.mp4",
+    "host-5": "https://dood.watch/e/d4fo8ats7k05",
+    "host-6": "https://luluvdoo.com/e/c1i9mmr0ru5m",
+    "host-7": "https://vidmoly.biz/embed-h8urcqis4qcj.html",
+    "host-8": "https://mixdrop.ag/e/r6w46w14ave3vk6",
+    "host-9": "https://mixdrop.ag/e/wlnrw0kjavlg4x"
+  },
+  {
+    "serial": 491,
     "title": "Disney Princess: The Ultimate Concert Celebration",
     "tmdb/imdb": "1750855/tt44175372",
     "extracted_at": "2026-08-24T01:56:30Z",
