@@ -1429,3 +1429,7 @@ https://primesrc.me/embed/movie?tmdb=212156
 https://primesrc.me/embed/movie?tmdb=1084409
 https://primesrc.me/embed/movie?tmdb=1098534
 https://primesrc.me/embed/movie?tmdb=1773350
+https://primesrc.me/embed/movie?tmdb=36592
+https://primesrc.me/embed/movie?tmdb=100271
+https://primesrc.me/embed/movie?tmdb=1773345
+https://primesrc.me/embed/movie?tmdb=1776645
